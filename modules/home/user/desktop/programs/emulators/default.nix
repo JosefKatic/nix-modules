@@ -1,0 +1,3 @@
+{
+  imports = [./alacritty ./kitty ./wezterm];
+}

@@ -1,0 +1,3 @@
+{
+  imports = [./gamemode.nix ./wayland];
+}
