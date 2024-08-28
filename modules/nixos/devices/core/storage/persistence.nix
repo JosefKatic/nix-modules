@@ -56,6 +56,7 @@ in {
           "/var/lib/systemd"
           "/var/lib/docker"
           "/var/lib/nordvpn"
+          "/var/lib/sops-nix"
           "/srv"
           "/etc/nixos"
           "/etc/NetworkManager/system-connections"
