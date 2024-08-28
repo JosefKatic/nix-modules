@@ -7,7 +7,7 @@
 }: let
   inherit (config.networking) hostName;
   hosts = self.nixosConfigurations;
-  # pubKey = host: "${self}/hosts/${host}/ssh_host_ed25519_key.pub";
+  pubKey = host: "${self}/config/nixos/${host}/ssh_host_ed25519_key.pub";
   # gitHost = hosts."strix".config.networking.hostName;
 
   # Sops needs acess to the keys before the persist dirs are even mounted; so
@@ -36,17 +36,16 @@ in {
 
   programs.ssh = {
     # Each hosts public keyss
-    # knownHosts =
-    #   builtins.mapAttrs
-    #   (name: _: {
-    #     publicKeyFile = pubKey name;
-    #     extraHostNames =
-    #       # Alias for localhost if it's the same host
-    #       ["${name}.clients.joka00.dev"]
-    #       ++ lib.optional (name == hostName) "localhost";
-    #     # ++ (lib.optionals (name == gitHost) ["joka00.dev" "git.joka00.dev"]);
-    #   })
-    #   hosts;
+    knownHosts =
+      builtins.mapAttrs (name: _: {
+        publicKeyFile = pubKey name;
+        extraHostNames =
+          # Alias for localhost if it's the same host
+          ["${name}.clients.joka00.dev"]
+          ++ lib.optional (name == hostName) "localhost";
+        # ++ (lib.optionals (name == gitHost) ["joka00.dev" "git.joka00.dev"]);
+      })
+      hosts;
   };
 
   # Passwordless sudo when SSH'ing with keys
