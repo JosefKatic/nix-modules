@@ -11,7 +11,9 @@ inputs: {
     useUserPackages = true;
     backupFileExtension = "backup";
   };
-  imports = [
+  imports = let
+    server = import ./server inputs;
+  in [
     inputs.hm.nixosModule
     inputs.hyprland.nixosModules.default
     inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -25,6 +27,6 @@ inputs: {
     ./desktop
     ./utils
     ./users
-    ./server
+    server
   ];
 }

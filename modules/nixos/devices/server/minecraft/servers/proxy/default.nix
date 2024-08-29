@@ -1,4 +1,4 @@
-{
+inputs: {
   pkgs,
   config,
   lib,
@@ -25,7 +25,7 @@ in {
         echo 'velocity reload' > /run/minecraft-server/proxy.stdin
       '';
 
-      package = pkgs.inputs.nix-minecraft.velocity-server; # Latest build
+      package = inputs.nix-minecraft.velocity-server; # Latest build
       jvmOpts = proxyFlags "1G";
 
       files = {

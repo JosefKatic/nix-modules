@@ -1,4 +1,4 @@
-{
+inputs: {
   self,
   config,
   pkgs,
@@ -9,7 +9,7 @@
     services.minecraft-servers.servers.survival = {
       enable = true;
       enableReload = true;
-      package = pkgs.inputs.nix-minecraft.paperServers.paper-1_21;
+      package = inputs.nix-minecraft.paperServers.paper-1_21;
       jvmOpts = ((import ../../flags.nix) "6G") + "-Dpaper.disableChannelLimit=true";
       whitelist = import ../../whitelist.nix;
       serverProperties = {

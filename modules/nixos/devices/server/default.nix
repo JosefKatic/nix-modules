@@ -1,13 +1,16 @@
-{
-  imports = [
+inputs: {
+  imports = let
+    hosting = import ./hosting inputs;
+    minecraft = import ./minecraft inputs;
+  in [
     ./auth
     ./cache
     ./databases
     ./git
     ./homelab
-    ./hosting
+    hosting
     ./hydra
-    ./minecraft
+    minecraft
     ./services
     ./teamspeak
   ];

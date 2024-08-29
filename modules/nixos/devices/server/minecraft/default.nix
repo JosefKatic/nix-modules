@@ -1,12 +1,15 @@
-{
+inputs: {
   config,
   lib,
   ...
 }: {
-  imports = [
+  imports = let
+    proxy = import ./servers/proxy inputs;
+    survival = import ./servers/survival inputs;
+  in [
     # ./servers/lobby
-    ./servers/proxy
-    ./servers/survival
+    proxy
+    survival
     ./server.nix
   ];
 }
