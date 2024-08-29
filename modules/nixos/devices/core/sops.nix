@@ -12,8 +12,6 @@ in {
   sops = {
     age = {
       sshKeyPaths = map getKeyPath keys;
-      keyFile = "${lib.optionalString hasOptinPersistence "/persist"}/var/lib/sops-nix/key.txt";
-      generateKey = true;
     };
   };
 }
