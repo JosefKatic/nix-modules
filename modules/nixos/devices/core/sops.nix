@@ -13,6 +13,7 @@ in {
     gnupg.sshKeyPaths = [];
     age = {
       sshKeyPaths = map getKeyPath keys;
+      keyFile = "/persist/var/lib/sops-nix/age-keys.txt";
     };
   };
 }
