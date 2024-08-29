@@ -17,7 +17,6 @@ inputs: {
     inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.matugen.nixosModules.default
     inputs.nix-index-db.hmModules.nix-index
-    inputs.nix-index-db.hmModules.nix-index
     inputs.nur.nixosModules.nur
     inputs.sops-nix.homeManagerModules.sops
   ];
