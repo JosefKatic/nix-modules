@@ -99,12 +99,12 @@ in {
           "libvirtd"
           "deluge"
         ];
-      # openssh.authorizedKeys.keys = [(builtins.readFile "${self}/home/${username}/ssh.pub")];
+      openssh.authorizedKeys.keys = [(builtins.readFile "${self}/ssh.pub")];
       hashedPasswordFile = config.sops.secrets.joka-password.path;
       packages = [
         pkgs.home-manager
       ];
-    };
+    };home
 
     # Loop
     sops.secrets.joka-password = {
