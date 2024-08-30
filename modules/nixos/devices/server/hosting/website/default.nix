@@ -5,7 +5,7 @@ inputs: {
   self,
   ...
 }: let
-  website = inputs.web.default;
+  website = inputs.web.packages.${pkgs.system}.default;
   # pgpKey = "${self}home/joka/pgp.asc";
   # sshKey = "${self}/home/joka/ssh.pub";
   days = n: toString (n * 60 * 60 * 24);
