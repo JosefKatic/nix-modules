@@ -104,7 +104,7 @@ in {
       packages = [
         pkgs.home-manager
       ];
-    };home
+    };
 
     # Loop
     sops.secrets.joka-password = {
