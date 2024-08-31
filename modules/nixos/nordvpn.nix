@@ -1,4 +1,4 @@
-{
+inputs: {
   config,
   lib,
   pkgs,
@@ -18,18 +18,18 @@ with lib; {
   };
 
   config = mkIf config.services.nordvpn.enable {
-    environment.systemPackages = [self.packages.${pkgs.system}.nordvpn];
+    environment.systemPackages = [inputs.self.packages.${pkgs.system}.nordvpn];
     users.groups.nordvpn = {};
     systemd = {
       services.nordvpn = {
         description = "NordVPN daemon.";
         serviceConfig = {
-          ExecStart = "${self.packages.${pkgs.system}.nordvpn}/bin/nordvpnd";
+          ExecStart = "${inputs.self.packages.${pkgs.system}.nordvpn}/bin/nordvpnd";
           ExecStartPre = ''
             ${pkgs.bash}/bin/bash -c '\
               mkdir -m 700 -p /var/lib/nordvpn; \
               if [ -z "$(ls -A /var/lib/nordvpn)" ]; then \
-                cp -r ${self.packages.${pkgs.system}.nordvpn}/var/lib/nordvpn/* /var/lib/nordvpn; \
+                cp -r ${inputs.self.packages.${pkgs.system}.nordvpn}/var/lib/nordvpn/* /var/lib/nordvpn; \
               fi'
           '';
           NonBlocking = true;

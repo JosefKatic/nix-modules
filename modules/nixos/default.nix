@@ -1,6 +1,6 @@
 {inputs, ...}: {
   flake.nixosModules = {
     default = import ./devices inputs;
-    nordvpn = import ./nordvpn.nix;
+    nordvpn = import ./nordvpn.nix inputs;
   };
 }
