@@ -91,9 +91,9 @@
       imports = [
         ./shell.nix
         ./packages
-        ./lib
+        ./hydra
         ./modules
-        # ./pre-commit-hooks.nix
+        ./pre-commit-hooks.nix
       ];
     };
 }
