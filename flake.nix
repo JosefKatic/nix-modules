@@ -1,14 +1,5 @@
 {
   description = "Flake with modules for joka00.dev";
-  nixConfig = {
-    extra-substituters = [
-      "https://hyprland.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
-  };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -66,31 +57,9 @@
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
-
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-    };
-
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
     };
-
     # NUR
     nur.url = "github:nix-community/NUR";
 

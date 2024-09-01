@@ -13,7 +13,6 @@ inputs: {
     desktop
     theme
     inputs.anyrun.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
     inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.matugen.nixosModules.default
     inputs.nix-index-db.hmModules.nix-index
