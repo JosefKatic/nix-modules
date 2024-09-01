@@ -166,7 +166,7 @@ in {
               then [addreservedString]
               else map (output: "${output}${addreservedString}") outputs
           )
-          (attrValues config.programs.waybar.settings);
+          (lib.attrValues config.programs.waybar.settings);
       in
         waybarSpaces
         ++ (map (
