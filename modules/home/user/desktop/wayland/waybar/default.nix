@@ -280,7 +280,8 @@ in {
       systemd.enable = true;
       settings = {
         bottom-main = {
-          layer = "top";
+          exclusive = false;
+          passthrough = false;
           height = 32;
           margin = "6";
           position = "bottom";
@@ -301,7 +302,8 @@ in {
           "custom/logo" = customLogo;
         };
         bottom = {
-          layer = "top";
+          exclusive = false;
+          passthrough = false;
           height = 32;
           margin = "6";
           position = "bottom";
@@ -319,7 +321,6 @@ in {
         primary = {
           exclusive = false;
           passthrough = false;
-          layer = "top";
           height = 40;
           margin = "0";
           position = "top";

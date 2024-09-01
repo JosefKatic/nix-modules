@@ -135,32 +135,40 @@ in {
       debug.disable_logs = false;
 
       monitor = let
-        waybarSpace = let
-          inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out;
-          inherit (config.programs.waybar.settings.primary) position height width;
-          gap = gaps_out - gaps_in;
-        in {
-          top =
-            if (position == "top")
-            then height + gap
-            else 0;
-          bottom =
-            if (position == "bottom")
-            then height + gap
-            else 0;
-          left =
-            if (position == "left")
-            then width + gap
-            else 0;
-          right =
-            if (position == "right")
-            then width + gap
-            else 0;
-        };
+        inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out;
+        gap = gaps_out - gaps_in;
+        waybarSpaces =
+          builtins.map (
+            bar: let
+              inherit (bar) position height width;
+              waybarSpace = {
+                top =
+                  if (position == "top")
+                  then height + gap
+                  else 0;
+                bottom =
+                  if (position == "bottom")
+                  then height + gap
+                  else 0;
+                left =
+                  if (position == "left")
+                  then width + gap
+                  else 0;
+                right =
+                  if (position == "right")
+                  then width + gap
+                  else 0;
+              };
+              addreservedString = ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}";
+              outputs = bar.outputs or [];
+            in
+              if outputs == []
+              then [addreservedString]
+              else map (output: "${output}${addreservedString}") outputs
+          )
+          config.programs.waybar.settings;
       in
-        [
-          ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}"
-        ]
+        waybarSpaces
         ++ (map (
           m: "${m.name},${
             if m.enabled

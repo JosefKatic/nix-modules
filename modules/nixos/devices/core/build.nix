@@ -11,7 +11,7 @@
     '';
   };
 
-  config = lib.mkIf (config.device.build == "0") {
+  config = lib.mkIf (config.device.build != "0") {
     environment.etc = {
       buildID = {
         text = config.device.build;
