@@ -138,7 +138,7 @@ in {
         inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out;
         gap = gaps_out - gaps_in;
         waybarSpaces =
-          builtins.map (
+          builtins.concatMap (
             bar: let
               inherit (bar) position height width;
               waybarSpace = {
@@ -166,7 +166,7 @@ in {
               then [addreservedString]
               else map (output: "${output}${addreservedString}") outputs
           )
-          config.programs.waybar.settings;
+          (attrValues config.programs.waybar.settings);
       in
         waybarSpaces
         ++ (map (
