@@ -20,12 +20,12 @@ in {
           grace = 15;
         };
 
-        # background = [
-        #   {
-        #     monitor = "";
-        #     path = config.theme.wallpaper;
-        #   }
-        # ];
+        background = [
+          {
+            monitor = "";
+            path = config.theme.wallpaper;
+          }
+        ];
 
         input-field = [
           {
