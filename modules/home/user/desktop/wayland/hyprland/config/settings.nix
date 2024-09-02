@@ -140,7 +140,7 @@ in {
         waybarSpaces =
           builtins.concatMap (
             bar: let
-              inherit (bar) position height width;
+              inherit (bar) output position height width;
               waybarSpace = {
                 top =
                   if (position == "top")
@@ -160,11 +160,11 @@ in {
                   else 0;
               };
               addreservedString = ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}";
-              outputs = bar.outputs or [];
+              outputs = output;
             in
               if outputs == []
               then [addreservedString]
-              else map (output: "${output}${addreservedString}") outputs
+              else map (monitor: "${monitor}${addreservedString}") outputs
           )
           (lib.attrValues config.programs.waybar.settings);
       in
