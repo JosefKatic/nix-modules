@@ -53,6 +53,7 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
+      inputs.hyprland.follows = "hyprland";
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -71,6 +72,7 @@
     };
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
     };
     # NUR
     nur.url = "github:nix-community/NUR";
