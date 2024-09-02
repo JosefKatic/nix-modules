@@ -1,6 +1,7 @@
 inputs: {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.device.desktop.wayland.windowManager;

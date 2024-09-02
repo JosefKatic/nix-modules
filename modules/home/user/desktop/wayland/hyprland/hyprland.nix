@@ -1,6 +1,7 @@
 inputs: {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.user.desktop.wayland.hyprland;
