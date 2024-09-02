@@ -41,7 +41,9 @@
     matugen = {
       url = "github:InioX/Matugen";
     };
-
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+    };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";

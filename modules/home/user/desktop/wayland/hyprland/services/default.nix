@@ -1,5 +1,6 @@
 inputs: {
   imports = let
     anyrun = import ./anyrun inputs;
-  in [anyrun ./hypridle ./hyprlock ./hyprpaper];
+    hyprpaper = import ./hyprpaper inputs;
+  in [anyrun ./hypridle ./hyprlock hyprpaper];
 }
