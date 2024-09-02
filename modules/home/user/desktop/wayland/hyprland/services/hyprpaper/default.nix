@@ -16,7 +16,7 @@ in {
         ipc = "off";
         splash = false;
         preload = [
-          config.theme.wallpaper
+          "${config.theme.wallpaper}"
         ];
         wallpaper = [
           " ,${config.theme.wallpaper}"

@@ -12,6 +12,7 @@ inputs: {
     backupFileExtension = "backup";
   };
   imports = let
+    desktop = import ./desktop inputs;
     server = import ./server inputs;
   in [
     inputs.hm.nixosModule
@@ -23,9 +24,9 @@ inputs: {
     ./boot
     ./core
     ./hardware
-    ./desktop
     ./utils
     ./users
+    desktop
     server
   ];
 }
