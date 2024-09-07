@@ -30,7 +30,7 @@ in {
   };
 
   config = {
-    users.mutableUsers = false;
+    users.mutableUsers = true;
 
     users.users.${username} = {
       isNormalUser = true;
