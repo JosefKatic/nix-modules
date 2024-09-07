@@ -88,7 +88,7 @@ in {
                 git checkout ${config.networking.hostName}/${user} --force
                 ${home.init.install}
               '';
-            in "${script}/bin/${(initialise user)}";
+            in "${lib.getExe script}";
           };
         };
       })
