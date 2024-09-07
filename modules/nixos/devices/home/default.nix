@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  utils,
   ...
 }: let
   inherit (config.device) home;
@@ -31,8 +32,8 @@ in {
   };
 
   config = let
-    check = user: "home-config-check-${pkgs.utils.escapeSystemdPath user}";
-    initialise = user: "home-config-initialise-${pkgs.utils.escapeSystemdPath user}";
+    check = user: "home-config-check-${utils.escapeSystemdPath user}";
+    initialise = user: "home-config-initialise-${utils.escapeSystemdPath user}";
     service = unit: "${unit}.service";
   in {
     # set up user configuration *before* first login
@@ -84,7 +85,7 @@ in {
                 git init
                 git remote add origin ${home.init.url}
                 git fetch
-                git checkout ${config.networking.hostname}/${user} --force
+                git checkout ${config.networking.hostName}/${user} --force
                 ${home.init.install}
               '';
             in "${script}/bin/${(initialise user)}";
