@@ -23,6 +23,7 @@ inputs: {
     inputs.impermanence.nixosModules.impermanence
     ./boot
     ./core
+    ./home
     ./hardware
     ./utils
     ./users

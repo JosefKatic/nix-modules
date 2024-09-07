@@ -134,48 +134,13 @@ in {
 
       debug.disable_logs = false;
 
-      monitor = let
-        inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out;
-        gap = gaps_out - gaps_in;
-        waybarSpaces =
-          builtins.concatMap (
-            bar: let
-              inherit (bar) output position height width;
-              waybarSpace = {
-                top =
-                  if (position == "top")
-                  then height + gap
-                  else 0;
-                bottom =
-                  if (position == "bottom")
-                  then height + gap
-                  else 0;
-                left =
-                  if (position == "left")
-                  then width + gap
-                  else 0;
-                right =
-                  if (position == "right")
-                  then width + gap
-                  else 0;
-              };
-              addreservedString = ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}";
-              outputs = output;
-            in
-              if outputs == []
-              then [addreservedString]
-              else map (monitor: "${monitor}${addreservedString}") outputs
-          )
-          (lib.attrValues config.programs.waybar.settings);
-      in
-        waybarSpaces
-        ++ (map (
-          m: "${m.name},${
-            if m.enabled
-            then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
-            else "disable"
-          }"
-        ) (config.user.desktop.monitors));
+      monitor = map (
+        m: "${m.name},${
+          if m.enabled
+          then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
+          else "disable"
+        }"
+      ) (config.user.desktop.monitors);
     };
   };
 }
