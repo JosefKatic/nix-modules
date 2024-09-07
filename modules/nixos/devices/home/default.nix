@@ -32,8 +32,8 @@ in {
   };
 
   config = let
-    check = user: "home-config-check-${utils.escapeSystemdPath user}";
-    initialise = user: "home-config-initialise-${utils.escapeSystemdPath user}";
+    check = user: utils.escapeSystemdPath "home-config-check-${user}";
+    initialise = user: utils.escapeSystemdPath "home-config-initialise-${user}";
     service = unit: "${unit}.service";
   in {
     # set up user configuration *before* first login
