@@ -32,8 +32,8 @@ in {
   };
 
   config = let
-    check = user: utils.escapeSystemdPath "home-config-check-${user}";
-    initialise = user: utils.escapeSystemdPath "home-config-initialise-${user}";
+    check = user: "home-config-check-${user}";
+    initialise = user: "home-config-initialise-${user}";
     service = unit: "${unit}.service";
   in {
     # set up user configuration *before* first login
@@ -88,7 +88,7 @@ in {
                 git checkout ${config.networking.hostName}/${user} --force
                 ${home.init.install}
               '';
-            in "${lib.getBin script}/${initialise user}";
+            in "${script}/bin/${initialise user}";
           };
         };
       })
