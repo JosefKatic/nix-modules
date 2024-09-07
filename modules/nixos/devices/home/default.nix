@@ -11,7 +11,7 @@ in {
     users = mkOption {
       type = types.listOf types.str;
     };
-    init = mkOption {
+    init = {
       url = mkOption {
         type = types.str;
         default = "https://github.com/JosefKatic/nix-config.git";
