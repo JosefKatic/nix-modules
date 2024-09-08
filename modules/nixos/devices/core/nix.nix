@@ -13,6 +13,7 @@
     pkgs.ntfs3g
     pkgs.woeusb
     pkgs.portfolio
+    pkgs.kitty
   ];
 
   programs.nh = {
