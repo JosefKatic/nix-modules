@@ -42,7 +42,8 @@ in {
         dosis
         rubik
         (google-fonts.override {fonts = ["Inter"];})
-
+        fira-code
+        inter
         # monospace fonts
         jetbrains-mono
         # nerdfonts

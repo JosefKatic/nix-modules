@@ -58,6 +58,16 @@
       git.enable = true;
     };
 
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = ["Noto Serif" "Noto Color Emoji"];
+        sansSerif = ["Inter" "Noto Color Emoji"];
+        monospace = ["JetBrains Mono" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+
     home = {
       username = config.user.name;
       homeDirectory = lib.mkDefault "/home/${config.user.name}";
@@ -75,6 +85,8 @@
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
+        fira-code
+        inter
         roboto
         dosis
         rubik
