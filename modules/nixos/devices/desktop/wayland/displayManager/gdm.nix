@@ -22,11 +22,10 @@ in {
     services.xserver.displayManager.gdm.enable = true;
 
     environment.etc."gdm/PostLogin/Default" = {
-      text = ''
-        set -e
+      text = ''        
         if [[ -d $HOME/${home.init.path} ]]; then
           echo "Path already exists, no need to clone. Update should update it"
-          exit 1
+          exit 0
 	fi
         mkdir -p $HOME/${home.init.path}
         cd $HOME/${home.init.path}
@@ -34,6 +33,7 @@ in {
         git remote add origin ${home.init.url}
         git pull origin main
         ${home.init.install}
+	exit 0
       '';
       mode = "0755";
     };
