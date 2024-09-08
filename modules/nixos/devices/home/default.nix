@@ -84,8 +84,8 @@ in {
                 cd /home/${user}/${home.init.path}
                 git init
                 git remote add origin ${home.init.url}
-                git fetch
-                ${home.init.install}
+                git fetch origin main
+                /home/${user}/${home.init.path}/${home.init.install}
               '';
             in "${script}/bin/${initialise user}";
           };
