@@ -25,7 +25,7 @@ in {
       };
       install = mkOption {
         type = types.str;
-        default = "./install";
+        default = "install";
         description = "Installation command";
       };
     };
@@ -84,7 +84,7 @@ in {
                 cd /home/${user}/${home.init.path}
                 git init
                 git remote add origin ${home.init.url}
-                git fetch origin main
+                git pull origin main
                 /home/${user}/${home.init.path}/${home.init.install}
               '';
             in "${script}/bin/${initialise user}";
