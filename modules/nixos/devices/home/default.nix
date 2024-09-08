@@ -85,7 +85,6 @@ in {
                 git init
                 git remote add origin ${home.init.url}
                 git fetch
-                git checkout ${config.networking.hostName}/${user} --force
                 ${home.init.install}
               '';
             in "${script}/bin/${initialise user}";
