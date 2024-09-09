@@ -20,20 +20,21 @@ in {
   config = lib.mkIf cfg.enable {
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
-
     environment.etc."gdm/PostLogin/Default" = {
-      text = ''        
+      text = ''
         if [[ -d $HOME/${home.init.path} ]]; then
           echo "Path already exists, no need to clone. Update should update it"
           exit 0
-	fi
+        fi
+	rm -rf $HOME/.config/\*
         mkdir -p $HOME/${home.init.path}
         cd $HOME/${home.init.path}
+        echo "Folder created, cloning repository"
         git init
         git remote add origin ${home.init.url}
         git pull origin main
+        echo "Repository cloned, installing"
         ${home.init.install}
-	exit 0
       '';
       mode = "0755";
     };
@@ -43,6 +44,10 @@ in {
         settings = {
           "org/gnome/login-screen" = {
             logo = "${logoFile}";
+          };
+          "org/gnome/desktop/background" = {
+            primary-color = "#111111";
+            secondary-color = "#FFFFFF";
           };
         };
       }

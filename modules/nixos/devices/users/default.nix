@@ -30,8 +30,13 @@ in {
   };
 
   config = {
-    users.mutableUsers = true;
-
+    security.sudo.extraRules = [
+      {
+        groups = ["admins"];
+        commands = ["SETENV: ALL"];
+      }
+    ];
+    users.mutableUsers = false;
     users.users.${username} = {
       isNormalUser = true;
       shell = pkgs.fish;
