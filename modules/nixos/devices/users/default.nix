@@ -30,12 +30,6 @@ in {
   };
 
   config = {
-    security.sudo.extraRules = [
-      {
-        groups = ["admins"];
-        commands = ["SETENV: ALL"];
-      }
-    ];
     users.mutableUsers = false;
     users.users.${username} = {
       isNormalUser = true;
@@ -63,9 +57,6 @@ in {
         ];
       openssh.authorizedKeys.keys = [(builtins.readFile "${self}/ssh.pub")];
       hashedPasswordFile = config.sops.secrets.joka-password.path;
-      packages = [
-        pkgs.home-manager
-      ];
     };
 
     # Loop

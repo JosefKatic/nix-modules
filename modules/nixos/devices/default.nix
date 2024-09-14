@@ -6,11 +6,6 @@ inputs: {
   pkgs,
   ...
 }: {
-  home-manager = {
-    # useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-  };
   imports = let
     desktop = import ./desktop inputs;
     server = import ./server inputs;

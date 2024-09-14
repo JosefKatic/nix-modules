@@ -1,5 +1,6 @@
 inputs: {
   imports = let
     windowManager = import ./windowManager inputs;
-  in [./desktopManager ./displayManager windowManager];
+    displayManager = import ./displayManager inputs;
+  in [./desktopManager displayManager windowManager];
 }

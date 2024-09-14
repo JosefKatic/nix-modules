@@ -59,6 +59,12 @@ in {
       extraConfig = ''
         Defaults passprompt="🔒 Enter password for %p... "
       '';
+      extraRules = [
+        {
+          groups = ["admins"];
+          commands = ["SETENV: ALL"];
+        }
+      ];
     };
   };
 }

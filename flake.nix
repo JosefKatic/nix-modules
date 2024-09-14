@@ -21,7 +21,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     hm = {
-      url = "github:nix-community/home-manager";
+      url = "github:JosefKatic/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

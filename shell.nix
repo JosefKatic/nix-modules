@@ -7,7 +7,6 @@
     devShells.default = pkgs.mkShell {
       packages = with pkgs; [
         nix
-        home-manager
         git
         alejandra
         nodePackages.prettier
