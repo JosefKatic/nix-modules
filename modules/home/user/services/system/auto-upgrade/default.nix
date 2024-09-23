@@ -5,13 +5,13 @@
   ...
 }: let
   inherit (lib) types mkIf mkEnableOption mkOption;
-  cfg = config.user.services.autoUpgrade;
+  cfg = config.user.services.system.autoUpgrade;
 in {
   options.user.services.system.autoUpgrade = {
     enable = mkEnableOption "Enable auto-upgrade";
     flake = mkOption {
       type = types.str;
-      default = "github:JosefKatic/nix-config/${hostName}/${config.home.username}";
+      default = "github:JosefKatic/nix-config";
       description = "Flake to upgrade to";
     };
     dates = mkOption {
