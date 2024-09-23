@@ -10,6 +10,7 @@ in {
     enable = lib.mkEnableOption "Enable Nvidia GPU";
   };
   config = lib.mkIf cfg.nvidia.enable {
+    boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
     services.xserver = {videoDrivers = ["nvidia"];};
     hardware = {
       graphics = {
@@ -20,6 +21,7 @@ in {
         ];
       };
       nvidia = {
+        powerManagement.enable = true;
         modesetting.enable = true;
         open = true;
         nvidiaSettings = true;
