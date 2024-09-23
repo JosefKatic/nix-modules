@@ -1,4 +1,4 @@
-inputs: {
+{
   self,
   config,
   lib,
@@ -20,18 +20,6 @@ in {
   config = lib.mkIf cfg.enable {
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
-    systemd.user.services.home-manager-setup = {
-      wantedBy = ["graphical-session.target"];
-      wants = ["nix-daemon.socket" "network-online.target"];
-      path = ["/run/current-system/sw" pkgs.nix pkgs.git pkgs.coreutils pkgs.home-manager];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = false;
-      };
-      script = ''
-        ${pkgs.home-manager}/bin/home-manager switch -b backup --flake github:JosefKatic/nix-config
-      '';
-    };
 
     programs.dconf.profiles.gdm.databases = [
       {

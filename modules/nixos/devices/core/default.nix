@@ -8,6 +8,7 @@
   documentation.dev.enable = true;
   hardware.graphics.enable = true;
   imports = [
+    ./auto-upgrade.nix
     ./build.nix
     ./storage
     ./locale.nix
@@ -26,6 +27,7 @@
 
   # These are configs that needs to be everywhere
   hardware.enableRedistributableFirmware = true;
+  services.timesyncd.enable = true;
   # DON"T CHANGE THIS!
   system.stateVersion = lib.mkDefault "24.05";
 }

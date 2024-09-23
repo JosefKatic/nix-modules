@@ -5,5 +5,5 @@
   pkgs,
   ...
 }: {
-  imports = [./auto-upgrade.nix ./kdeconnect.nix ./virtualisation];
+  imports = [./kdeconnect.nix ./virtualisation];
 }
