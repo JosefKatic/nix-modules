@@ -21,8 +21,11 @@ in {
         inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
       ];
       settings = {
-        "plugin:hyprsplit" = {
-          num_workspaces = cfg.numberOfWorkspaces;
+        plugin = {
+          hyprsplit = {
+            num_workspaces = cfg.numberOfWorkspaces;
+            persistent_workspaces = true;
+          };
         };
       };
     };
