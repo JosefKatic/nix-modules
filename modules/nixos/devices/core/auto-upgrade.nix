@@ -10,8 +10,6 @@
   cfg = config.company.autoUpgrade;
   # Only enable auto upgrade if current config came from a clean tree
   # This avoids accidental auto-upgrades when working locally.
-  isClean = inputs.self ? rev;
-  inherit (config.networking) hostName;
 in {
   options = {
     company.autoUpgrade = {
@@ -22,12 +20,17 @@ in {
       };
       dates = lib.mkOption {
         type = lib.types.str;
-        default = "04:40";
+        default = "hourly";
         example = "daily";
       };
       instance = lib.mkOption {
         type = lib.types.str;
         default = "https://hydra.joka00.dev";
+      };
+      flake = mkOption {
+        type = types.str;
+        default = "github:JosefKatic/nix-config";
+        description = "Link to flake";
       };
       project = lib.mkOption {
         type = lib.types.str;
@@ -41,7 +44,6 @@ in {
         type = lib.types.str;
         default = config.networking.hostName;
       };
-
       oldFlakeRef = lib.mkOption {
         type = lib.types.nullOr lib.types.str;
         default = null;
@@ -64,6 +66,20 @@ in {
         '';
       }
     ];
+
+    systemd.user.services.home-manager-setup = {
+      wantedBy = ["graphical-session.target"];
+      wants = ["nix-daemon.socket" "network-online.target"];
+      path = ["/run/current-system/sw" pkgs.nix pkgs.git pkgs.coreutils pkgs.home-manager];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = false;
+      };
+      script = ''
+        ${pkgs.home-manager}/bin/home-manager switch -b backup --flake ${config.company.autoUpgrade.flake}
+      '';
+    };
+
     systemd.services.nixos-upgrade = {
       description = "NixOS Upgrade";
       restartIfChanged = false;
