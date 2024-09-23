@@ -29,6 +29,9 @@ in {
         )
         10);
     in {
+      cursor = {
+        no_hardware_cursors = true;
+      };
       # mouse movements
       bindm = [
         "$mod, mouse:272, movewindow"
