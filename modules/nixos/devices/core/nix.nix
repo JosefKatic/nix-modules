@@ -14,6 +14,7 @@
     pkgs.woeusb
     pkgs.portfolio
     pkgs.kitty
+    pkgs.home-manager
   ];
 
   programs.nh = {
