@@ -28,7 +28,7 @@ in {
         default = "https://hydra.joka00.dev";
       };
       flake = lib.mkOption {
-        type = types.str;
+        type = lib.types.str;
         default = "github:JosefKatic/nix-config";
         description = "Link to flake";
       };
