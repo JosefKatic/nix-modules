@@ -38,12 +38,12 @@
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
-      trusted-users = ["root" "@wheel" "nix-ssh" "deploy"];
+      trusted-users = ["root" "@wheel" "nix-ssh"];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
+      experimental-features = ["nix-command" "flakes" "ca-derivations" "repl-flake"];
       warn-dirty = false;
       system-features = ["kvm" "big-parallel" "nixos-test"];
-      flake-registry = "/etc/nix/registry.json";
+      flake-registry = "";
 
       # for direnv GC roots
       keep-derivations = true;
