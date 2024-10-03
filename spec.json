@@ -4,7 +4,7 @@
     "type": 1,
     "hidden": false,
     "description": "Build main branch",
-    "flake": "git://joka00.dev/nix-modules",
+    "flake": "https://github.com/JosefKatic/nix-modules?ref=main",
     "checkinterval": 60,
     "schedulingshares": 10,
     "enableemail": false,
