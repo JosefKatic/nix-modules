@@ -27,7 +27,6 @@
   };
 
   nix = {
-    package = pkgs.lix;
     settings = {
       builders-use-substitutes = true;
       substituters = [
