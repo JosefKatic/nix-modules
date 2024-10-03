@@ -87,7 +87,7 @@ in {
     services = {
       tailscale = {
         enable = true;
-        useRoutingFeatures = lib.mkDefault "client";
+        useRoutingFeatures = if config.device.type == "server" then "server" else "client";
       };
       avahi = {
         enable = cfg.network.services.enableAvahi;

@@ -57,7 +57,7 @@ in {
             only_start_if_oidc_is_available = true;
             client_id = "headscale-vpn";
             client_secret_path = config.sops.secrets.headscale_secret.path;
-            issuer = "https://auth.joka00.dev/realms/92a4012f-3d57-4fb0-9d39-16d28ec44d01";
+            issuer = "https://auth.joka00.dev/realms/21bb13ca-8130-423c-ac0f-85de48db99bb";
             scope = ["openid" "profile" "email"];
             # allowed_groups = ["headscale"];
           };

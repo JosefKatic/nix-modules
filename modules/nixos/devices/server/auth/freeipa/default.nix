@@ -6,6 +6,8 @@
   ...
 }: let
   cfg = config.device.server.auth.freeipa;
+  serviceName = "freeipa-server";
+  service = "${config.virtualisation.oci-containers.backend}-${serviceName}";
 in {
   options.device.server.auth.freeipa = {
     enable = lib.mkEnableOption "FreeIpa service";
@@ -38,7 +40,8 @@ in {
         ];
       };
     };
-    virtualisation.oci-containers.containers.freeipa-server = {
+    systemd.services."podman-freeipa-server".after = ["tailscaled.service"];
+    virtualisation.oci-containers.containers."${serviceName}" = {
       autoStart = true;
       image = "freeipa/freeipa-server:rocky-9";
       volumes = [

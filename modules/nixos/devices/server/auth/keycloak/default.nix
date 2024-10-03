@@ -41,7 +41,6 @@
         username = "admin";
         passwordFile = config.sops.secrets.keycloak_db.path;
       };
-      initialAdminPassword = config.sops.secrets.keycloak.path;
       settings = {
         hostname = "auth.joka00.dev";
         http-relative-path = "/";
