@@ -46,7 +46,7 @@ in {
       };
       oldFlakeRef = lib.mkOption {
         type = lib.types.nullOr lib.types.str;
-        default = null;
+        default = "self";
         description = ''
           Current system's flake reference
 

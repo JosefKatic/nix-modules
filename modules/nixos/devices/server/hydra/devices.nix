@@ -31,11 +31,10 @@
       uri = "ssh://nix-ssh@alcedo";
       systems = [
         "x86_64-linux"
-        "i686-linux"
       ];
       sshKey = config.sops.secrets.nix-ssh-key.path;
-      maxJobs = 12;
-      speedFactor = 150;
+      maxJobs = 6;
+      speedFactor = 50;
       supportedFeatures = [
         "kvm"
         "big-parallel"
@@ -46,11 +45,10 @@
       uri = "ssh://nix-ssh@regulus";
       systems = [
         "x86_64-linux"
-        "i686-linux"
       ];
       sshKey = config.sops.secrets.nix-ssh-key.path;
-      maxJobs = 8;
-      speedFactor = 100;
+      maxJobs = 2;
+      speedFactor = 20;
       supportedFeatures = [
         "kvm"
         "big-parallel"
@@ -62,14 +60,9 @@
       systems = [
         "aarch64-linux"
         "x86_64-linux"
-        "i686-linux"
       ];
       maxJobs = 4;
-      # This is the only builder marked as aarch64, so these builds will always
-      # run here (regardless of speedFactor).
-      # As for x86_64, this machine's factor is much lower than the others, so
-      # these builds will only be picked up if the others are offline.
-      speedFactor = 1;
+      speedFactor = 50;
       supportedFeatures = [
         "kvm"
         "big-parallel"
