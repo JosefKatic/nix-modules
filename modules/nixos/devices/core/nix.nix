@@ -27,6 +27,7 @@
   };
 
   nix = {
+    package = pkgs.lix;
     settings = {
       allowed-uris = ["github:" "https://github.com/" "git+https://github.com/"];
       builders-use-substitutes = true;
