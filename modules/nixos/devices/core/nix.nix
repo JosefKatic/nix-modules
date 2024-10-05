@@ -28,7 +28,7 @@
 
   nix = {
     settings = {
-      allowed-uris = ["github:" "https://github.com/"];
+      allowed-uris = ["github:" "https://github.com/" "git+https://github.com/"];
       builders-use-substitutes = true;
       substituters = [
         "https://anyrun.cachix.org"
