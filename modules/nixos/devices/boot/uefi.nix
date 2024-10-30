@@ -33,7 +33,7 @@ in {
       };
     };
     fileSystems."/efi" = {
-      device = "/dev/disk/by-label/EFI";
+      device = lib.mkDefault "/dev/disk/by-label/EFI";
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
     };

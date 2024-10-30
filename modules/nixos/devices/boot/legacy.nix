@@ -19,7 +19,7 @@ in {
       };
     };
     fileSystems."/boot" = {
-      device = cfg.core.storage.systemDrive.path;
+      device = lib.mkDefault cfg.core.storage.systemDrive.path;
       fsType = "btrfs";
       options = ["subvol=@boot"];
     };
