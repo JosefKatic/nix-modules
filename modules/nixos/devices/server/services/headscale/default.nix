@@ -39,10 +39,10 @@ in {
         address = "0.0.0.0";
         port = cfg.port;
         settings = {
-          dns_config = {
+          dns = {
             base_domain = "joka00.dev";
             override_local_dns = true;
-            nameservers = [
+            nameservers.global = [
               "100.64.0.4"
               "1.1.1.1"
             ];
