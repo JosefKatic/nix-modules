@@ -61,7 +61,6 @@ in {
           "/etc/nixos"
           "/etc/NetworkManager/system-connections"
         ];
-        files = ["/etc/machine-id"];
       };
     };
     programs.fuse.userAllowOther = true;
