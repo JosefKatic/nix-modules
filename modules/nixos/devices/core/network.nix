@@ -77,6 +77,7 @@ in {
           enable = cfg.network.services.enableNetworkManager;
           dns = "systemd-resolved";
         };
+        systemd.network.wait-online.enable = lib.mkIf cfg.network.services.enableNetworkManager false;
       }
       // lib.optionalAttrs (cfg.network.services.enableNetworkManager == false && cfg.network.static.enable) {
         dhcpcd.enable = false;
@@ -87,7 +88,10 @@ in {
     services = {
       tailscale = {
         enable = true;
-        useRoutingFeatures = if config.device.type == "server" then "server" else "client";
+        useRoutingFeatures =
+          if config.device.type == "server"
+          then "server"
+          else "client";
       };
       avahi = {
         enable = cfg.network.services.enableAvahi;
