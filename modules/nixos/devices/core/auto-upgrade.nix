@@ -42,7 +42,7 @@ in {
       };
       job = lib.mkOption {
         type = lib.types.str;
-        default = "hosts.${config.networking.hostName}"
+        default = "hosts.${config.networking.hostName}";
       };
       oldFlakeRef = lib.mkOption {
         type = lib.types.nullOr lib.types.str;
