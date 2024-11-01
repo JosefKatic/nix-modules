@@ -77,7 +77,6 @@ in {
           enable = cfg.network.services.enableNetworkManager;
           dns = "systemd-resolved";
         };
-        systemd.network.wait-online.enable = lib.mkIf cfg.network.services.enableNetworkManager false;
       }
       // lib.optionalAttrs (cfg.network.services.enableNetworkManager == false && cfg.network.static.enable) {
         dhcpcd.enable = false;
@@ -85,6 +84,7 @@ in {
         defaultGateway = cfg.network.static.defaultGateway;
         nameservers = cfg.network.static.nameservers;
       };
+    systemd.network.wait-online.enable = lib.mkIf cfg.network.services.enableNetworkManager false;
     services = {
       tailscale = {
         enable = true;
