@@ -47,7 +47,7 @@
         http-host = "127.0.0.1";
         http-port = 3880;
         https-port = 38443;
-        proxy = "edge";
+        proxy-header = "forwarded";
         http-enabled = true;
         sslCertificate = "/var/lib/acme/auth.joka00.dev/cert.pem";
         sslCertificateKey = "/var/lib/acme/auth.joka00.dev/key.pem";
