@@ -52,6 +52,19 @@ in {
               "https://raw.githubusercontent.com/mitchellkrogza/Badd-Boyz-Hosts/master/hosts"
             ];
           };
+          allowlists = {
+            ads = let
+              whitelist =
+                pkgs.writeText
+                "whitelist.txt"
+                ''
+                  s.youtube.com
+                  googleadservices.com
+                '';
+            in [
+              whitelist
+            ];
+          };
           clientGroupsBlock = {
             default = [
               "ads"
