@@ -36,8 +36,8 @@ in {
 
         nr = "nixos-rebuild --flake .";
         nrs = "nixos-rebuild --flake . switch";
-        snr = "sudo nixos-rebuild --flake .";
-        snrs = "sudo nixos-rebuild --flake . switch";
+        snr = "nixos-rebuild --flake . --use-remote-sudo";
+        snrs = "nixos-rebuild --flake . switch --use-remote-sudo";
         hm = "home-manager --flake .";
         hms = "home-manager --flake . switch";
 

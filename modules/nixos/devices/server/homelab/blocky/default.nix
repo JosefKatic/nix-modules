@@ -61,6 +61,7 @@ in {
                 ''
                   s.youtube.com
                   googleadservices.com
+                  www.googleadservices.com
                 '';
             in [
               whitelist
