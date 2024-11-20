@@ -19,7 +19,12 @@
 
   programs = {
     eza.enable = true;
-    ssh.enable = true;
+    ssh = {
+      enable = true;
+      extraConfig = ''
+        ControlPath ~/.ssh/sockets/%r@%h:%p
+      '';
+    };
     bash.enable = true;
   };
 }
