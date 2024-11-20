@@ -24,7 +24,7 @@ in {
       extraModprobeConfig = lib.mkIf config.device.virtualized "options kvm nested=1";
     };
     services.fwupd.enable = true;
-    systemd.services.hv-kvp.unitConfig.ConditionPathExists = lib.mkIf config.device.virtualized ["/dev/vmbus/hv_kvp"];
-    virtualisation.hypervGuest.enable = lib.mkIf config.device.virtualized true;
+    # systemd.services.hv-kvp.unitConfig.ConditionPathExists = lib.mkIf config.device.virtualized ["/dev/vmbus/hv_kvp"];
+    # virtualisation.hypervGuest.enable = lib.mkIf config.device.virtualized true;
   };
 }
