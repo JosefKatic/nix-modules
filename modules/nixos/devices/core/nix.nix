@@ -11,8 +11,6 @@
     pkgs.yubikey-manager-qt
     pkgs.libyubikey
     pkgs.ntfs3g
-    pkgs.woeusb
-    pkgs.portfolio
     pkgs.kitty
     pkgs.home-manager
   ];
