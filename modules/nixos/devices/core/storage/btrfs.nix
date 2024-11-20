@@ -42,32 +42,32 @@ in {
   config = {
     fileSystems = {
       "/" = {
-        device = lib.mkDefault cfg.core.storage.systemDrive.path;
+        device = "/dev/disk/by-label/system";
         fsType = "btrfs";
         options = ["subvol=@root" "compress=zstd" "noatime"];
       };
 
       "/home" = {
-        device = lib.mkDefault cfg.core.storage.systemDrive.path;
+        device = "/dev/disk/by-label/system";
         fsType = "btrfs";
         options = ["subvol=@home" "compress=zstd" "noatime"];
       };
 
       "/nix" = {
-        device = lib.mkDefault cfg.core.storage.systemDrive.path;
+        device = "/dev/disk/by-label/system";
         fsType = "btrfs";
         options = ["subvol=@nix" "compress=zstd" "noatime"];
       };
 
       "/persist" = {
-        device = lib.mkDefault cfg.core.storage.systemDrive.path;
+        device = "/dev/disk/by-label/system";
         fsType = "btrfs";
         options = ["subvol=@persist" "compress=zstd" "noatime"];
         neededForBoot = true;
       };
 
       "/swap" = {
-        device = lib.mkDefault cfg.core.storage.systemDrive.path;
+        device = "/dev/disk/by-label/system";
         fsType = "btrfs";
         options = ["subvol=@swap" "compress=zstd" "noatime"];
       };

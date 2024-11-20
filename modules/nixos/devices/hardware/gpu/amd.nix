@@ -9,7 +9,8 @@
   };
   config = lib.mkIf config.device.hardware.gpu.amd.enable {
     services.xserver.videoDrivers = lib.mkDefault ["amdgpu"];
-
+    hardware.graphics.enable32Bit = true;
+    hardware.pulseaudio.support32Bit = true;
     boot.initrd.kernelModules = ["amdgpu"];
     hardware.graphics.extraPackages =
       if pkgs ? rocmPackages.clr
