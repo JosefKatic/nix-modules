@@ -58,6 +58,10 @@ in {
       openssh.authorizedKeys.keys = [(builtins.readFile "${self}/ssh.pub")];
       hashedPasswordFile = config.sops.secrets.joka-password.path;
     };
+    users.users.root = {
+      openssh.authorizedKeys.keys = [(builtins.readFile "${self}/ssh.pub")];
+      hashedPasswordFile = config.sops.secrets.joka-password.path;
+    };
 
     # Loop
     sops.secrets.joka-password = {
