@@ -39,23 +39,23 @@ in {
 
   config = {
     # No clue how to fix this, temp disabled
-    # security.ipa = {
-    #   enable = true;
-    #   server = "ipa01.de.auth.joka00.dev";
-    #   offlinePasswords = true;
-    #   cacheCredentials = true;
-    #   realm = "AUTH.JOKA00.DEV";
-    #   domain = config.networking.domain;
-    #   basedn = "dc=auth,dc=joka00,dc=dev";
-    #   certificate = pkgs.fetchurl {
-    #     url = http://ipa01.de.auth.joka00.dev/ipa/config/ca.crt;
-    #     sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
-    #   };
-    # };
+    security.ipa = {
+      enable = true;
+      server = "ipa01.de.auth.joka00.dev";
+      offlinePasswords = true;
+      cacheCredentials = true;
+      realm = "AUTH.JOKA00.DEV";
+      domain = config.networking.domain;
+      basedn = "dc=auth,dc=joka00,dc=dev";
+      certificate = pkgs.fetchurl {
+        url = http://ipa01.de.auth.joka00.dev/ipa/config/ca.crt;
+        sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
+      };
+    };
     # To enable homedir on first login, with login, sshd, and sssd
-    # security.pam.services.sss.makeHomeDir = true;
-    # security.pam.services.sshd.makeHomeDir = true;
-    # security.pam.services.login.makeHomeDir = true;
+    security.pam.services.sss.makeHomeDir = true;
+    security.pam.services.sshd.makeHomeDir = true;
+    security.pam.services.login.makeHomeDir = true;
 
     networking =
       {
