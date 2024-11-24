@@ -9,8 +9,8 @@
 }: let
   cfg = config.device;
 in {
-  options.device.platform = mkOption {
-    type = types.string;
+  options.device.platform = lib.mkOption {
+    type = lib.types.string;
     default = "x86_64-linux";
   };
   config = {
