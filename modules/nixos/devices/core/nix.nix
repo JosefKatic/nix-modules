@@ -10,7 +10,7 @@
   cfg = config.device;
 in {
   options.device.platform = lib.mkOption {
-    type = lib.types.string;
+    type = lib.types.str;
     default = "x86_64-linux";
   };
   config = {
