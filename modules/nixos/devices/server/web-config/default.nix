@@ -36,10 +36,10 @@ in {
           tokenFile = config.sops.secrets.headscale_token.path;
         };
       };
-      services.redis."git-queue" = {
-        enable = true;
-        port = 6379;
-      };
+    };
+    services.redis."git-queue" = {
+      enable = true;
+      port = 6379;
     };
   };
 }
