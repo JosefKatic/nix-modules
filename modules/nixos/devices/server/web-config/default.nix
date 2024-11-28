@@ -37,7 +37,7 @@ in {
         };
       };
     };
-    services.redis."git-queue" = {
+    services.redis.servers."git-queue" = {
       enable = true;
       port = 6379;
     };
