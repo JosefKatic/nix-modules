@@ -13,5 +13,6 @@ inputs: {
     minecraft
     ./services
     ./teamspeak
+    ./web-config
   ];
 }

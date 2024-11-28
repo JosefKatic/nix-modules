@@ -39,7 +39,9 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    web-config-api = {
+      url = "github:JosefKatic/web-config-api";
+    };
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     nh = {
