@@ -32,7 +32,7 @@ in {
           port = 6379;
         };
         headscale = {
-          url = "https://vpn.joka00.dev";
+          host = "https://vpn.joka00.dev";
           tokenFile = config.sops.secrets.headscale_token.path;
         };
       };
