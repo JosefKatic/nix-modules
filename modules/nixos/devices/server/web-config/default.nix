@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  self,
   ...
 }: let
   cfg = config.device.server.web-config.server;
