@@ -15,6 +15,11 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    environment.persistence = lib.mkIf (config.device.core.storage.enablePersistence) {
+      "/persist" = {
+        directories = ["/var/lib/web-config-api"];
+      };
+    };
     sops.secrets.github_token = {
       sopsFile = "${self}/secrets/services/web-config/secrets.yaml";
     };
