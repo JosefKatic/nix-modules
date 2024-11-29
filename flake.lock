@@ -1588,11 +1588,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732842121,
-        "narHash": "sha256-H4yomJ6/mZG3NFhA/hYogQRuTiktoyBO0xfKf9N655w=",
+        "lastModified": 1732842630,
+        "narHash": "sha256-0479CHdNWoCNs76xLyjaXtFBCf/i2YF7ZlmRHdl3wew=",
         "owner": "JosefKatic",
         "repo": "web-config-api",
-        "rev": "2230b370478a023c30fce2735a45eb37d718e6b2",
+        "rev": "d288aabab8e7086be152e6905421dac6d90b2459",
         "type": "github"
       },
       "original": {
