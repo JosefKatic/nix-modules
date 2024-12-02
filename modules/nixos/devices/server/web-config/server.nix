@@ -29,7 +29,7 @@ in {
 
     services.nginx = {
       virtualHosts."api.devices.joka00.dev" = {
-        listenAddresses = ["100.0."];
+        listenAddresses = ["100.64.0.7"];
         forceSSL = true;
         enableACME = true;
         locations = {
