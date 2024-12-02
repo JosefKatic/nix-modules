@@ -78,8 +78,11 @@ in {
           customTTL = "1h";
           filterUnmappedTypes = true;
           mapping = {
-            "hass.joka00.dev" = "10.34.70.20,100.64.0.4";
+            "hass.joka00.dev" = "10.34.70.20";
             "hass.remote.joka00.dev" = "100.64.0.4";
+            "ipa01.de.auth.joka00.dev" = "100.64.0.1";
+            "devices.joka00.dev" = "100.64.0.7";
+            "api.devices.joka00.dev" = "100.64.0.7";
           };
         };
         bootstrapDns = [
