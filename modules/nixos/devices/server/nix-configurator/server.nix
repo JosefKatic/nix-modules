@@ -4,27 +4,27 @@
   self,
   ...
 }: let
-  cfg = config.device.server.web-config.server;
+  cfg = config.device.server.nix-configurator.api;
 in {
-  options.device.server.web-config.server = {
+  options.device.server.nix-configurator.api = {
     enable = lib.mkOption {
       default = false;
       description = ''
-        Enable the web-config server.
+        Enable the nix-configurator api.
       '';
     };
   };
   config = lib.mkIf cfg.enable {
     environment.persistence = lib.mkIf (config.device.core.storage.enablePersistence) {
       "/persist" = {
-        directories = ["/var/lib/web-config-api"];
+        directories = ["/var/lib/nix-configurator-api"];
       };
     };
     sops.secrets.github_token = {
-      sopsFile = "${self}/secrets/services/web-config/secrets.yaml";
+      sopsFile = "${self}/secrets/services/nix-configurator/secrets.yaml";
     };
     sops.secrets.headscale_token = {
-      sopsFile = "${self}/secrets/services/web-config/secrets.yaml";
+      sopsFile = "${self}/secrets/services/nix-configurator/secrets.yaml";
     };
 
     services.nginx = {
@@ -34,12 +34,12 @@ in {
         enableACME = true;
         locations = {
           "/" = {
-            proxyPass = "http://localhost:${toString config.device.server.web-config.server.settings.port}";
+            proxyPass = "http://localhost:${toString config.device.server.nix-configurator.api.settings.port}";
           };
         };
       };
     };
-    services.web-config.server = {
+    services.nix-configurator.server = {
       enable = cfg.enable;
       settings = {
         github = {

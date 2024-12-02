@@ -16,7 +16,7 @@ inputs: {
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.sops-nix.nixosModules.sops
     inputs.impermanence.nixosModules.impermanence
-    inputs.web-config-api.nixosModules.default
+    inputs.web-configurator-api.nixosModules.default
     ./boot
     ./core
     ./home

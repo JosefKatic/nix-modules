@@ -13,6 +13,6 @@ inputs: {
     minecraft
     ./services
     ./teamspeak
-    ./web-config
+    ./nix-configurator
   ];
 }
