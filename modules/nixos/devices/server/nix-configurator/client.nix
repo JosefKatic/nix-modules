@@ -21,7 +21,7 @@ in {
       virtualHosts."devices.joka00.dev" = {
         enableACME = true;
         forceSSL = true;
-        root = ${pkgs.nix-configurator-client}";
+        root = "${pkgs.nix-configurator-web}";
       };
     };
   };
