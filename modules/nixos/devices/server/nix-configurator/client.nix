@@ -19,6 +19,7 @@ in {
     services.nginx = {
       enable = true;
       virtualHosts."devices.joka00.dev" = {
+        listenAddresses = ["100.64.0.7"];
         enableACME = true;
         forceSSL = true;
         root = "${pkgs.nix-configurator-web}";
