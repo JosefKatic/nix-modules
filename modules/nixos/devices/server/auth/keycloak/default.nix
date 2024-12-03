@@ -10,6 +10,21 @@
   };
 
   config = lib.mkIf config.device.server.auth.keycloak.enable {
+    # Just the device running the keycloak server needs to be enrolled as the IPA device
+    security.ipa = {
+      enable = true;
+      server = "ipa01.de.auth.joka00.dev";
+      offlinePasswords = true;
+      cacheCredentials = true;
+      realm = "AUTH.JOKA00.DEV";
+      domain = config.networking.domain;
+      basedn = "dc=auth,dc=joka00,dc=dev";
+      certificate = pkgs.fetchurl {
+        url = http://ipa01.de.auth.joka00.dev/ipa/config/ca.crt;
+        sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
+      };
+    };
+
     services.nginx = {
       virtualHosts = {
         "auth.joka00.dev" = {

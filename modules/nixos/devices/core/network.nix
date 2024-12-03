@@ -38,20 +38,6 @@ in {
   };
 
   config = {
-    # No clue how to fix this, temp disabled
-    security.ipa = {
-      enable = true;
-      server = "ipa01.de.auth.joka00.dev";
-      offlinePasswords = true;
-      cacheCredentials = true;
-      realm = "AUTH.JOKA00.DEV";
-      domain = config.networking.domain;
-      basedn = "dc=auth,dc=joka00,dc=dev";
-      certificate = pkgs.fetchurl {
-        url = http://ipa01.de.auth.joka00.dev/ipa/config/ca.crt;
-        sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
-      };
-    };
     # To enable homedir on first login, with login, sshd, and sssd
     security.pam.services.sss.makeHomeDir = true;
     security.pam.services.sshd.makeHomeDir = true;
@@ -60,10 +46,11 @@ in {
     networking =
       {
         domain = cfg.network.domain;
-        # implement using DNS
-        extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
-          100.64.0.1 ipa01.de.auth.joka00.dev
-        '';
+        # @TODO implement using DNS
+        # Implemented in blocky
+        # extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
+        #   100.64.0.1 ipa01.de.auth.joka00.dev
+        # '';
         # extraHosts = import ./blocker/etc-hosts.nix;
         firewall = {
           enable = true;
