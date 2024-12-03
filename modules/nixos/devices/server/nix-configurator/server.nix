@@ -39,7 +39,7 @@ in {
         };
       };
     };
-    services.nix-configurator.server = {
+    services.nix-configurator.api = {
       enable = cfg.enable;
       settings = {
         github = {
