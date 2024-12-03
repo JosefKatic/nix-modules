@@ -1,4 +1,4 @@
-{
+inputs: {
   config,
   lib,
   self,
@@ -22,7 +22,7 @@ in {
         listenAddresses = ["100.64.0.7"];
         enableACME = true;
         forceSSL = true;
-        root = "${pkgs.inputs.self.nix-configurator-web.default}";
+        root = "${inputs.nix-configurator-web.default}";
       };
     };
   };
