@@ -944,11 +944,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733176870,
-        "narHash": "sha256-oBCKWDjKGTAcw+qy7M5vbJ2K4kAN7QcXtKPBIkr8NzI=",
+        "lastModified": 1733185375,
+        "narHash": "sha256-gFJk5LNXDtNJZtSGs+tQeZKjKcYt8/4viZkuBv80wbc=",
         "owner": "JosefKatic",
         "repo": "nix-configurator-api",
-        "rev": "14331ef48e5f027784679736871f3f567d7b2f06",
+        "rev": "949691c5f0c045e1252e2946134d7ec3dac8390e",
         "type": "github"
       },
       "original": {
