@@ -22,12 +22,7 @@ in {
         listenAddresses = ["100.64.0.7"];
         enableACME = true;
         forceSSL = true;
-        perSystem = {
-          pkgs,
-          inputs',
-        }: {
-          root = "${inputs'.nix-configurator-web.packages.default}";
-        };
+        root = "${pkgs.inputs.nix-configurator-web.default}";
       };
     };
   };
