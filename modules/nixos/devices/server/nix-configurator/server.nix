@@ -34,7 +34,7 @@ in {
         enableACME = true;
         locations = {
           "/" = {
-            proxyPass = "http://localhost:${toString config.device.server.nix-configurator.api.settings.port}";
+            proxyPass = "http://localhost:${toString config.services.nix-configurator.api.settings.port}";
           };
         };
       };
