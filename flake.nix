@@ -102,9 +102,6 @@
           inherit system;
           overlays = [
             inputs.self.overlays.joka00-modules
-            {
-              nix-configurator-web = inputs.nix-configurator-web.packages.default;
-            }
           ];
         };
       };

@@ -88,6 +88,7 @@ in {
     services = {
       tailscale = {
         enable = true;
+        extraUpFlags = ["--login-server https://vpn.joka00.dev"];
         useRoutingFeatures =
           if config.device.type == "server"
           then "server"

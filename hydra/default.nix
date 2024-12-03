@@ -1,9 +1,5 @@
-{
-  inputs,
-  self,
-  lib,
-  ...
-}: let
+{inputs, ...}: let
+  inherit (inputs.nixpkgs) lib;
   notBroken = pkg: !(pkg.meta.broken or false);
   isDistributable = pkg: (pkg.meta.license or {redistributable = true;}).redistributable;
   hasPlatform = sys: pkg: lib.elem sys (pkg.meta.platforms or [sys]);
@@ -18,7 +14,7 @@
 in {
   flake = {
     hydraJobs = {
-      pkgs = lib.mapAttrs filterValidPkgs inputs.self.packages // lib.mapAttrs filterValidPkgs inputs.self.legacyPackages;
+      pkgs = lib.mapAttrs filterValidPkgs inputs.self.packages;
     };
   };
 }
