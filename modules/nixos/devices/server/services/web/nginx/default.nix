@@ -19,11 +19,13 @@ in {
         clientMaxBodySize = "300m";
 
         virtualHosts."${hostName}.joka00.dev" = {
-          listenAddresses = lib.mkIf (hostName == "strix") ["193.41.237.192"];
+          extraConfig = ''
+            allow 100.64.0.0/10;
+            deny all;
+          '';
           default = true;
           forceSSL = true;
-          enableACME = lib.mkIf (config.device.server.homelab.enable == false) true;
-          useACMEHost = lib.mkIf config.device.server.homelab.enable "joka00.dev";
+          useACMEHost = "joka00.dev";
           locations."/metrics" = {
             proxyPass = "http://localhost:${
               toString config.services.prometheus.exporters.nginxlog.port

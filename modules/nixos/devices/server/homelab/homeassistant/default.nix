@@ -20,7 +20,11 @@ in {
     # environment.systemPackages = [pkgs.home-assistant];
     services = {
       nginx.virtualHosts."hass.joka00.dev" = {
-        listenAddresses = ["10.34.70.20"];
+        extraConfig = ''
+          allow 100.34.70.0/23;
+          allow 100.64.0.0/10;
+          deny all;
+        '';
         forceSSL = true;
         useACMEHost = "joka00.dev";
         locations."/" = {
@@ -28,16 +32,6 @@ in {
           proxyWebsockets = true;
         };
       };
-      nginx.virtualHosts."hass.remote.joka00.dev" = {
-        listenAddresses = ["100.64.0.4"];
-        forceSSL = true;
-        useACMEHost = "joka00.dev";
-        locations."/" = {
-          proxyPass = "http://[::1]:${toString config.services.home-assistant.config.http.server_port}";
-          proxyWebsockets = true;
-        };
-      };
-
       home-assistant = let
       in {
         enable = cfg.homeassistant.enable;

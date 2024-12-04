@@ -28,7 +28,6 @@
     services.nginx = {
       virtualHosts = {
         "auth.joka00.dev" = {
-          listenAddresses = ["193.41.237.192"];
           forceSSL = true;
           enableACME = true;
           locations = {

@@ -21,7 +21,11 @@
         package = pkgs.nix-serve;
       };
       nginx.virtualHosts."cache.joka00.dev" = {
-        listenAddresses = ["193.41.237.192"];
+        # This will allow just the devices in domain to aceess the cache
+        # extraConfig = ''
+        #   allow 100.64.0.0/10;
+        #   deny all;
+        # '';
         forceSSL = true;
         enableACME = true;
         locations."/".extraConfig = ''

@@ -8,10 +8,17 @@ inputs: {
 in {
   options.device.server.nix-configurator.api = {
     enable = lib.mkOption {
+      type = lib.types.bool;
       default = false;
       description = ''
         Enable the nix-configurator api.
       '';
+      ip = lib.mkOption {
+        type = lib.types.str;
+        default = pkgs.runCommand "get-ip" {} ''
+          ${pkgs.tailscale}/bin/tailscale ip -4
+        '';
+      };
     };
   };
   config = lib.mkIf cfg.enable {
@@ -29,9 +36,12 @@ in {
 
     services.nginx = {
       virtualHosts."api.devices.joka00.dev" = {
-        listenAddresses = ["100.64.0.7"];
         forceSSL = true;
         useACMEHost = "joka00.dev";
+        extraConfig = ''
+          allow 100.64.0.0/10;
+          deny all;
+        '';
         locations = {
           "/" = {
             proxyPass = "http://localhost:${toString config.services.nix-configurator.api.settings.port}";
