@@ -31,7 +31,7 @@ in {
       virtualHosts."api.devices.joka00.dev" = {
         listenAddresses = ["100.64.0.7"];
         forceSSL = true;
-        enableACME = true;
+        useACMEHost = "joka00.dev";
         locations = {
           "/" = {
             proxyPass = "http://localhost:${toString config.services.nix-configurator.api.settings.port}";
