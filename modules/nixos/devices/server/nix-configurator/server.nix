@@ -13,12 +13,6 @@ in {
       description = ''
         Enable the nix-configurator api.
       '';
-      ip = lib.mkOption {
-        type = lib.types.str;
-        default = pkgs.runCommand "get-ip" {} ''
-          ${pkgs.tailscale}/bin/tailscale ip -4
-        '';
-      };
     };
   };
   config = lib.mkIf cfg.enable {
