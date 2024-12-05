@@ -19,6 +19,7 @@
         extraDomainNames = ["*.joka00.dev"];
         dnsProvider = "godaddy";
         dnsPropagationCheck = true;
+        webroot = null;
         credentialsFile = config.sops.secrets.acme-secrets.path;
       };
     };
