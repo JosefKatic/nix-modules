@@ -59,6 +59,6 @@ in {
       };
     };
 
-    networking.firewall.interfaces."ens3".allowedTCPPorts = [80 443];
+    networking.firewall.interfaces.allowedTCPPorts = [80 443];
   };
 }
