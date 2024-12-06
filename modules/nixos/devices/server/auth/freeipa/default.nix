@@ -18,19 +18,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    security.ipa = {
-      enable = true;
-      server = "ipa01.de.auth.joka00.dev";
-      offlinePasswords = true;
-      cacheCredentials = true;
-      realm = "AUTH.JOKA00.DEV";
-      domain = config.networking.domain;
-      basedn = "dc=auth,dc=joka00,dc=dev";
-      certificate = pkgs.fetchurl {
-        url = http://ipa01.de.auth.joka00.dev/ipa/config/ca.crt;
-        sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
-      };
-    };
     sops.secrets = {
       freeipa = {
         sopsFile = "${self}/secrets/services/auth/secrets.yaml";
@@ -115,7 +102,7 @@ in {
         forceSSL = true;
         useACMEHost = "joka00.dev";
         locations."/" = {
-          proxyPass = "http://localhost:8080";
+          proxyPass = "http://localhost:8000";
         };
       };
     };
