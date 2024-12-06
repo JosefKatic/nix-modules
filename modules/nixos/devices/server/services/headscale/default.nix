@@ -65,10 +65,6 @@ in {
       };
 
       nginx.virtualHosts.${cfg.domain} = {
-        extraConfig = ''
-          allow 100.64.0.0/10;
-          deny all;
-        '';
         forceSSL = true;
         enableACME = true;
         locations."/" = {
