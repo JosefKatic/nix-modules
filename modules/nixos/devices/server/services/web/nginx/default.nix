@@ -17,21 +17,6 @@ in {
         recommendedGzipSettings = true;
         recommendedOptimisation = true;
         clientMaxBodySize = "300m";
-
-        virtualHosts."${hostName}.joka00.dev" = {
-          extraConfig = ''
-            allow 100.64.0.0/10;
-            deny all;
-          '';
-          default = true;
-          forceSSL = true;
-          useACMEHost = "joka00.dev";
-          locations."/metrics" = {
-            proxyPass = "http://localhost:${
-              toString config.services.prometheus.exporters.nginxlog.port
-            }";
-          };
-        };
       };
 
       prometheus.exporters.nginxlog = {
