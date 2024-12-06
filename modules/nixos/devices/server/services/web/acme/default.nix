@@ -18,6 +18,7 @@
         domain = "joka00.dev";
         extraDomainNames = ["*.joka00.dev" "*.devices.joka00.dev"];
         dnsProvider = "godaddy";
+        dnsResolver = "100.64.0.4:53";
         dnsPropagationCheck = true;
         webroot = null;
         credentialsFile = config.sops.secrets.acme-secrets.path;
