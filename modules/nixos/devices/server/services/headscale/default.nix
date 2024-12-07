@@ -40,7 +40,7 @@ in {
         port = cfg.port;
         settings = {
           dns = {
-            base_domain = "devices.joka00.dev";
+            base_domain = "joka00.dev";
             override_local_dns = true;
             nameservers.global = [
               "100.64.0.4"

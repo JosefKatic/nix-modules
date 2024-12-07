@@ -21,7 +21,7 @@ in {
     services = {
       nginx.virtualHosts."hass.joka00.dev" = {
         extraConfig = ''
-          allow 100.34.70.0/23;
+          allow 10.34.70.0/23;
           allow 100.64.0.0/10;
           deny all;
         '';

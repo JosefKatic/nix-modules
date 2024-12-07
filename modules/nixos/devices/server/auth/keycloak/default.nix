@@ -24,7 +24,6 @@
         sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
       };
     };
-
     services.nginx = {
       virtualHosts = {
         "auth.joka00.dev" = {
