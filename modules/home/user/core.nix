@@ -94,7 +94,8 @@
         # monospace fonts
         jetbrains-mono
         # nerdfonts
-        (nerdfonts.override {fonts = ["Iosevka" "FiraCode"];})
+        nerd-fonts.iosevka
+        nerd-fonts.fira-code
       ];
 
       persistence = {
