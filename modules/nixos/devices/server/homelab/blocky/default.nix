@@ -83,6 +83,7 @@ in {
             "ipa01.de.auth.joka00.dev" = "100.64.0.1";
             "devices.joka00.dev" = "100.64.0.7";
             "api.devices.joka00.dev" = "100.64.0.7";
+            "hydra.joka00.dev" = "100.64.0.1";
           };
         };
         bootstrapDns = [
