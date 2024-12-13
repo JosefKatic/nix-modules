@@ -15,6 +15,7 @@
   /*====== Aesthetics ======*/
 
   #navigator-toolbox {
+      background: var(--lwt-accent-color) !important;
       border-bottom: none !important;
   }
 
@@ -46,10 +47,6 @@
 
   :root {
       --navbarWidth: 500px; /* Set width of navbar */
-  }
-
-  #toolbar-menubar {
-    display: none;
   }
 
   /* If the window is wider than 1000px, use flex layout */
@@ -109,6 +106,7 @@
   #page-action-buttons > :not(#urlbar-zoom-button, #star-button-box), /* All url bar icons except for zoom level and bookmarks */
   #urlbar-go-button, /* Search URL magnifying glass */
   #alltabs-button, /* Menu to display all tabs at the end of tabs bar */
+  #toolbar-menubar,
   .titlebar-buttonbox-container /* Minimize, maximize, and close buttons */ {
       display: none !important;
   }
