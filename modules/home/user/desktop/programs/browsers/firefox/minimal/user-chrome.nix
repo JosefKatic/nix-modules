@@ -14,6 +14,7 @@
   /*====== Aesthetics ======*/
 
   #navigator-toolbox {
+      background: var(--accent-color) !important;
       border-bottom: none !important;
   }
 
