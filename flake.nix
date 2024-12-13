@@ -92,6 +92,7 @@
     flake-parts,
     systems,
     nix-colors,
+    nur,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -101,6 +102,7 @@
           inherit system;
           overlays = [
             inputs.self.overlays.joka00-modules
+            nur.overlay
           ];
         };
       };

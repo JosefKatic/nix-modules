@@ -18,7 +18,7 @@ in {
     };
     extensions = lib.mkOption {
       type = lib.types.listOf lib.types.path;
-      default = with config.nur.repos.rycee.firefox-addons; [
+      default = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         privacy-badger
         clearurls
