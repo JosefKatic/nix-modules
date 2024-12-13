@@ -42,6 +42,20 @@
       ];
     }
     {
+      uri = "ssh://nix-ssh@falco";
+      systems = [
+        "aarch64-linux"
+      ];
+      sshKey = config.sops.secrets.nix-ssh-key.path;
+      maxJobs = 6;
+      speedFactor = 50;
+      supportedFeatures = [
+        "kvm"
+        "big-parallel"
+        "nixos-test"
+      ];
+    }
+    {
       uri = "ssh://nix-ssh@regulus";
       systems = [
         "x86_64-linux"
