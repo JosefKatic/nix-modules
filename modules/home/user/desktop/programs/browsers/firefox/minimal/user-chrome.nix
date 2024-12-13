@@ -48,11 +48,15 @@
       --navbarWidth: 500px; /* Set width of navbar */
   }
 
+  #toolbar-menubar {
+    display: none;
+  }
+
   /* If the window is wider than 1000px, use flex layout */
   @media (min-width: 1000px) {
       #navigator-toolbox {
           display: flex;
-          flex-direction: row;
+          flex-direction: row-reverse;
           flex-wrap: wrap;
       }
 
