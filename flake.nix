@@ -102,7 +102,7 @@
           inherit system;
           overlays = [
             inputs.self.overlays.joka00-modules
-            nur.overlay
+            nur.overlays.default
           ];
         };
       };
