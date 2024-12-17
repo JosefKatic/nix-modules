@@ -5,6 +5,7 @@
   ...
 }: let
   enabledMonitors = lib.filter (m: m.enabled) config.user.desktop.monitors;
+  primaryMonitor = lib.head (lib.filter (m: m.primary) enabledMonitors);
   # A nice VNC script for remotes running hyprland
   vncsh = pkgs.writeShellScriptBin "vnc.sh" ''
     ssh $1 bash <<'EOF'
@@ -15,9 +16,9 @@
         ${lib.concatLines (
       lib.forEach enabledMonitors (m: ''
         hyprctl output create headless
-        monitor="$(hyprctl monitors -j | ${pkgs.jq} -r 'map(.name)[-1]')"
-        hyprctl keyword monitor "$monitor,${toString m.width}x${toString m.height}@${toString m.refreshRate},${toString m.position},1"
-        ${pkgs.screen} -d -m wayvnc -k br -S /tmp/vnc-${m.workspace} -f 60 -o "$monitor" "$ip" 590${m.workspace}
+        monitor="$(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r 'map(.name)[-1]')"
+        hyprctl keyword monitor "$monitor,${toString m.width}x${toString m.height}@${toString m.refreshRate},${toString m.position},1,mirror,${primaryMonitor.name}"
+        ${pkgs.screen}/bin/screen -d -m wayvnc -k br -S /tmp/vnc-${m.workspace} -f 60 -o "$monitor" "$ip" 590${m.workspace}
         sudo iptables -I INPUT -j ACCEPT -p tcp --dport 590${m.workspace}
       '')
     )}
@@ -39,12 +40,12 @@
 
     ssh $1 bash <<'EOF'
         pgrep "wayvnc" && exit
-        export HYPRLAND_INSTANCE_SIGNATURE="$(ls "$XDG_RUNTIME_DIR/hypr/" -lt | head -2 | tail -1 | rev | cut -d ' ' -f1 | rev)"
+        export HYPRLAND_INSTANCE_SIGNATURE="$(${pkgs.coreutils}/bin/ls "$XDG_RUNTIME_DIR/hypr/" -lt | head -2 | tail -1 | rev | cut -d ' ' -f1 | rev)"
         export WAYLAND_DISPLAY="wayland-1"
 
         ${lib.concatLines (
       lib.forEach enabledMonitors (m: ''
-        monitor="$(hyprctl monitors -j | jq -r 'map(.name)[-1]')"
+        monitor="$(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r 'map(.name)[-1]')"
         hyprctl output remove "$monitor"
       '')
     )}
