@@ -18,7 +18,7 @@
       lib.forEach enabledMonitors (m: ''
         hyprctl output create headless
         monitor="$(hyprctl monitors -j | jq -r 'map(.name)[-1]')"
-        hyprctl keyword monitor "$monitor,${toString m.width}x${toString m.height}@${toString m.refreshRate},$(($xpos + ${toString m.x}))x${toString m.y},1"
+        hyprctl keyword monitor "$monitor,${toString m.width}x${toString m.height}@${toString m.refreshRate},${toString m.position},1"
         screen -d -m wayvnc -k br -S /tmp/vnc-${m.workspace} -f 60 -o "$monitor" "$ip" 590${m.workspace}
         sudo iptables -I INPUT -j ACCEPT -p tcp --dport 590${m.workspace}
       '')
