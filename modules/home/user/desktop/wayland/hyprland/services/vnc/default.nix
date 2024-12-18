@@ -5,7 +5,6 @@
   ...
 }: let
   enabledMonitors = lib.filter (m: m.enabled) config.user.desktop.monitors;
-  primaryMonitor = lib.head (lib.filter (m: m.primary) enabledMonitors);
   # A nice VNC script for remotes running hyprland
   vncsh = pkgs.writeShellScriptBin "vnc.sh" ''
     ssh $1 bash <<'EOF'

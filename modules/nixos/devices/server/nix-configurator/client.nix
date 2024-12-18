@@ -21,7 +21,9 @@ in {
       virtualHosts."devices.joka00.dev" = {
         forceSSL = true;
         useACMEHost = "joka00.dev";
-        root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
+        locations."/" = {
+          root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
+        };
       };
     };
   };
