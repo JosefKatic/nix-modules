@@ -24,7 +24,9 @@ in {
         locations."/" = {
           root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
           index = "index.html";
-          try_files = "$uri $uri/ /index.html =404";
+          extraConfig = ''
+            try_files $uri $uri/ /index.html =404;
+          '';
         };
       };
     };
