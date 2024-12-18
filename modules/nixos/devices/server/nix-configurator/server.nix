@@ -29,7 +29,7 @@ in {
     };
 
     services.nginx = {
-      virtualHosts."api.devices.joka00.dev" = {
+      virtualHosts."api.config.joka00.dev" = {
         forceSSL = true;
         useACMEHost = "joka00.dev";
         extraConfig = ''

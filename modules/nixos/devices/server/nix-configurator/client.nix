@@ -18,7 +18,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.nginx = {
       enable = true;
-      virtualHosts."devices.joka00.dev" = {
+      virtualHosts."config.joka00.dev" = {
         forceSSL = true;
         useACMEHost = "joka00.dev";
         locations."/" = {
