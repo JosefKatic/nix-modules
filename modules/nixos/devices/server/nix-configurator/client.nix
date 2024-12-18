@@ -23,6 +23,8 @@ in {
         useACMEHost = "joka00.dev";
         locations."/" = {
           root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
+          index = "index.html";
+          try_files = "$uri $uri/ /index.html =404";
         };
       };
     };
