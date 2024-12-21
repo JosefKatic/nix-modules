@@ -37,8 +37,14 @@ in {
           deny all;
         '';
         locations = {
-          "/" = {
-            proxyPass = "http://localhost:${toString config.services.nix-configurator.api.settings.port}";
+          "/graphql" = {
+            proxyPass = "http://localhost:${toString config.services.nix-configurator.api.settings.port}/graphql";
+            extraConfig = ''
+              proxy_read_timeout 60s;
+              proxy_set_header          Host            $host;
+              proxy_set_header          X-Real-IP       $remote_addr;
+              proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+            '';
           };
         };
       };
