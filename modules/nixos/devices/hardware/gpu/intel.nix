@@ -9,7 +9,7 @@
   };
   config = lib.mkIf config.device.hardware.gpu.intel.enable {
     hardware.graphics.enable32Bit = true;
-    hardware.pulseaudio.support32Bit = true;
+    services.pulseaudio.support32Bit = true;
     boot.initrd.kernelModules = ["i915"];
     environment.variables = {
       VDPAU_DRIVER =
