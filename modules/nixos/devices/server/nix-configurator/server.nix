@@ -23,9 +23,13 @@ in {
     };
     sops.secrets.github_token = {
       sopsFile = "${self}/secrets/services/nix-configurator/secrets.yaml";
+      owner = "nix-configurator-api";
+      group = "nix-configurator-api";
     };
     sops.secrets.headscale_token = {
       sopsFile = "${self}/secrets/services/nix-configurator/secrets.yaml";
+      owner = "nix-configurator-api";
+      group = "nix-configurator-api";
     };
 
     services.nginx = {
