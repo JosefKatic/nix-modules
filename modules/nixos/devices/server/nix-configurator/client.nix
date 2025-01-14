@@ -16,11 +16,9 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    device.server.nix-configurator.api.enable = lib.mkDefault true;
     services.nginx = {
-      enable = true;
       virtualHosts."config.joka00.dev" = {
-        forceSSL = true;
-        useACMEHost = "joka00.dev";
         locations."/" = {
           root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
           index = "index.html";

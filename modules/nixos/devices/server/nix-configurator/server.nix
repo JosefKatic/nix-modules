@@ -33,7 +33,7 @@ in {
     };
 
     services.nginx = {
-      virtualHosts."api.config.joka00.dev" = {
+      virtualHosts."config.joka00.dev" = {
         forceSSL = true;
         useACMEHost = "joka00.dev";
         extraConfig = ''
@@ -41,13 +41,9 @@ in {
           deny all;
         '';
         locations = {
-          "/graphql" = {
+          "/api" = {
             proxyPass = "http://localhost:${toString config.services.nix-configurator.api.settings.port}/graphql";
             extraConfig = ''
-              add_header Access-Control-Allow-Origin 'https://config.joka00.dev' always;
-              if ($request_method = 'OPTIONS') {
-                    return 204;
-              }
               proxy_read_timeout 60s;
               proxy_set_header          Host            $host;
               proxy_set_header          X-Real-IP       $remote_addr;

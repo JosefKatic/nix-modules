@@ -82,7 +82,6 @@ in {
             "hass.remote.joka00.dev" = "100.64.0.4";
             "ipa01.de.auth.joka00.dev" = "100.64.0.1";
             "config.joka00.dev" = "100.64.0.7";
-            "api.config.joka00.dev" = "100.64.0.7";
             "hydra.joka00.dev" = "100.64.0.1";
           };
         };
