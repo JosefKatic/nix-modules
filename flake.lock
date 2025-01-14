@@ -1132,11 +1132,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1736812744,
-        "narHash": "sha256-yP+9/sq9r3wFoAFLt/cIVw4UNt8nRZVEenbom3uwhUY=",
+        "lastModified": 1736817565,
+        "narHash": "sha256-hmSB/0IBeQsQMNuG+05TGynBUTzlhRE0/o7cZ73hcKM=",
         "owner": "JosefKatic",
         "repo": "nix-configurator-api",
-        "rev": "22d94e91cb3e96b25788b21c7d44e64ef74d313f",
+        "rev": "2a7979cf97ea0b764298027991a3d180255f7455",
         "type": "github"
       },
       "original": {
