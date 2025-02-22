@@ -46,11 +46,6 @@ in {
         type = types.attrsOf hexColor;
         default = cfg.rawColorscheme.colors.${cfg.mode};
       };
-      harmonized = mkOption {
-        readOnly = true;
-        type = types.attrsOf hexColor;
-        default = removeFilterPrefixAttrs "${cfg.mode}-" cfg.rawColorscheme.harmonized_colors;
-      };
     };
     wallpaper = lib.mkOption {
       description = ''

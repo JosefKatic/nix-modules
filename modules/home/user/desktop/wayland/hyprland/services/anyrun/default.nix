@@ -4,7 +4,7 @@ inputs: {
   config,
   ...
 }: let
-  inherit (config.theme.colorscheme) colors harmonized;
+  inherit (config.theme.colorscheme) colors;
   cfg = config.user.desktop.wayland.hyprland.services.anyrun;
 in {
   options.user.desktop.wayland.hyprland.services.anyrun = {

@@ -17,7 +17,7 @@
   wireguard-tools,
 }: let
   pname = "nordvpn";
-  version = "3.19.0";
+  version = "3.20.0";
   buildEnv =
     if builtins.typeOf buildFHSEnvChroot == "set"
     then buildFHSEnvChroot
@@ -28,7 +28,7 @@
 
     src = fetchurl {
       url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${version}_amd64.deb";
-      hash = "sha256-vsl+uneuDEuUmlvRnMILUwRuRkRXVtk5a7OcQ9tYbpY=";
+      hash = "sha256-3/HSCTPt/1CprrpVD60Ga02Nz+vBwNBE1LEl+7z7ADs=";
     };
 
     buildInputs = [libxml2 libidn2];
