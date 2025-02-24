@@ -10,7 +10,7 @@ inputs: {
     desktop = import ./desktop inputs;
     server = import ./server inputs;
   in [
-    inputs.hm.nixosModules
+    inputs.hm.nixosModules.home-manager
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-minecraft.nixosModules.minecraft-servers
     inputs.lanzaboote.nixosModules.lanzaboote
