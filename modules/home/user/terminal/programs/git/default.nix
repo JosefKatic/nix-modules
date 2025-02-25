@@ -44,7 +44,7 @@
     userEmail = "josef@joka00.dev";
     signing = {
       key = "0xBAD7648677C2B3C6";
-      gpgPath = "${config.programs.gpg.package}/bin/gpg2";
+      signer = "${config.programs.gpg.package}/bin/gpg2";
       signByDefault = true;
     };
     extraConfig = {

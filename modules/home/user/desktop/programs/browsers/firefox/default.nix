@@ -134,7 +134,7 @@ in {
       profiles =
         {
           "company" = {
-            extensions = cfg.firefox.extensions;
+            extensions.packages = cfg.firefox.extensions;
             search = cfg.firefox.search;
             settings = cfg.firefox.settings // stigConfig;
             userContent = import "${inputs.self}/modules/home/user/desktop/programs/browsers/firefox/${cfg.firefox.defaultTheme}/user-content.nix";
