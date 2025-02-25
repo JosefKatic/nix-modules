@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   bash,
   buildGoModule,
   fetchFromGitHub,
@@ -118,8 +119,8 @@
 in
   buildFHSEnv {
     name = "nordvpnd";
-    targetPkgs = pkgs:
-      with pkgs; [
+    targetPkgs = with pkgs;
+      pkgs: [
         nordvpn
         sysctl
         iptables

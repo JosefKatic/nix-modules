@@ -12,7 +12,7 @@
     lib,
     ...
   }: let
-    nordvpn = pkgs.callPackage ./nordvpn {};
+    nordvpn = pkgs.callPackage ./nordvpn {inherit pkgs lib;};
     wl-ocr = pkgs.callPackage ./wl-ocr {};
     # My wallpaper collection - taken from misterio77 - https://github.com/Misterio77/nix-config
     wallpapers = import ./wallpapers {inherit pkgs;};
