@@ -11,6 +11,8 @@
   iproute2,
   procps,
   cacert,
+  libcap_ng,
+  libnl,
   libxml2,
   libidn2,
   zlib,
