@@ -11,12 +11,12 @@
   iproute2,
   procps,
   cacert,
-  libcap_ng,
-  libnl,
   libxml2,
   libidn2,
   zlib,
   wireguard-tools,
+  openvpn,
+  e2fsprogs,
 }: let
   pname = "nordvpn";
   version = "3.20.0";
@@ -68,12 +68,12 @@
         iproute2
         procps
         cacert
-        libcap_ng
-        libnl
         libxml2
         libidn2
         zlib
         wireguard-tools
+        openvpn
+        e2fsprogs
       ];
   };
 in
