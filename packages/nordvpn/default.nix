@@ -33,11 +33,11 @@
             })
             (prev.fetchpatch {
               url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/05-tunnelblick-openvpn_xorpatch-d.diff";
-              hash = "sha256-Ro35LAOXRFVYxdGGmn1Uwh3pB6fPUGTbDuOcb5T626s=";
+              hash = "sha256-NLRtoRVz+4hQcElyz4elCAv9l1vp4Yb3/VJef+L/FZo=";
             })
             (prev.fetchpatch {
               url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/06-tunnelblick-openvpn_xorpatch-e.diff";
-              hash = "sha256-Xze9On9jgavtHikV3e9S92Cqp1WSFbDU0R8T8S6eyx4=";
+              hash = "sha256-mybdjCIT9b6ukbGWYvbr74fKtcncCtTvS5xSVf92T6Y=";
             })
           ];
       });
