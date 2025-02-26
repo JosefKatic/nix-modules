@@ -21,7 +21,7 @@
           ++ [
             (prev.fetchpatch {
               url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/02-tunnelblick-openvpn_xorpatch-a.diff";
-              hash = "sha256-rU/YJm37BQacX8OeX9CKEsrRwNs+tXi9ms6gYQEvauo=";
+              hash = "sha256-b9NiWETc0g2a7FBwrLaNrWx7gfCql7VTbewFu3QluFk=";
             })
             (prev.fetchpatch {
               url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/03-tunnelblick-openvpn_xorpatch-b.diff";
