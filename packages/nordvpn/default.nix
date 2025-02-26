@@ -20,24 +20,24 @@
           (old.patches or [])
           ++ [
             (prev.fetchpatch {
-              url = "https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sources/openvpn/openvpn-${old.version}/patches/02-tunnelblick-openvpn_xorpatch-a.diff";
+              url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/02-tunnelblick-openvpn_xorpatch-a.diff";
               hash = "sha256-rU/YJm37BQacX8OeX9CKEsrRwNs+tXi9ms6gYQEvauo=";
             })
             (prev.fetchpatch {
-              url = "https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sources/openvpn/openvpn-${old.version}/patches/03-tunnelblick-openvpn_xorpatch-b.diff";
-              hash = "sha256-X/SshB/8ItLFBx6TPhjBwyA97ra0iM2KgsGqGIy2s9I=";
+              url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/03-tunnelblick-openvpn_xorpatch-b.diff";
+              hash = "sha256-PfPAwZsyw6J3P6SlN6QTeg2pza9uSlDnziJtrX9fuI0=";
             })
             (prev.fetchpatch {
-              url = "https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sources/openvpn/openvpn-${old.version}/patches/04-tunnelblick-openvpn_xorpatch-c.diff";
-              hash = "sha256-fw0CxJGIFEydIVRVouTlD1n275eQcbejUdhrU1JAx7g=";
+              url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/04-tunnelblick-openvpn_xorpatch-c.diff";
+              hash = "sha256-5z9EoQaiV5f/IdnFXWtkaMNUi0yQLrqJ3yMvgXHRgkQ=";
             })
             (prev.fetchpatch {
-              url = "https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sources/openvpn/openvpn-${old.version}/patches/05-tunnelblick-openvpn_xorpatch-d.diff";
-              hash = "sha256-NLRtoRVz+4hQcElyz4elCAv9l1vp4Yb3/VJef+L/FZo=";
+              url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/05-tunnelblick-openvpn_xorpatch-d.diff";
+              hash = "sha256-Ro35LAOXRFVYxdGGmn1Uwh3pB6fPUGTbDuOcb5T626s=";
             })
             (prev.fetchpatch {
-              url = "https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sources/openvpn/openvpn-${old.version}/patches/06-tunnelblick-openvpn_xorpatch-e.diff";
-              hash = "sha256-mybdjCIT9b6ukbGWYvbr74fKtcncCtTvS5xSVf92T6Y=";
+              url = "https://github.com/Tunnelblick/Tunnelblick/raw/v6.0/third_party/sources/openvpn/openvpn-${old.version}/patches/06-tunnelblick-openvpn_xorpatch-e.diff";
+              hash = "sha256-Xze9On9jgavtHikV3e9S92Cqp1WSFbDU0R8T8S6eyx4=";
             })
           ];
       });
@@ -51,7 +51,7 @@
     src = fetchFromGitHub {
       owner = "NordSecurity";
       repo = "nordvpn-linux";
-      rev = "eae2429f5d1ae3b7184dfa4839de83621a1cbd2f";
+      rev = "v6.0";
       sha256 = "sha256-FJPhcqHt0yhGaa95dv/eGwqwcTI91TQc2PmCZnS3iRs=";
     };
 
