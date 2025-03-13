@@ -1793,7 +1793,8 @@
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
         "systems": "systems_7",
-        "web": "web"
+        "web": "web",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
@@ -2102,6 +2103,26 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741838758,
+        "narHash": "sha256-nGTC/y9e+1+QIVCzIbiSpPiXM2HfS8YwIDCp52CcOQ4=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "03a7fc89bc48344aed00e01b409c1d6ffc4c52ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

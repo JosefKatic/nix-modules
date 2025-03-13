@@ -85,6 +85,9 @@
       inputs.rust-overlay.follows = "rust-overlay";
     };
     web.url = "github:JosefKatic/web";
+
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = {
     self,

@@ -4,6 +4,7 @@ inputs: {
   ...
 }: let
   firefox = import ./firefox inputs;
+  zen = import ./zen inputs;
 in {
-  imports = [./defaultBrowser.nix firefox ./brave ./chromium];
+  imports = [./defaultBrowser.nix ./brave ./chromium firefox zen];
 }

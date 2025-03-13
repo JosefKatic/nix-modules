@@ -7,7 +7,7 @@
 in {
   options.user.desktop.browsers = {
     default = lib.mkOption {
-      type = lib.types.enum ["firefox" "chromium" "brave"];
+      type = lib.types.enum ["firefox" "chromium" "brave" "zen"];
       default = "firefox";
       description = "Default browser";
     };
