@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.user.desktop.browsers;
+  cfg = config.user.desktop.programs.browsers;
 in {
-  options.user.desktop.browsers = {
+  options.user.desktop.programs.browsers = {
     default = lib.mkOption {
       type = lib.types.enum ["firefox" "chromium" "brave" "zen"];
       default = "firefox";
