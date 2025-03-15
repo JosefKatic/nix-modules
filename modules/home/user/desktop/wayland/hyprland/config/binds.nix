@@ -62,9 +62,9 @@ in {
           # utility
           # terminal
           "$mod, Q, exec,kitty"
-          "$mod, B, exec,firefox"
+          "$mod, B, exec,${config.user.desktop.programs.browsers.default}"
           # logout menu
-          "$mod, Escape, exec, wlogout -p layer-shell"
+          "$mod, Escape, exec, ${pkgs.wlogout} -p layer-shell"
           # lock screen
           "$mod, backspace, exec, loginctl lock-session"
           # select area to perform OCR on
