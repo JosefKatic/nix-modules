@@ -12,7 +12,6 @@
     lib,
     ...
   }: let
-    nordvpn = pkgs.callPackage ./nordvpn {inherit pkgs lib;};
     wl-ocr = pkgs.callPackage ./wl-ocr {};
     # My wallpaper collection - taken from misterio77 - https://github.com/Misterio77/nix-config
     wallpapers = import ./wallpapers {inherit pkgs;};
@@ -31,7 +30,7 @@
       inherit (config.legacyPackages) wallpapers allWallpapers generateColorscheme colorschemes allColorschemes;
     };
     packages = {
-      inherit nordvpn wl-ocr;
+      inherit wl-ocr;
     };
     legacyPackages = {
       inherit wallpapers allWallpapers generateColorscheme colorschemes allColorschemes;

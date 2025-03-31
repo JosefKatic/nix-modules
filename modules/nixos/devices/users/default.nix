@@ -48,7 +48,6 @@ in {
           "minecraft"
           "wireshark"
           "mysql"
-          "nordvpn"
           "docker"
           "podman"
           "git"
