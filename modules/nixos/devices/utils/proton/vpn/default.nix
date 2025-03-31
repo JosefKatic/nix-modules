@@ -7,5 +7,5 @@
 in {
   options.device.utils.proton.vpn.enable = lib.mkEnableOption "Enable Proton VPN";
 
-  config = {environment.systemPackages = pkgs.protonvpn-cli;};
+  config = {environment.systemPackages = with pkgs; [protonvpn-cli];};
 }
