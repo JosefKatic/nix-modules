@@ -4,9 +4,9 @@
   config,
   ...
 }: let
-  cfg = config.user.desktop.programs.productivity.zathura;
+  cfg = config.user.desktop.programs.productivity.proton.mail;
 in {
-  options.user.desktop.programs.productivity.proton.pass = {
+  options.user.desktop.programs.productivity.proton.mail = {
     enable = lib.mkEnableOption "Enable Proton Pass";
   };
 
