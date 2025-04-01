@@ -22,7 +22,9 @@ in {
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = cfg.enable;
-      enableExtensionUpdateCheck = true;
+      profiles.default = {
+        enableExtensionUpdateCheck = true;
+      };
       mutableExtensionsDir = true;
     };
   };

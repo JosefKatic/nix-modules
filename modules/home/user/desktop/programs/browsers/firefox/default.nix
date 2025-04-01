@@ -51,12 +51,12 @@ in {
 
       default = mkOption {
         type = with types; str;
-        default = "Google";
+        default = "google";
       };
 
       privateDefault = mkOption {
         type = with types; str;
-        default = "DuckDuckGo";
+        default = "ddg";
       };
 
       engines = mkOption {
@@ -91,10 +91,10 @@ in {
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@nw"];
           };
-          "Wikipedia (en)".metaData.alias = "@wiki";
-          "Amazon.com".metaData.hidden = true;
-          "Bing".metaData.hidden = true;
-          "eBay".metaData.hidden = true;
+          "wikipedia".metaData.alias = "@wiki";
+          "amazondotcom-us".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
         };
       };
     };
