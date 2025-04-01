@@ -16,7 +16,7 @@ in {
   config = {
     environment.systemPackages = [
       pkgs.git
-      pkgs.yubikey-manager-qt
+      pkgs.yubioath-flutter
       pkgs.libyubikey
       pkgs.ntfs3g
       pkgs.kitty
