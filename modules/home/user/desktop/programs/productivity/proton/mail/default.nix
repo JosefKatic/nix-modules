@@ -12,10 +12,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      [
-        pkgs.protonmail-desktop
-        pkgs.protonmail-bridge
-      ]
+      pkgs.protonmail-desktop
+      pkgs.protonmail-bridge
     ];
   };
 }
