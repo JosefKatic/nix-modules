@@ -80,7 +80,7 @@ in {
           mapping = {
             "hass.joka00.dev" = "10.34.70.20";
             "hass.remote.joka00.dev" = "100.64.0.4";
-            "ipa.auth.joka00.dev" = "100.64.0.1";
+            "ipa01.de.auth.joka00.dev" = "100.64.0.1";
             "config.joka00.dev" = "100.64.0.7";
             "hydra.joka00.dev" = "100.64.0.1";
           };

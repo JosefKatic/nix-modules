@@ -94,7 +94,7 @@ in {
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
 
     services = {
-      nginx.virtualHosts."ipa.auth.joka00.dev" = {
+      nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
         extraConfig = ''
           allow 100.64.0.0/10;
           deny all;
