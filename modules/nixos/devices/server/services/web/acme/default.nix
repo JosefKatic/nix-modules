@@ -16,7 +16,7 @@
       acceptTerms = true;
       certs."joka00.dev" = {
         domain = "joka00.dev";
-        extraDomainNames = ["*.joka00.dev" "*.config.joka00.dev" "ipa01.de.auth.joka00.dev"];
+        extraDomainNames = ["*.joka00.dev" "*.config.joka00.dev" "*.ipa01.de.auth.joka00.dev"];
         dnsProvider = "godaddy";
         dnsResolver = "100.64.0.4:53";
         dnsPropagationCheck = true;
