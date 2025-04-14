@@ -99,7 +99,7 @@ in {
 
     environment.persistence = mkIf config.device.core.storage.enablePersistence {
       "/persist" = {
-        directories = ["/var/lib/blocky"];
+        directories = ["/var/lib/private/blocky"];
       };
     };
   };
