@@ -47,7 +47,7 @@
             deny all;
           '';
           forceSSL = true;
-          enableACME = true;
+          useACMEHost = "joka00.dev";
           locations = {
             "~* ^/shield/([^\\s]*)".return = "302 https://img.shields.io/endpoint?url=https://hydra.joka00.dev/$1/shield";
             "/".proxyPass = "http://localhost:${toString config.services.hydra.port}";
