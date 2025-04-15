@@ -38,7 +38,8 @@ in {
   };
 
   config = {
-    security.ipa = {
+    /*
+       security.ipa = {
       enable = true;
       server = "ipa01.de.auth.joka00.dev";
       offlinePasswords = true;
@@ -51,6 +52,7 @@ in {
         sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
       };
     };
+    */
     # To enable homedir on first login, with login, sshd, and sssd
     security.pam.services.sss.makeHomeDir = true;
     security.pam.services.sshd.makeHomeDir = true;
