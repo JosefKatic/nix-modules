@@ -101,8 +101,30 @@ in {
 
     services = {
       nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
+        extraConfig = ''
+          allow 100.64.0.0/10;
+          deny all;
+        '';
+        forceSSL = true;
+        useACMEHost = "joka00.dev";
         locations."/" = {
-          proxyPass = "http://localhost:8000";
+          proxyPass = "https://localhost:8443";
+          extraConfig = ''
+            proxy_set_header        Host $host;
+            proxy_set_header        X-Real-IP $remote_addr;
+            proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header        X-Forwarded-Proto https;
+            proxy_connect_timeout   150;
+            proxy_send_timeout      100;
+            proxy_read_timeout      100;
+            proxy_buffers           4 32k;
+            client_max_body_size    200M;
+            client_body_buffer_size 512k;
+            keepalive_timeout       5;
+            add_header              Strict-Transport-Security max-age=63072000;
+            add_header              X-Frame-Options DENY;
+            add_header              X-Content-Type-Options nosniff;
+          '';
         };
       };
     };
