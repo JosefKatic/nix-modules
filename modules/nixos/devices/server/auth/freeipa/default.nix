@@ -50,14 +50,11 @@ in {
         "/run/secrets:/run/secrets"
       ];
       ports = [
-        "100.64.0.1:53:53"
-        "100.64.0.1:389:389"
-        "100.64.0.1:636:636"
-        "100.64.0.1:88:88"
-        "100.64.0.1:464:464"
-        "100.64.0.1:88:88/udp"
-        "100.64.0.1:53:53/udp"
-        "100.64.0.1:464:464/udp"
+        "0.0.0.0:636:636"
+        "0.0.0.0:88:88"
+        "0.0.0.0:464:464"
+        "0.0.0.0:88:88/udp"
+        "0.0.0.0:464:464/udp"
       ];
       extraOptions = [
         "--read-only"
@@ -88,8 +85,8 @@ in {
           ${pkgs.podman}/bin/podman network create --disable-dns --gateway=10.24.0.1 --subnet=10.24.0.0/28 br-services
       '';
     };
-    networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
-    networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
+    networking.firewall.interfaces."tailscale0".allowedTCPPorts = [80 3480 88 443 34443 464 636];
+    networking.firewall.interfaces."tailscale0".allowedUDPPorts = [88 123 464];
     security.acme = {
       certs."auth.joka00.dev" = {
         domain = "auth.joka00.dev";
@@ -102,7 +99,7 @@ in {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = http://127.0.0.1:8000;
+          proxyPass = http://10.24.0.8:80;
           extraConfig = ''
             proxy_set_header        Host $host;
             proxy_http_version      1.1;
