@@ -92,6 +92,12 @@ in {
     };
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
+    security.acme = {
+      certs."auth.joka00.dev" = {
+        domain = "auth.joka00.dev";
+        extraDomainNames = ["*.auth.joka00.dev"];
+      };
+    };
     services = {
       nginx.virtualHosts."ipa.auth.joka00.dev" = {
         forceSSL = true;
