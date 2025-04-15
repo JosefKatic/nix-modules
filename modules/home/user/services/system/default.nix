@@ -1,4 +1,4 @@
 {pkgs, ...}: {
-  imports = [./udiskie ./auto-upgrade];
+  imports = [./udiskie];
   home.packages = with pkgs; [coreutils inotify-tools];
 }
