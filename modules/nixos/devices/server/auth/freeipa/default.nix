@@ -101,10 +101,10 @@ in {
         forceSSL = true;
         useACMEHost = "joka00.dev";
         locations."/" = {
-          proxyPass = "https://ipa01.de.auth.joka00.dev";
+          proxyPass = "https://localhost:8443";
           extraConfig = ''
             proxy_set_header        Host $host;
-            proxy_set_header        Referer https://ipa01.de.auth.joka00.dev/ipa/ui;
+            proxy_set_header        Referer https://localhost:8443/ipa/ui;
             proxy_set_header        Host $host;
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
