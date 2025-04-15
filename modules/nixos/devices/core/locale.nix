@@ -27,7 +27,6 @@ in {
       supportedLocales = cfg.locale.supportedLocales;
     };
     time.timeZone = cfg.locale.timeZone;
-    services.ntp.enable = true;
 
     fonts = {
       packages = with pkgs; [
