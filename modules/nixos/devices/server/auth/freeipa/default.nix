@@ -93,7 +93,7 @@ in {
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
     services = {
-      nginx.virtualHosts."ipa.auth.joka00.dev" = {
+      nginx.virtualHosts."ipa.joka00.dev" = {
         extraConfig = ''
           allow 100.64.0.0/10;
           deny all;
@@ -109,7 +109,7 @@ in {
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
-            proxy_cookie_domain     ipa01.de.auth.joka00.dev ipa.auth.joka00.dev;
+            proxy_cookie_domain     ipa01.de.auth.joka00.dev ipa.joka00.dev;
             proxy_connect_timeout   150;
             proxy_send_timeout      100;
             proxy_read_timeout      100;
