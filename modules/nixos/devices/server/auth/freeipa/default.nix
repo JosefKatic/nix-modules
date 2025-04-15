@@ -53,11 +53,11 @@ in {
         "100.64.0.1:53:53"
         "127.0.0.1:8000:80"
         "127.0.0.1:8443:443"
-        "100.64.0.1:389:389"
+        "0.0.0.0:389:389"
         "100.64.0.1:636:636"
-        "100.64.0.1:88:88"
+        "0.0.0.0:88:88"
         "100.64.0.1:464:464"
-        "100.64.0.1:88:88/udp"
+        "0.0.0.0:88:88/udp"
         "100.64.0.1:53:53/udp"
         "100.64.0.1:464:464/udp"
       ];
@@ -93,19 +93,16 @@ in {
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
     services = {
-      nginx.virtualHosts."ipa.joka00.dev" = {
-        extraConfig = ''
-          allow 100.64.0.0/10;
-          deny all;
-        '';
+      nginx.virtualHosts."ipa.auth.joka00.dev" = {
         forceSSL = true;
-        useACMEHost = "joka00.dev";
-        locations."/" = {
-          proxyPass = "http://localhost:8000";
+        enableACME = true;
+        locations."~ ^/(ipa|ipa/json|ipa/session|ipa/session/login_kerberos|ipa/session/login_password)" = {
+          proxyPass = http://localhost:8080;
           extraConfig = ''
             proxy_set_header        Host $host;
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header        X-Forwarded-Proto $scheme;
           '';
         };
       };
