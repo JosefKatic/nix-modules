@@ -24,7 +24,7 @@ in {
       };
     };
     networking.extraHosts = ''
-      10.24.0.8 ipa01.de.auth.joka00.dev
+      10.24.0.8 ipa.auth.joka00.dev
     '';
     environment.etc."resolv.conf".text = ''
       nameserver 10.24.0.8
