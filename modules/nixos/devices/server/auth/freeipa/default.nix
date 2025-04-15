@@ -95,13 +95,14 @@ in {
     security.acme = {
       certs."auth.joka00.dev" = {
         domain = "auth.joka00.dev";
-        extraDomainNames = ["*.auth.joka00.dev"];
+        extraDomainNames = ["auth.joka00.dev" "ipa.auth.joka00.dev"];
+        webroot = "/var/lib/acme/acme-challenge";
       };
     };
     services = {
       nginx.virtualHosts."ipa.auth.joka00.dev" = {
         forceSSL = true;
-        enableACME = true;
+        useACMEHost = true;
         locations."~ ^/(ipa|ipa/json|ipa/session|ipa/session/login_kerberos|ipa/session/login_password)" = {
           proxyPass = http://localhost:8080;
           extraConfig = ''
