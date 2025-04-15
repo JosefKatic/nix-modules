@@ -101,9 +101,6 @@ in {
 
     services = {
       nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
-        forceSSL = true;
-        sslCertificate = config.sops.secrets.freeipa_cert.path;
-        sslCertificateKey = config.sops.secrets.freeipa_cert_key.path;
         locations."/" = {
           proxyPass = "http://localhost:8000";
         };
