@@ -24,7 +24,7 @@ in {
       };
     };
     networking.extraHosts = ''
-      10.24.0.8 ipa01.de.auth.joka00.dev
+      10.24.0.8 ipa.auth.joka00.dev
     '';
     environment.etc."resolv.conf".text = ''
       nameserver 10.24.0.8
@@ -63,7 +63,7 @@ in {
       ];
       extraOptions = [
         "--read-only"
-        "-h=ipa01.de.auth.joka00.dev"
+        "-h=ipa.auth.joka00.dev"
         "--ip=10.24.0.8"
         "--network=br-services"
         "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
