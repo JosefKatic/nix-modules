@@ -22,12 +22,6 @@ in {
       freeipa = {
         sopsFile = "${self}/secrets/services/auth/secrets.yaml";
       };
-      freeipa_cert = {
-        sopsFile = "${self}/secrets/services/auth/secrets.yaml";
-      };
-      freeipa_cert_key = {
-        sopsFile = "${self}/secrets/services/auth/secrets.yaml";
-      };
     };
     networking.extraHosts = ''
       10.24.0.8 ipa01.de.auth.joka00.dev
@@ -98,31 +92,24 @@ in {
     };
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
-    security.acme = {
-      certs."ipa01.de.auth.joka00.dev" = {
-        domain = "ipa01.de.auth.joka00.dev";
-        dnsProvider = "godaddy";
-        dnsResolver = "100.64.0.4:53";
-        dnsPropagationCheck = true;
-        webroot = null;
-        credentialsFile = config.sops.secrets.acme-secrets.path;
-      };
-    };
     services = {
-      nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
+      nginx.virtualHosts."ipa.auth.joka00.dev" = {
         extraConfig = ''
           allow 100.64.0.0/10;
           deny all;
         '';
         forceSSL = true;
-        useACMEHost = "ipa01.de.auth.joka00.dev";
+        useACMEHost = "joka00.dev";
         locations."/" = {
-          proxyPass = "https://localhost:8443";
+          proxyPass = "https://ipa01.de.auth.joka00.dev";
           extraConfig = ''
+            proxy_set_header        Host $host;
+            proxy_set_header        Referer https://ipa01.de.auth.joka00.dev/ipa/ui;
             proxy_set_header        Host $host;
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
+            proxy_cookie_domain     ipa01.de.auth.joka00.dev ipa.auth.joka00.dev;
             proxy_connect_timeout   150;
             proxy_send_timeout      100;
             proxy_read_timeout      100;
