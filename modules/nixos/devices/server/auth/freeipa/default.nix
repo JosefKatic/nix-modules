@@ -25,6 +25,9 @@ in {
       freeipa_cert = {
         sopsFile = "${self}/secrets/services/auth/secrets.yaml";
       };
+      freeipa_cert_key = {
+        sopsFile = "${self}/secrets/services/auth/secrets.yaml";
+      };
     };
     networking.extraHosts = ''
       10.24.0.8 ipa01.de.auth.joka00.dev
@@ -99,8 +102,8 @@ in {
     services = {
       nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
         forceSSL = true;
-        sslCertificate = "/var/data/freeipa/var/lib/ipa/certs/httpd.crt";
-        sslCertificateKey = config.sops.secrets.freeipa_cert.path;
+        sslCertificate = config.sops.secrets.freeipa_cert.path;
+        sslCertificateKey = config.sops.secrets.freeipa_cert_key.path;
         locations."/" = {
           proxyPass = "http://localhost:8000";
         };
