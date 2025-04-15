@@ -24,7 +24,7 @@ in {
       };
     };
     networking.extraHosts = ''
-      10.24.0.8 ipa.auth.joka00.dev
+      10.24.0.8 ipa01.de.auth.joka00.dev
     '';
     environment.etc."resolv.conf".text = ''
       nameserver 10.24.0.8
@@ -104,7 +104,7 @@ in {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = http://localhost:8080;
+          proxyPass = http://localhost:8000;
           extraConfig = ''
             proxy_set_header        Host $host;
             proxy_set_header        X-Real-IP $remote_addr;
