@@ -98,7 +98,16 @@ in {
     };
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
-
+    security.acme = {
+      certs."ipa01.de.auth.joka00.dev" = {
+        domain = "ipa01.de.auth.joka00.dev";
+        dnsProvider = "godaddy";
+        dnsResolver = "100.64.0.4:53";
+        dnsPropagationCheck = true;
+        webroot = null;
+        credentialsFile = config.sops.secrets.acme-secrets.path;
+      };
+    };
     services = {
       nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
         extraConfig = ''
@@ -106,7 +115,7 @@ in {
           deny all;
         '';
         forceSSL = true;
-        useACMEHost = "joka00.dev";
+        useACMEHost = "ipa01.de.auth.joka00.dev";
         locations."/" = {
           proxyPass = "https://localhost:8443";
           extraConfig = ''
