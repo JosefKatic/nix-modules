@@ -102,7 +102,7 @@ in {
     services = {
       nginx.virtualHosts."ipa.auth.joka00.dev" = {
         forceSSL = true;
-        useACMEHost = true;
+        enableACME = true;
         locations."~ ^/(ipa|ipa/json|ipa/session|ipa/session/login_kerberos|ipa/session/login_password)" = {
           proxyPass = http://localhost:8080;
           extraConfig = ''
