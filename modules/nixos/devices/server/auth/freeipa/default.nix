@@ -104,10 +104,11 @@ in {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = http://ipa.auth.joka00.dev:8080;
+          proxyPass = http://127.0.0.1:8000;
           extraConfig = ''
             proxy_set_header        Host $host;
             proxy_http_version      1.1;
+            proxy_headers_hash_max_size 512;
             proxy_set_header        Upgrade $http_upgrade;
             proxy_set_header        Connection $connection_upgrade;
             proxy_set_header        X-Real-IP $remote_addr;
