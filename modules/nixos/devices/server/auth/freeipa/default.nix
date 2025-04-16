@@ -102,7 +102,7 @@ in {
         enableACME = true;
         locations."/" = {
           extraConfig = ''
-            proxy_pass              http://ipa01.de.auth.joka00.dev;
+            proxy_pass              https://ipa01.de.auth.joka00.dev;
             proxy_set_header        Host $host;
             proxy_set_header        Referer https://ipa01.de.auth.joka00.dev/ipa/ui;
             proxy_set_header        X-Real-IP $remote_addr;
