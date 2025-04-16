@@ -50,8 +50,9 @@ in {
         "/run/secrets:/run/secrets"
       ];
       ports = [
-        "0.0.0.0:8000:80"
-        "0.0.0.0:8443:443"
+        "8000:80"
+        "8443:443"
+        "389:389"
         "0.0.0.0:636:636"
         "0.0.0.0:88:88"
         "0.0.0.0:464:464"
@@ -105,7 +106,6 @@ in {
           extraConfig = ''
             proxy_set_header        Host $host;
             proxy_http_version      1.1;
-            proxy_headers_hash_max_size 512;
             proxy_set_header        Upgrade $http_upgrade;
             proxy_set_header        Connection $connection_upgrade;
             proxy_set_header        X-Real-IP $remote_addr;
