@@ -104,7 +104,6 @@ in {
           extraConfig = ''
             proxy_pass              http://ipa01.de.auth.joka00.dev;
             proxy_set_header        Host ipa01.de.auth.joka00.dev;
-            proxy_set_header        Referer https://ipa01.de.auth.joka00.dev/ipa/ui;
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
