@@ -40,7 +40,7 @@ in {
   config = {
     security.ipa = {
       enable = true;
-      server = "ipa01.de.auth.joka00.dev";
+      server = "100.64.0.1";
       offlinePasswords = true;
       cacheCredentials = true;
       realm = "AUTH.JOKA00.DEV";
