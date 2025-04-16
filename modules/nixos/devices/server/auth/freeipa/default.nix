@@ -101,7 +101,7 @@ in {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = http://10.24.0.8:80;
+          proxyPass = http://10.24.0.8:8000;
           extraConfig = ''
             proxy_set_header        Host $host;
             proxy_http_version      1.1;
