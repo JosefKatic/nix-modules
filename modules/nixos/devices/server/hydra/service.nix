@@ -42,10 +42,6 @@
       };
       nginx.virtualHosts = {
         "hydra.joka00.dev" = {
-          extraConfig = ''
-            allow 100.64.0.0/10;
-            deny all;
-          '';
           forceSSL = true;
           useACMEHost = "joka00.dev";
           locations = {
