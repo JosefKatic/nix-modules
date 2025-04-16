@@ -38,12 +38,13 @@ in {
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
+        fira-code
+        inter
         roboto
         dosis
         rubik
         (google-fonts.override {fonts = ["Inter"];})
-        fira-code
-        inter
+
         # monospace fonts
         jetbrains-mono
         # nerdfonts
