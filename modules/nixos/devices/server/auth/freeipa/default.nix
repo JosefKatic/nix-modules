@@ -24,7 +24,7 @@ in {
       };
     };
     networking.extraHosts = ''
-      10.24.0.8 ipa.auth.joka00.dev
+      10.24.0.8 ipa01.de.auth.joka00.dev
     '';
     environment.etc."resolv.conf".text = ''
       nameserver 10.24.0.8
@@ -50,20 +50,17 @@ in {
         "/run/secrets:/run/secrets"
       ];
       ports = [
-        "100.64.0.1:53:53"
-        "127.0.0.1:8000:80"
-        "127.0.0.1:8443:443"
-        "0.0.0.0:389:389"
-        "100.64.0.1:636:636"
+        "0.0.0.0:8000:80"
+        "0.0.0.0:8443:443"
+        "0.0.0.0:636:636"
         "0.0.0.0:88:88"
-        "100.64.0.1:464:464"
+        "0.0.0.0:464:464"
         "0.0.0.0:88:88/udp"
-        "100.64.0.1:53:53/udp"
-        "100.64.0.1:464:464/udp"
+        "0.0.0.0:464:464/udp"
       ];
       extraOptions = [
         "--read-only"
-        "-h=ipa.auth.joka00.dev"
+        "-h=ipa01.de.auth.joka00.dev"
         "--ip=10.24.0.8"
         "--network=br-services"
         "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
@@ -105,9 +102,9 @@ in {
         enableACME = true;
         locations."/" = {
           extraConfig = ''
-            proxy_pass              https://ipa.auth.joka00.dev/;
-            proxy_set_header        Host $host;
-            proxy_set_header        Referer https://ipa.auth.joka00.dev/ipa/ui;
+            proxy_pass              http://ipa01.de.auth.joka00.dev:8000;
+            proxy_set_header        Host ipa01.de.auth.joka00.dev;
+            proxy_set_header        Referer https://ipa01.de.auth.joka00.dev:8000/ipa/ui;
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
