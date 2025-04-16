@@ -38,21 +38,19 @@ in {
   };
 
   config = {
-    /*
-       security.ipa = {
+    security.ipa = {
       enable = true;
-      server = "ipa.auth.joka00.dev";
+      server = "ipa01.de.auth.joka00.dev";
       offlinePasswords = true;
       cacheCredentials = true;
       realm = "AUTH.JOKA00.DEV";
       domain = config.networking.domain;
       basedn = "dc=auth,dc=joka00,dc=dev";
       certificate = pkgs.fetchurl {
-        url = http://ipa.auth.joka00.dev/ipa/config/ca.crt;
-        sha256 = "0ja5pb14cddh1cpzxz8z3yklhk1lp4r2byl3g4a7z0zmxr95xfhz";
+        url = http://ipa01.de.auth.joka00.dev/ipa/config/ca.crt;
+        sha256 = "sha256-scQ6/tkN+z77AnrUW9t1Fa0NZCp8aZ+6SirlDrTmce8=";
       };
     };
-    */
     # To enable homedir on first login, with login, sshd, and sssd
     security.pam.services.sss.makeHomeDir = true;
     security.pam.services.sshd.makeHomeDir = true;
