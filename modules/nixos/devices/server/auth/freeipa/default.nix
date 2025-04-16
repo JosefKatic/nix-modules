@@ -92,12 +92,12 @@ in {
     security.acme = {
       certs."auth.joka00.dev" = {
         domain = "auth.joka00.dev";
-        extraDomainNames = ["auth.joka00.dev" "ipa.auth.joka00.dev"];
+        extraDomainNames = ["auth.joka00.dev" "ipa01.de.auth.joka00.dev"];
         webroot = "/var/lib/acme/acme-challenge";
       };
     };
     services = {
-      nginx.virtualHosts."ipa.auth.joka00.dev" = {
+      nginx.virtualHosts."ipa01.de.auth.joka00.dev" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
