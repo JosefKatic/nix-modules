@@ -87,7 +87,7 @@ in {
           ${pkgs.podman}/bin/podman network create --disable-dns --gateway=10.24.0.1 --subnet=10.24.0.0/28 br-services
       '';
     };
-    networking.firewall.interfaces."ens3".allowedTCPPorts = [80 443 636];
+    networking.firewall.interfaces."ens3".allowedTCPPorts = [80 443 389 88 636];
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
     security.acme = {
