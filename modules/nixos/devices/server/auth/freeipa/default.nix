@@ -82,7 +82,7 @@ in {
       wantedBy = ["podman-freeipa-server.service"];
       script = ''
         ${pkgs.podman}/bin/podman network exists br-services || \
-          ${pkgs.podman}/bin/podman network create --gateway=10.24.0.1 --subnet=10.24.0.0/28 --parent=ens3 br-services
+          ${pkgs.podman}/bin/podman network create --gateway=10.24.0.1 --subnet=10.24.0.0/28 br-services
       '';
     };
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [80 3480 88 443 34443 464 636];
