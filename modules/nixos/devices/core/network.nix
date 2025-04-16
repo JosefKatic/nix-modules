@@ -40,7 +40,7 @@ in {
   config = {
     security.ipa = {
       enable = true;
-      server = "100.64.0.1";
+      server = "ipa01.de.auth.joka00.dev";
       offlinePasswords = true;
       cacheCredentials = true;
       realm = "AUTH.JOKA00.DEV";
@@ -61,9 +61,9 @@ in {
         domain = cfg.network.domain;
         # @TODO implement using DNS
         # Implemented in blocky
-        # extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
-        #   100.64.0.1 ipa01.de.auth.joka00.dev
-        # '';
+        extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
+          100.64.0.1 ipa01.de.auth.joka00.dev
+        '';
         # extraHosts = import ./blocker/etc-hosts.nix;
         firewall = {
           enable = true;
