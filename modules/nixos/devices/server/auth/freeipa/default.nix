@@ -50,16 +50,16 @@ in {
         "/run/secrets:/run/secrets"
       ];
       ports = [
-        "0.0.0.0:8000:80"
-        "0.0.0.0:8443:443"
-        "100.64.0.1:53:53"
-        "100.64.0.1:389:389"
-        "100.64.0.1:636:636"
-        "100.64.0.1:88:88"
-        "100.64.0.1:464:464"
-        "100.64.0.1:88:88/udp"
-        "100.64.0.1:53:53/udp"
-        "100.64.0.1:464:464/udp"
+        "80:80"
+        "443:443"
+        "53:53"
+        "389:389"
+        "636:636"
+        "88:88"
+        "464:464"
+        "88:88/udp"
+        "53:53/udp"
+        "464:464/udp"
       ];
       extraOptions = [
         "--read-only"
@@ -93,7 +93,8 @@ in {
     networking.firewall.interfaces."ens3".allowedTCPPorts = [80 443 88 636];
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [53 80 3480 88 389 443 34443 464 636];
     networking.firewall.interfaces."tailscale0".allowedUDPPorts = [53 88 123 464];
-    security.acme = {
+    /*
+       security.acme = {
       certs."auth.joka00.dev" = {
         domain = "auth.joka00.dev";
         extraDomainNames = ["auth.joka00.dev" "ipa01.de.auth.joka00.dev"];
@@ -125,6 +126,7 @@ in {
           '';
         };
       };
-    };
+     };
+    */
   };
 }

@@ -19,19 +19,19 @@ in {
   config = mkIf cfg.homeassistant.enable {
     # environment.systemPackages = [pkgs.home-assistant];
     services = {
-      nginx.virtualHosts."hass.joka00.dev" = {
-        extraConfig = ''
-          allow 10.34.70.0/23;
-          allow 100.64.0.0/10;
-          deny all;
-        '';
-        forceSSL = true;
-        useACMEHost = "joka00.dev";
-        locations."/" = {
-          proxyPass = "http://[::1]:${toString config.services.home-assistant.config.http.server_port}";
-          proxyWebsockets = true;
-        };
-      };
+      # nginx.virtualHosts."hass.joka00.dev" = {
+      #   extraConfig = ''
+      #     allow 10.34.70.0/23;
+      #     allow 100.64.0.0/10;
+      #     deny all;
+      #   '';
+      #   forceSSL = true;
+      #   useACMEHost = "joka00.dev";
+      #   locations."/" = {
+      #     proxyPass = "http://[::1]:${toString config.services.home-assistant.config.http.server_port}";
+      #     proxyWebsockets = true;
+      #   };
+      # };
       home-assistant = let
       in {
         enable = cfg.homeassistant.enable;
@@ -101,7 +101,7 @@ in {
         };
       };
     };
-    networking.firewall.allowedTCPPorts = [21064];
+    networking.firewall.allowedTCPPorts = [8123 21064];
     networking.firewall.allowedUDPPorts = [21064];
 
     systemd.tmpfiles.rules = [
