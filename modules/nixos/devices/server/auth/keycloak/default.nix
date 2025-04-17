@@ -56,8 +56,6 @@
         http-enabled = true;
         sslCertificate = "/var/lib/acme/sso.joka00.dev/cert.pem";
         sslCertificateKey = "/var/lib/acme/sso.joka00.dev/key.pem";
-        https-certificate-file = config.sops.secrets.freeipa_cert.path;
-        https-certificate-key-file = config.sops.secrets.freeipa_cert_key.path;
       };
     };
   };
