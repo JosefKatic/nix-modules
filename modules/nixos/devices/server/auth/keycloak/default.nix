@@ -10,16 +10,9 @@
   };
 
   config = lib.mkIf config.device.server.auth.keycloak.enable {
-    security.acme = {
-      certs."auth.joka00.dev" = {
-        domain = "auth.joka00.dev";
-        extraDomainNames = ["auth.joka00.dev"];
-        webroot = "/var/lib/acme/acme-challenge";
-      };
-    };
     services.nginx = {
       virtualHosts = {
-        "auth.joka00.dev" = {
+        "sso.joka00.dev" = {
           forceSSL = true;
           enableACME = true;
           locations = {
@@ -48,15 +41,15 @@
         passwordFile = config.sops.secrets.keycloak_db.path;
       };
       settings = {
-        hostname = "auth.joka00.dev";
+        hostname = "sso.joka00.dev";
         http-relative-path = "/";
         http-host = "127.0.0.1";
         http-port = 3880;
         https-port = 38443;
         proxy-headers = "xforwarded";
         http-enabled = true;
-        sslCertificate = "/var/lib/acme/auth.joka00.dev/cert.pem";
-        sslCertificateKey = "/var/lib/acme/auth.joka00.dev/key.pem";
+        sslCertificate = "/var/lib/acme/sso.joka00.dev/cert.pem";
+        sslCertificateKey = "/var/lib/acme/sso.joka00.dev/key.pem";
       };
     };
   };
