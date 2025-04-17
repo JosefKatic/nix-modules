@@ -40,14 +40,14 @@ in {
   config = {
     security.ipa = {
       enable = true;
-      server = "ipa.joka00.dev";
+      server = "ipa.internal.joka00.dev";
       offlinePasswords = true;
       cacheCredentials = true;
-      realm = "JOKA00.DEV";
-      domain = config.networking.domain;
+      realm = "INTERNAL.JOKA00.DEV";
+      domain = "internal.joka00.dev";
       basedn = "dc=joka00,dc=dev";
       certificate = pkgs.fetchurl {
-        url = http://ipa.joka00.dev/ipa/config/ca.crt;
+        url = http://ipa..internal.joka00.dev/ipa/config/ca.crt;
         sha256 = "sha256-scQ6/tkN+z77AnrUW9t1Fa0NZCp8aZ+6SirlDrTmce8=";
       };
     };
@@ -62,7 +62,7 @@ in {
         # @TODO implement using DNS
         # Implemented in blocky
         extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
-          100.64.0.4 ipa.joka00.dev
+          100.64.0.4 ipa.internal.joka00.dev
         '';
         # extraHosts = import ./blocker/etc-hosts.nix;
         firewall = {

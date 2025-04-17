@@ -24,7 +24,7 @@ in {
       };
     };
     networking.extraHosts = ''
-      10.24.0.8 ipa.joka00.dev
+      10.24.0.8 ipa.internal.joka00.dev
     '';
     environment.etc."resolv.conf".text = ''
       nameserver 10.24.0.8
@@ -63,15 +63,15 @@ in {
       ];
       extraOptions = [
         "--read-only"
-        "-h=ipa.joka00.dev"
+        "-h=ipa.internal.joka00.dev"
         "--ip=10.24.0.8"
         "--network=br-services"
         "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
       ];
       cmd = [
         "--unattended"
-        "--realm=JOKA00.DEV"
-        "--domain=joka00.dev"
+        "--realm=INTERNAL.JOKA00.DEV"
+        "--domain=INTERNAL.joka00.dev"
         "--setup-dns"
         "--forwarder=1.1.1.1"
         "--no-reverse"
