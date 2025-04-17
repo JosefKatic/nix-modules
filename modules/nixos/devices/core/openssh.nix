@@ -18,8 +18,8 @@ in {
     enable = true;
     settings = {
       # Harden
-      PasswordAuthentication = true;
-      PermitRootLogin = "yes";
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
       # Automatically remove stale sockets
       StreamLocalBindUnlink = "yes";
       # Allow forwarding ports to everywhere
