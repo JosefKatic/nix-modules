@@ -45,10 +45,10 @@ in {
       cacheCredentials = true;
       realm = "INTERNAL.JOKA00.DEV";
       domain = "internal.joka00.dev";
-      basedn = "dc=joka00,dc=dev";
+      basedn = "dc=internal,dc=joka00,dc=dev";
       certificate = pkgs.fetchurl {
-        url = http://ipa..internal.joka00.dev/ipa/config/ca.crt;
-        sha256 = "sha256-scQ6/tkN+z77AnrUW9t1Fa0NZCp8aZ+6SirlDrTmce8=";
+        url = http://ipa.internal.joka00.dev/ipa/config/ca.crt;
+        sha256 = "sha256-rCbcfsQilbXNpBOXq8alvu2XK2SoVcC96kYk5GDEndw=";
       };
     };
     # To enable homedir on first login, with login, sshd, and sssd
