@@ -40,14 +40,14 @@ in {
   config = {
     security.ipa = {
       enable = true;
-      server = "ipa.auth.joka00.dev";
+      server = "ipa.joka00.dev";
       offlinePasswords = true;
       cacheCredentials = true;
-      realm = "AUTH.JOKA00.DEV";
+      realm = "JOKA00.DEV";
       domain = config.networking.domain;
-      basedn = "dc=auth,dc=joka00,dc=dev";
+      basedn = "dc=joka00,dc=dev";
       certificate = pkgs.fetchurl {
-        url = http://ipa.auth.joka00.dev/ipa/config/ca.crt;
+        url = http://ipa.joka00.dev/ipa/config/ca.crt;
         sha256 = "sha256-scQ6/tkN+z77AnrUW9t1Fa0NZCp8aZ+6SirlDrTmce8=";
       };
     };

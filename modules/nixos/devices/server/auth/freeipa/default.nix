@@ -24,7 +24,7 @@ in {
       };
     };
     networking.extraHosts = ''
-      10.24.0.8 ipa.auth.joka00.dev
+      10.24.0.8 ipa.joka00.dev
     '';
     environment.etc."resolv.conf".text = ''
       nameserver 10.24.0.8
@@ -63,15 +63,15 @@ in {
       ];
       extraOptions = [
         "--read-only"
-        "-h=ipa.auth.joka00.dev"
+        "-h=ipa.joka00.dev"
         "--ip=10.24.0.8"
         "--network=br-services"
         "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
       ];
       cmd = [
         "--unattended"
-        "--realm=AUTH.JOKA00.DEV"
-        "--domain=auth.joka00.dev"
+        "--realm=JOKA00.DEV"
+        "--domain=joka00.dev"
         "--setup-dns"
         "--forwarder=1.1.1.1"
         "--no-reverse"
@@ -96,19 +96,19 @@ in {
        security.acme = {
       certs."auth.joka00.dev" = {
         domain = "auth.joka00.dev";
-        extraDomainNames = ["auth.joka00.dev" "ipa.auth.joka00.dev"];
+        extraDomainNames = ["auth.joka00.dev" "ipa.joka00.dev"];
         webroot = "/var/lib/acme/acme-challenge";
       };
     };
     services = {
-      nginx.virtualHosts."ipa.auth.joka00.dev" = {
+      nginx.virtualHosts."ipa.joka00.dev" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
           extraConfig = ''
-            proxy_pass              https://ipa.auth.joka00.dev;
+            proxy_pass              https://ipa.joka00.dev;
             proxy_set_header        Host $host;
-            proxy_set_header        Referer https://ipa.auth.joka00.dev/ipa/ui;
+            proxy_set_header        Referer https://ipa.joka00.dev/ipa/ui;
             proxy_set_header        X-Real-IP $remote_addr;
             proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
