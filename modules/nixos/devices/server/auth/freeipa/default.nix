@@ -72,10 +72,8 @@ in {
         "--unattended"
         "--realm=AUTH.JOKA00.DEV"
         "--domain=auth.joka00.dev"
-        "--ntp-server=${cfg.router}"
         "--setup-dns"
         "--forwarder=1.1.1.1"
-        # "--no-host-dns"
         "--no-reverse"
       ];
     };
