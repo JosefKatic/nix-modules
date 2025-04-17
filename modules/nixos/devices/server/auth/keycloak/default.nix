@@ -10,6 +10,13 @@
   };
 
   config = lib.mkIf config.device.server.auth.keycloak.enable {
+    security.acme = {
+      certs."auth.joka00.dev" = {
+        domain = "auth.joka00.dev";
+        extraDomainNames = ["auth.joka00.dev"];
+        webroot = "/var/lib/acme/acme-challenge";
+      };
+    };
     services.nginx = {
       virtualHosts = {
         "auth.joka00.dev" = {
