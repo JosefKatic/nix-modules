@@ -62,7 +62,7 @@ in {
         # @TODO implement using DNS
         # Implemented in blocky
         extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
-          100.64.0.4 ipa.auth.joka00.dev
+          100.64.0.4 ipa.joka00.dev
         '';
         # extraHosts = import ./blocker/etc-hosts.nix;
         firewall = {
