@@ -61,8 +61,8 @@ in {
         domain = cfg.network.domain;
         # @TODO implement using DNS
         # Implemented in blocky
-        extraHosts = ''
-          100.64.0.1 ipa01.de.auth.joka00.dev
+        extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
+          100.64.0.4 ipa01.de.auth.joka00.dev
         '';
         # extraHosts = import ./blocker/etc-hosts.nix;
         firewall = {
