@@ -18,9 +18,8 @@
     services = {
       hydra = {
         enable = true;
-        package = pkgs.hydra_unstable;
         hydraURL = "https://hydra.joka00.dev";
-        notificationSender = "josef@joka00.dev";
+        notificationSender = "hydra@joka00.dev";
         listenHost = "localhost";
         smtpHost = "localhost";
         useSubstitutes = true;
