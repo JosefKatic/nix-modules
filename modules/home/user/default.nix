@@ -12,7 +12,6 @@ inputs: {
     ./terminal
     desktop
     theme
-    inputs.anyrun.homeManagerModules.default
     inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.matugen.nixosModules.default
     inputs.nix-index-db.hmModules.nix-index

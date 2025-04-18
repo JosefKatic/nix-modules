@@ -1,4 +1,4 @@
-inputs: {
+{
   pkgs,
   lib,
   config,
@@ -14,9 +14,9 @@ in {
     programs.anyrun = {
       enable = true;
       config = {
-        plugins = with inputs.anyrun.packages.${pkgs.system}; [
-          applications
-          websearch
+        plugins = [
+          "applications"
+          "websearch"
         ];
 
         width.fraction = 0.3;
