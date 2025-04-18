@@ -52,7 +52,7 @@ in {
         sha256 = "sha256-rCbcfsQilbXNpBOXq8alvu2XK2SoVcC96kYk5GDEndw=";
       };
     };
-    environment.sessionVariables = {
+    environment.variables = {
       KRB5_CONFIG = "${lib.optionalString hasOptinPersistence "/persist"}/etc/krb5.conf";
     };
     # To enable homedir on first login, with login, sshd, and sssd
