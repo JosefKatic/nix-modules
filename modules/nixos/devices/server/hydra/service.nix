@@ -115,6 +115,12 @@
         group = hydraGroup;
         mode = "0440";
       };
+      hydra-ldap-pass = {
+        sopsFile = "${self}/secrets/services/hydra/secrets.yaml";
+        owner = hydraUser;
+        group = hydraGroup;
+        mode = "0440";
+      };
       nix-ssh-key = {
         sopsFile = "${self}/secrets/services/hydra/secrets.yaml";
         owner = hydraUser;
