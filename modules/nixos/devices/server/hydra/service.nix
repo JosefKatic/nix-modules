@@ -35,6 +35,54 @@
               jobs = .*
               useShortContext = true
             </githubstatus>
+            <ldap>
+              <config>
+                <credential>
+                  class = Password
+                  password_field = password
+                  password_type = self_check
+                </credential>
+                <store>
+                  class = LDAP
+                  ldap_server = ipa.internal.joka00.dev
+                  <ldap_server_options>
+                    timeout = 30
+                  </ldap_server_options>
+                  binddn = "uid=admin,cn=users,cn=accounts,dc=internal,dc=joka00,dc=dev"
+                  Include ${config.sops.secrets.hydra-ldap-pass.path}
+                  start_tls = 0
+                  <start_tls_options>
+                    verify = none
+                  </start_tls_options>
+                  user_basedn = "cn=users,cn=accounts,dc=internal,dc=joka00,dc=dev"
+                  user_filter = "(&(objectClass=inetOrgPerson)(uid=%s))"
+                  user_scope = one
+                  user_field = uid
+                  <user_search_options>
+                    deref = always
+                  </user_search_options>
+                  # Important for role mappings to work:
+                  use_roles = 1
+                  role_basedn = "cn=groups,cn=accounts,dc=internal,dc=joka00,dc=dev"
+                  role_filter = "(&(objectClass=groupOfNames)(member=%s))"
+                  role_scope = one
+                  role_field = cn
+                  role_value = dn
+                  <role_search_options>
+                    deref = always
+                  </role_search_options>
+                </store>
+              </config>
+              <role_mapping>
+                # Make all users in the hydra_admin group Hydra admins
+                hydra_admin = admin
+                # Allow all users in the dev group to eval jobsets, restart jobs and cancel builds
+                dev = eval-jobset
+                dev = restart-jobs
+                dev = cancel-build
+              </role_mapping>
+            </ldap>
+
           '';
         extraEnv = {
           HYDRA_DISALLOW_UNFREE = "0";

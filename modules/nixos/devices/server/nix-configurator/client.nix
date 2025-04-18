@@ -18,7 +18,7 @@ in {
   config = lib.mkIf cfg.enable {
     device.server.nix-configurator.api.enable = lib.mkDefault true;
     services.nginx = {
-      virtualHosts."config.joka00.dev" = {
+      virtualHosts."config.internal.joka00.dev" = {
         locations."/" = {
           root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
           index = "index.html";
