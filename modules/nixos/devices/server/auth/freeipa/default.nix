@@ -66,7 +66,6 @@ in {
         "-h=ipa.internal.joka00.dev"
         "--ip=10.24.0.8"
         "--network=br-services"
-        "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
       ];
       cmd = [
         "--unattended"

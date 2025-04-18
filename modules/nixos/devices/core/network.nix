@@ -61,9 +61,9 @@ in {
         domain = cfg.network.domain;
         # @TODO implement using DNS
         # Implemented in freeipa
-        # extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
-        #   100.64.0.4 ipa.internal.joka00.dev
-        # '';
+        extraHosts = lib.mkIf (config.device.server.auth.freeipa.enable == false) ''
+          100.64.0.4 ipa.internal.joka00.dev
+        '';
         # extraHosts = import ./blocker/etc-hosts.nix;
         firewall = {
           enable = true;
