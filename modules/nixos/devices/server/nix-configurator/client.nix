@@ -19,6 +19,8 @@ in {
     device.server.nix-configurator.api.enable = lib.mkDefault true;
     services.nginx = {
       virtualHosts."config.internal.joka00.dev" = {
+        forceSSL = true;
+        useACMEHost = "internal.joka00.dev";
         locations."/" = {
           root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
           index = "index.html";

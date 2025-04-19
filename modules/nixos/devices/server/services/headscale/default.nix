@@ -44,7 +44,13 @@ in {
             override_local_dns = true;
             nameservers.global = [
               "100.64.0.4"
+              "169.254.169.254"
               "1.1.1.1"
+            ];
+            search_domains = [
+              "clients.joka00.dev"
+              "internal.joka00.dev"
+              "oraclevcn.com"
             ];
           };
           server_url = "https://${cfg.domain}";
