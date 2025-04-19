@@ -20,7 +20,7 @@ in {
       config_ssl_fullchain = {
         sopsFile = "${self}/secrets/services/config/secrets.yaml";
         owner = "nginx";
-        group = "nginxs";
+        group = "nginx";
       };
       config_ssl_key = {
         sopsFile = "${self}/secrets/services/config/secrets.yaml";
