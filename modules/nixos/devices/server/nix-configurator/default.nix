@@ -23,12 +23,12 @@ in {
     };
     sops.secrets = {
       config_ssl_fullchain = {
-        sopsFile = "${self}/secrets/services/config/secrets.yaml";
+        sopsFile = "${self}/secrets/services/nix-configurator/secrets.yaml";
         owner = "nginx";
         group = "nginx";
       };
       config_ssl_key = {
-        sopsFile = "${self}/secrets/services/config/secrets.yaml";
+        sopsFile = "${self}/secrets/services/nix-configurator/secrets.yaml";
         owner = "nginx";
         group = "nginx";
       };
