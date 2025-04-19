@@ -35,7 +35,6 @@ in {
     services.nginx = {
       virtualHosts."config.internal.joka00.dev" = {
         forceSSL = true;
-        forceSSL = true;
         sslCertificate = config.sops.secrets.config_ssl_fullchain.path;
         sslCertificateKey = config.sops.secrets.config_ssl_key.path;
         extraConfig = ''
