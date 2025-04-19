@@ -35,7 +35,9 @@ in {
     services.nginx = {
       virtualHosts."config.internal.joka00.dev" = {
         forceSSL = true;
-        useACMEHost = "internal.joka00.dev";
+        forceSSL = true;
+        sslCertificate = config.sops.secrets.config_ssl_fullchain.path;
+        sslCertificateKey = config.sops.secrets.config_ssl_key.path;
         extraConfig = ''
           allow 100.64.0.0/10;
           deny all;

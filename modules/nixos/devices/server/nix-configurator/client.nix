@@ -32,9 +32,6 @@ in {
     device.server.nix-configurator.api.enable = lib.mkDefault true;
     services.nginx = {
       virtualHosts."config.internal.joka00.dev" = {
-        forceSSL = true;
-        sslCertificate = config.sops.secrets.config_ssl_fullchain.path;
-        sslCertificateKey = config.sops.secrets.config_ssl_key.path;
         locations."/" = {
           root = "${inputs.nix-configurator-web.packages.${pkgs.system}.default}";
           index = "index.html";
