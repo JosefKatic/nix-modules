@@ -5,5 +5,5 @@
   pkgs,
   ...
 }: {
-  imports = [./kdeconnect.nix ./proton ./virtualisation];
+  imports = [./kdeconnect.nix ./virtualisation];
 }

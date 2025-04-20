@@ -1,3 +1,3 @@
 {
-  imports = [./mail ./pass];
+  imports = [./mail ./pass ./vpn];
 }
