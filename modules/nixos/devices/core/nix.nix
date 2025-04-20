@@ -45,7 +45,7 @@ in {
           "cache.joka00.dev:ELw0BiKSycBVWYgv0lFW+Uqjez0Y9gnKEh7sQ/8eHvE="
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         ];
-        trusted-users = ["root" "@wheel" "nix-ssh"];
+        trusted-users = ["root" "@admins" "@wheel" "nix-ssh"];
         auto-optimise-store = lib.mkDefault true;
         experimental-features = ["nix-command" "flakes" "ca-derivations"];
         warn-dirty = false;
