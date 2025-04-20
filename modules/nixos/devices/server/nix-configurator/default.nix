@@ -5,9 +5,9 @@ inputs: {
   pkgs,
   ...
 }: let
-  cfg = config.device.server.nix-configurator;
+  cfg = config.device.server.nixConfigurator;
 in {
-  options.device.server.nix-configurator = {
+  options.device.server.nixConfigurator = {
     enable = lib.mkOption {
       default = false;
       description = ''

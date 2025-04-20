@@ -2,7 +2,7 @@ inputs: {
   imports = let
     hosting = import ./hosting inputs;
     minecraft = import ./minecraft inputs;
-    nix-configurator = import ./nix-configurator inputs;
+    nixConfigurator = import ./nix-configurator inputs;
   in [
     ./auth
     ./cache
@@ -14,6 +14,6 @@ inputs: {
     minecraft
     ./services
     ./teamspeak
-    nix-configurator
+    nixConfigurator
   ];
 }
