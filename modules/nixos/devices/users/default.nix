@@ -8,7 +8,6 @@
 }: let
   inherit (config.networking) hostName;
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-  username = "joka";
 in {
   options = {
     device.users = lib.mkOption {
@@ -31,9 +30,11 @@ in {
 
   config = {
     users.mutableUsers = false;
-    users.users.${username} = {
+    # BACKUP ACCOUNT IN CASE SSSD won't work
+    users.users.admin = {
       isNormalUser = true;
       shell = pkgs.fish;
+      uid = 1001;
       extraGroups =
         [
           "wheel"
@@ -55,16 +56,16 @@ in {
           "deluge"
         ];
       openssh.authorizedKeys.keys = [(builtins.readFile "${self}/ssh.pub")];
-      hashedPasswordFile = config.sops.secrets.joka-password.path;
+      hashedPasswordFile = config.sops.secrets.admin-password.path;
     };
     users.users.root = {
       openssh.authorizedKeys.keys = [(builtins.readFile "${self}/ssh.pub")];
-      hashedPasswordFile = config.sops.secrets.joka-password.path;
+      hashedPasswordFile = config.sops.secrets.admin-password.path;
     };
 
     # Loop
-    sops.secrets.joka-password = {
-      sopsFile = "${self}/secrets/${username}/secrets.yaml";
+    sops.secrets.admin-password = {
+      sopsFile = "${self}/secrets/admin/secrets.yaml";
       neededForUsers = true;
     };
   };
