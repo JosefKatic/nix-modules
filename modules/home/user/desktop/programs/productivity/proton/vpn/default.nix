@@ -9,6 +9,8 @@ in {
   options.user.desktop.programs.productivity.proton.vpn.enable = lib.mkEnableOption "Enable Proton VPN";
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [pkgs.protonvpn-gui];
+    home.packages = [
+      pkgs.protonvpn-gui
+    ];
   };
 }
