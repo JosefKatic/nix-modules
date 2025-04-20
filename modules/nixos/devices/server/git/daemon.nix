@@ -35,7 +35,7 @@
         packages = [pkgs.git];
         openssh.authorizedKeys.keys =
           # My key
-          config.users.users.joka.openssh.authorizedKeys.keys
+          config.users.users.admin.openssh.authorizedKeys.keys
           ++
           # The key hydra uses to access other hosts
           # This is used to push CI-gated branches to my nix-config
