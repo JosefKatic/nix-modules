@@ -14,7 +14,7 @@ in {
     services.pcscd.enable = true;
 
     sops.secrets.u2f-key = {
-      sopsFile = "${self}/secrets/joka/secrets.yaml";
+      sopsFile = "${self}/secrets/admin/secrets.yaml";
       neededForUsers = true;
     };
 
