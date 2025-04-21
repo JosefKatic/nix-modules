@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkDefault optionalString concatStringsSep toLower;
+  inherit (lib) mkForce optionalString concatStringsSep toLower;
   cfg = config.security.ipa;
   hasOptinPersistence = config.environment.persistence ? "/persist";
   pyBool = x:
