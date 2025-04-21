@@ -15,9 +15,17 @@
   # just persisting the keys won't work, we must point at /persist
   hasOptinPersistence = config.environment.persistence ? "/persist";
 in {
+  environment.etc."ssh/authorized_keys_command" = {
+    mode = "0755";
+    text = ''
+      #!/bin/sh
+      exec ${pkgs.sssd}/bin/sss_ssh_authorizedkeys "$@"
+    '';
+  };
+
   services.openssh = {
     enable = true;
-    authorizedKeysCommand = "${pkgs.sssd}/bin/sss_ssh_authorizedkeys";
+    authorizedKeysCommand = "/etc/ssh/authorized_keys_command";
     authorizedKeysCommandUser = "nobody";
     settings = {
       # Harden
