@@ -2,6 +2,7 @@
   self,
   lib,
   config,
+  pkgs,
   device,
   ...
 }: let
