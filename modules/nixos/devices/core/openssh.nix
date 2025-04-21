@@ -16,6 +16,8 @@
 in {
   services.openssh = {
     enable = true;
+    authorizedKeysCommand = "${pkgs.sssd}/bin/sss_ssh_authorizedkeys";
+    authorizedKeysCommandUser = "nobody";
     settings = {
       # Harden
       PasswordAuthentication = false;
