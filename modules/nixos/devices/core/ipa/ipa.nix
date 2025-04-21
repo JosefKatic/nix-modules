@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   security.ipa = {
     enable = true;
     server = "ipa.internal.joka00.dev";
