@@ -45,7 +45,6 @@ in {
 
     cache_credentials = ${pyBool cfg.cacheCredentials}
     krb5_store_password_if_offline = ${pyBool cfg.offlinePasswords}
-    krb5_keytab = "${optionalString hasOptinPersistence "/persist"}/etc/krb5.keytab"
     ${optionalString ((toLower cfg.domain) != (toLower cfg.realm)) "krb5_realm = ${cfg.realm}"}
 
     dyndns_update = ${pyBool cfg.dyndns.enable}
