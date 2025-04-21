@@ -34,6 +34,10 @@ in {
           type = lib.types.listOf lib.types.str;
           default = [];
         };
+        search = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [];
+        };
       };
     };
   };
@@ -64,6 +68,7 @@ in {
         interfaces = cfg.network.static.interfaces;
         defaultGateway = cfg.network.static.defaultGateway;
         nameservers = cfg.network.static.nameservers;
+        search = cfg.network.static.search;
       };
     systemd.network.wait-online.enable = lib.mkIf cfg.network.services.enableNetworkManager false;
     services = {
