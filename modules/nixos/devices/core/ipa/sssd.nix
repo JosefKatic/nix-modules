@@ -32,7 +32,7 @@
       certutil -d $out -A --empty-password -n "${cfg.realm} IPA CA" -t CT,C,C -i ${cfg.certificate}
     '';
 in {
-  services.sssd.config = mkDefault ''
+  services.sssd.config = mkForce ''
     [domain/${cfg.domain}]
     id_provider = ipa
     auth_provider = ipa
