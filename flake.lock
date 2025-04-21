@@ -1196,11 +1196,11 @@
         "pre-commit-hooks": "pre-commit-hooks_3"
       },
       "locked": {
-        "lastModified": 1744998847,
-        "narHash": "sha256-DH/0pVceN3goGr9qj7deSl+DXuhFMMIKpHY6Tfx5j9c=",
+        "lastModified": 1745255764,
+        "narHash": "sha256-75VUA9B4snBVlcJm0kFGhh9FpVb/FW8jJ8U4q5Ee1d4=",
         "owner": "JosefKatic",
         "repo": "nix-configurator-web",
-        "rev": "4564bbf7b4e80ce55d75320cf01e0595b5ec2767",
+        "rev": "763006d17cf1d5069d7b1a3f95d5009a2abc2723",
         "type": "github"
       },
       "original": {
