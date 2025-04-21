@@ -1,5 +1,11 @@
 # Copy of the sssd module from Nixpkgs with some changes
-{config, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkDefault optionalString concatStringsSep toLower;
   cfg = config.security.ipa;
   hasOptinPersistence = config.environment.persistence ? "/persist";
   pyBool = x:
@@ -26,7 +32,7 @@
       certutil -d $out -A --empty-password -n "${cfg.realm} IPA CA" -t CT,C,C -i ${cfg.certificate}
     '';
 in {
-  services.sssd.config = lib.mkDefault ''
+  services.sssd.config = mkDefault ''
     [domain/${cfg.domain}]
     id_provider = ipa
     auth_provider = ipa
@@ -39,7 +45,7 @@ in {
 
     cache_credentials = ${pyBool cfg.cacheCredentials}
     krb5_store_password_if_offline = ${pyBool cfg.offlinePasswords}
-    krb5_keytab =
+    krb5_keytab = "${optionalString hasOptinPersistence "/persist"}/etc/krb5.keytab"
     ${optionalString ((toLower cfg.domain) != (toLower cfg.realm)) "krb5_realm = ${cfg.realm}"}
 
     dyndns_update = ${pyBool cfg.dyndns.enable}

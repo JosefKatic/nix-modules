@@ -12,9 +12,9 @@
       sha256 = "sha256-rCbcfsQilbXNpBOXq8alvu2XK2SoVcC96kYk5GDEndw=";
     };
   };
-  environment.variables = {
-    KRB5_CONFIG = "${lib.optionalString hasOptinPersistence "/persist"}/etc/krb5.conf";
-  };
+  systemd.tmpfiles.rules = [
+    "L+ /etc/krb5.conf - - - - /persist/etc/krb5.conf"
+  ];
   # To enable homedir on first login, with login, sshd, and sssd
   security.pam.services.sss.makeHomeDir = true;
   security.pam.services.sshd.makeHomeDir = true;
