@@ -105,6 +105,7 @@
           inherit system;
           overlays = [
             inputs.self.overlays.joka00-modules
+            inputs.self.overlays.patchFreeIPA
             nur.overlays.default
           ];
         };
@@ -113,6 +114,7 @@
         ./.hydra
         ./shell.nix
         ./packages
+        ./overlays
         ./modules
         ./pre-commit-hooks.nix
       ];

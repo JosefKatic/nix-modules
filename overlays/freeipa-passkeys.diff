@@ -1,0 +1,13 @@
+diff --git a/ipaplatform/nixos/paths.py b/ipaplatform/nixos/paths.py
+index 9afe0cfbf..fd01f615f 100644
+--- a/ipaplatform/nixos/paths.py
++++ b/ipaplatform/nixos/paths.py
+@@ -19,6 +19,8 @@ class NixOSPathNamespace(FedoraPathNamespace):
+     BIN_CURL = "@curl@/bin/curl"
+     KINIT = "@kerberos@/bin/kinit"
+     KDESTROY = "@kerberos@/bin/kdestroy"
++    PASSKEY_CHILD = '@sssd@/libexec/sssd/passkey_child'
++
+ 
+ 
+ paths = NixOSPathNamespace()
