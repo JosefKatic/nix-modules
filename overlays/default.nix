@@ -28,7 +28,7 @@
             --subst-var out \
             --subst-var-by bind ${final.bind.dnsutils} \
             --subst-var-by curl ${final.curl} \
-            --subst-var-by kerberos ${final.kerberos} \
+            --subst-var-by kerberos ${final.krb5} \
             --subst-var-by sssd ${final.sssd}
         '';
       });
