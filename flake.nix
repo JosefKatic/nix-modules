@@ -105,7 +105,6 @@
           inherit system;
           overlays = [
             inputs.self.overlays.joka00-modules
-            inputs.self.overlays.patchFreeIPA
             nur.overlays.default
           ];
         };

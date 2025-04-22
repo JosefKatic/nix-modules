@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  flake.overlays = {
-    joka00-modules = lib.composeManyExtensions [
-      inputs.nix-minecraft.overlay
-    ];
+  flake.overlays = let
     patchFreeIPA = final: prev: {
       freeipa = prev.freeipa.overrideAttrs (oldAttrs: {
         patches =
@@ -32,5 +29,10 @@
         '';
       });
     };
+  in {
+    joka00-modules = lib.composeManyExtensions [
+      inputs.nix-minecraft.overlay
+      patchFreeIPA
+    ];
   };
 }
