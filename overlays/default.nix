@@ -26,10 +26,10 @@
 
           substituteInPlace ipaplatform/nixos/paths.py \
             --subst-var out \
-            --subst-var-by bind ${final.bind.dnsutils} \
-            --subst-var-by curl ${final.curl} \
-            --subst-var-by kerberos ${final.krb5} \
-            --subst-var-by sssd ${final.sssd}
+            --subst-var-by bind ${prev.bind.dnsutils} \
+            --subst-var-by curl ${prev.curl} \
+            --subst-var-by sssd ${fiprevnal.sssd} \
+            --subst-var-by kerberos ${prev.krb5}
         '';
       });
     };
