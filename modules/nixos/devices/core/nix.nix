@@ -75,6 +75,7 @@ in {
     nixpkgs = {
       hostPlatform = cfg.platform;
       overlays = [
+        inputs.self.overlays.patchFreeIPA
         (final: prev: {
           inputs =
             builtins.mapAttrs (
