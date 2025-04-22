@@ -18,6 +18,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.persistence = lib.mkIf config.device.core.storage.enablePersistence {
+      "/persist" = {
+        directories = ["/var/lib/AccountsService"];
+      };
+    };
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
 

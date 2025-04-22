@@ -13,7 +13,8 @@ in {
   config = lib.mkIf cfg.yubikey.enable {
     services.pcscd.enable = true;
 
-    sops.secrets.u2f-key = {
+    /*
+       sops.secrets.u2f-key = {
       sopsFile = "${self}/secrets/admin/secrets.yaml";
       neededForUsers = true;
     };
@@ -30,5 +31,6 @@ in {
       login.u2fAuth = true;
       sudo.u2fAuth = true;
     };
+    */
   };
 }
