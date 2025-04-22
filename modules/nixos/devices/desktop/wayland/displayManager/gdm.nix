@@ -27,7 +27,7 @@ in {
     services.xserver.displayManager.gdm = {
       enable = true;
       settings = {
-        greeter.exclude = "bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobody,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap,admin";
+        greeter.Exclude = "bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobody,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap,admin";
       };
     };
 
