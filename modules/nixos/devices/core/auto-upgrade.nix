@@ -103,8 +103,11 @@ in {
       in
         (lib.optionalString (cfg.oldFlakeRef != null) ''
           eval="$(curl -sLH 'accept: application/json' "${buildUrl}" | jq -r '.jobsetevals[0]')"
+          echo "Evaluating $eval" >&2
           flake="$(curl -sLH 'accept: application/json' "${cfg.instance}/eval/$eval" | jq -r '.flake')"          echo "New flake: $flake" >&2
+          echo "Evaluating $flake" >&2
           new="$(nix flake metadata "$flake" --json | jq -r '.lastModified')"
+          ech $new >&2
           echo "Modified at: $(date -d @$new)" >&2
 
           echo "Current flake: ${cfg.oldFlakeRef}" >&2
