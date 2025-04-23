@@ -16,7 +16,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = let
-      grimblast = pkgs.grimblast;
+      grimblast = "${pkgs.grimblast}/bin/grimblast";
       screenshotarea = "hyprctl keyword animation 'fadeOut,0,0,default'; ${grimblast} --notify copysave area; hyprctl keyword animation 'fadeOut,1,4,default'";
       workspaces = lib.concatLists (lib.genList (
           x: let
