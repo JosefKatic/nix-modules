@@ -16,7 +16,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = let
-      screenshotarea = "hyprctl keyword animation 'fadeOut,0,0,default'; grimblast --notify copysave area; hyprctl keyword animation 'fadeOut,1,4,default'";
+      grimblast = pkgs.grimblast;
+      screenshotarea = "hyprctl keyword animation 'fadeOut,0,0,default'; ${grimblast} --notify copysave area; hyprctl keyword animation 'fadeOut,1,4,default'";
       workspaces = lib.concatLists (lib.genList (
           x: let
             ws = let
@@ -82,11 +83,11 @@ in {
           ", Print, exec, ${screenshotarea}"
           "$mod SHIFT, R, exec, ${screenshotarea}"
 
-          "CTRL, Print, exec, grimblast --notify --cursor copysave output"
-          "$mod SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output"
+          "CTRL, Print, exec, ${grimblast} --notify --cursor copysave output"
+          "$mod SHIFT CTRL, R, exec, ${grimblast} --notify --cursor copysave output"
 
-          "ALT, Print, exec, grimblast --notify --cursor copysave screen"
-          "$mod SHIFT ALT, R, exec, grimblast --notify --cursor copysave screen"
+          "ALT, Print, exec, ${grimblast} --notify --cursor copysave screen"
+          "$mod SHIFT ALT, R, exec, ${grimblast} --notify --cursor copysave screen"
 
           # special workspace
           "$mod SHIFT, grave, movetoworkspace, special"
