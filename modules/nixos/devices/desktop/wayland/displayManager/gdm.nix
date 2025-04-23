@@ -27,7 +27,7 @@ in {
     services.xserver.displayManager.gdm = {
       enable = true;
       settings = {
-        greeter.Exclude = "admin";
+        greeter.IncludeAll = false;
       };
     };
 
