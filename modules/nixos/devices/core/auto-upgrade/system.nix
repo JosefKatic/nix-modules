@@ -7,7 +7,7 @@
   lib,
   ...
 }: let
-  cfg = config.company.autoUpgrade.system;
+  cfg = config.company.autoUpgrade;
   # Only enable auto upgrade if current config came from a clean tree
   # This avoids accidental auto-upgrades when working locally.
 in {
@@ -21,10 +21,10 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.system.enable {
     assertions = [
       {
-        assertion = cfg.enable -> !config.system.autoUpgrade.enable;
+        assertion = cfg.system.enable -> !config.system.autoUpgrade.enable;
         message = ''
           hydraAutoUpgrade and autoUpgrade are mutually exclusive.
         '';
@@ -50,7 +50,7 @@ in {
       ];
 
       script = let
-        buildUrl = "${cfg.instance}/job/${cfg.project}/${cfg.jobset}/${cfg.job}/latest";
+        buildUrl = "${cfg.instance}/job/${cfg.project}/${cfg.jobset}/${cfg.system.job}/latest";
       in
         (lib.optionalString (cfg.oldFlakeRef != null) ''
           eval="$(curl -sLH 'accept: application/json' "${buildUrl}" | jq -r '.jobsetevals[0]')"
