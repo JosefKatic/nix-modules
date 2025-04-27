@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  cfg = config.company.autoUpgrade;
+  cfg = config.company.autoUpgrade.user;
   # Only enable auto upgrade if current config came from a clean tree
   # This avoids accidental auto-upgrades when working locally.
 in {
@@ -14,7 +14,7 @@ in {
       enable = lib.mkEnableOption "periodic hydra-based auto upgrade";
       job = lib.mkOption {
         type = lib.types.str;
-        default = "hosts.${config.networking.hostName}";
+        default = "users.$USER@${config.networking.hostName}";
       };
     };
   };

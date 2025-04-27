@@ -7,7 +7,7 @@
   lib,
   ...
 }: let
-  cfg = config.company.autoUpgrade;
+  cfg = config.company.autoUpgrade.system;
   # Only enable auto upgrade if current config came from a clean tree
   # This avoids accidental auto-upgrades when working locally.
 in {
@@ -30,19 +30,6 @@ in {
         '';
       }
     ];
-
-    systemd.user.services.home-manager-setup = {
-      wantedBy = ["graphical-session.target"];
-      wants = ["nix-daemon.socket" "network-online.target"];
-      path = ["/run/current-system/sw" pkgs.nix pkgs.git pkgs.coreutils pkgs.home-manager];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = false;
-      };
-      script = ''
-        ${pkgs.home-manager}/bin/home-manager switch -b backup --flake ${config.company.autoUpgrade.flake}
-      '';
-    };
 
     systemd.services.nixos-upgrade = {
       description = "NixOS Upgrade";
