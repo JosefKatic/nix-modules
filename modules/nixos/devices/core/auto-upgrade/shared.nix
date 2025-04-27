@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   options.company.autoUpgrade = {
     operation = lib.mkOption {
       type = lib.types.enum ["switch" "boot"];

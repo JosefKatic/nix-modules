@@ -1,5 +1,3 @@
-# This file was copied from misterio77 and it's avaliable at:
-# https://raw.githubusercontent.com/Misterio77/nix-config/74311ba3ddab44e18f45582b56d92fde274bdc32/modules/nixos/hydra-auto-upgrade.nix
 {
   config,
   inputs,
