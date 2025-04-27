@@ -10,12 +10,6 @@ in {
   options.user.desktop.wayland.waybar.enable = lib.mkEnableOption "Enable Waybar";
 
   config = lib.mkIf cfg.enable {
-    services.gammastep = {
-      enable = true;
-      provider = "manual";
-      latitude = 49.0;
-      longitude = 8.4;
-    };
     # Let it try to start a few more times
     systemd.user.services.waybar = {
       Unit.StartLimitBurst = 30;
@@ -113,8 +107,38 @@ in {
           "*" = 10;
         };
       };
+      groupLogo = {
+        orientation = "horizontal";
+        drawer = {
+          transition-duration = 500;
+          children = "logo-member";
+          transition-right-to-left = false;
+        };
+        modules = [
+          "custom/logo"
+          "custom/version"
+        ];
+      };
       customLogo = {
         format = "    ";
+        tooltip = false;
+      };
+      customVersion = {
+        interval = 10;
+        return-type = "json";
+        exec = jsonOutput "version-info" {
+          # Build variables for each host
+          pre = ''
+            set -o pipefail
+            lastModified=$(nix flake metadata self --json | ${jq} -r '.lastModified')
+            date=$(date -d @$lastModified +%d/%M/%Y)
+            version=$(nix flake metadata self --json | ${jq} -r '.revision' | ${cut} -c1-7)
+          '';
+          text = "$version ($date)";
+          tooltip = "";
+        };
+        format = "{}";
+        on-click = "xdg-open https://github.com/JosefKatic/nixos-config/{version}";
         tooltip = false;
       };
 
@@ -144,36 +168,6 @@ in {
           activated = "󰒳";
           deactivated = "󰒲";
         };
-      };
-      customGammastep = {
-        interval = 5;
-        return-type = "json";
-        exec = jsonOutput "gammastep" {
-          pre = ''
-            if unit_status="$(${systemctl} --user is-active gammastep)"; then
-              status="$unit_status ($(${journalctl} --user -u gammastep.service -g 'Period: ' | ${tail} -1 | ${cut} -d ':' -f6 | ${xargs}))"
-            else
-              status="$unit_status"
-            fi
-          '';
-          alt = "\${status:-inactive}";
-          tooltip = "Gammastep is $status";
-        };
-        format = "{icon}";
-        format-icons = {
-          "activating" = "󰁪 ";
-          "deactivating" = "󰁪 ";
-          "inactive" = "? ";
-          "active (Night)" = " ";
-          "active (Nighttime)" = " ";
-          "active (Transition (Night)" = " ";
-          "active (Transition (Nighttime)" = " ";
-          "active (Day)" = " ";
-          "active (Daytime)" = " ";
-          "active (Transition (Day)" = " ";
-          "active (Transition (Daytime)" = " ";
-        };
-        on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
       };
       customCurrentplayer = {
         interval = 2;
@@ -279,7 +273,7 @@ in {
       });
       systemd.enable = true;
       settings = {
-        bottom-main = {
+        bottom = {
           layer = "top";
           height = 32;
           margin = "6";
@@ -292,29 +286,15 @@ in {
             "hyprland/workspaces"
           ];
           modules-right = [
-            "custom/logo"
+            "group/logo"
           ];
           clock = clockTime;
           "clock#Date" = clockDate;
           "group/clock" = groupClock;
           "hyprland/workspaces" = hyprlandWorkspaces;
           "custom/logo" = customLogo;
-        };
-        bottom = {
-          layer = "top";
-          height = 32;
-          margin = "6";
-          position = "bottom";
-          output = builtins.map (m: m.name) (builtins.filter (m: !m.primary) config.user.desktop.monitors);
-          modules-left = [];
-          modules-center = [
-            "hyprland/workspaces"
-          ];
-          modules-right = [
-            "custom/logo"
-          ];
-          "hyprland/workspaces" = hyprlandWorkspaces;
-          "custom/logo" = customLogo;
+          "custom/version" = customVersion;
+          "group/logo" = groupLogo;
         };
         primary = {
           layer = "top";
@@ -328,7 +308,6 @@ in {
             "custom/player"
           ];
           modules-center = [
-            "custom/gammastep"
           ];
           modules-right = [
             "idle_inhibitor"
@@ -342,7 +321,6 @@ in {
           pulseaudio = pulseaudio;
           "custom/currentplayer" = customCurrentplayer;
           "custom/player" = customPlayer;
-          "custom/gammastep" = customGammastep;
           idle_inhibitor = idleInhibitor;
           battery = battery;
         };

@@ -61,8 +61,8 @@
       enable = true;
       defaultFonts = {
         serif = ["Noto Serif" "Noto Color Emoji"];
-        sansSerif = ["Inter" "Noto Color Emoji"];
-        monospace = ["JetBrains Mono" "Noto Color Emoji"];
+        sansSerif = ["Noto Sans" "Noto Color Emoji"];
+        monospace = ["Fira Code" "JetBrains Mono" "" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };
     };

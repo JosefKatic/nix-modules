@@ -53,10 +53,6 @@
     matugen = {
       url = "github:InioX/Matugen";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-    };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,10 +67,6 @@
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
     };
     # NUR
     nur.url = "github:nix-community/NUR";

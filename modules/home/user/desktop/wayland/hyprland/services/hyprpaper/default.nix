@@ -1,4 +1,4 @@
-inputs: {
+{
   config,
   lib,
   pkgs,
@@ -11,7 +11,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.hyprpaper = {
       enable = true;
-      package = inputs.hyprpaper.packages.${pkgs.system}.default;
+      package = pkgs.hyprpaper;
       settings = {
         ipc = "off";
         splash = false;

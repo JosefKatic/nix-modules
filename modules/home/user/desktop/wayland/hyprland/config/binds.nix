@@ -17,6 +17,9 @@ in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = let
       grimblast = "${pkgs.grimblast}/bin/grimblast";
+      playerctl = "${pkgs.playerctl}/bin/playerctl";
+      brillo = "${pkgs.brillo}/bin/brillo";
+      wpctl = "${pkgs.wireplumber}/bin/wpctl";
       screenshotarea = "hyprctl keyword animation 'fadeOut,0,0,default'; ${grimblast} --notify copysave area; hyprctl keyword animation 'fadeOut,1,4,default'";
       workspaces = lib.concatLists (lib.genList (
           x: let
@@ -110,23 +113,23 @@ in {
 
       bindl = [
         # media controls
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPlay, exec, ${playerctl} play-pause"
+        ", XF86AudioPrev, exec,  ${playerctl} previous"
+        ", XF86AudioNext, exec,  ${playerctl} next"
 
         # volume
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ];
 
       bindle = [
         # volume
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+        ", XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+        ", XF86AudioLowerVolume, exec, ${wpctl} set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
 
         # backlight
-        ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
-        ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
+        ", XF86MonBrightnessUp, exec, ${brillo} -q -u 300000 -A 5"
+        ", XF86MonBrightnessDown, exec, ${brillo} -q -u 300000 -U 5"
       ];
     };
   };
