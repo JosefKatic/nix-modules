@@ -12,47 +12,11 @@
   # This avoids accidental auto-upgrades when working locally.
 in {
   options = {
-    company.autoUpgrade = {
+    company.autoUpgrade.user = {
       enable = lib.mkEnableOption "periodic hydra-based auto upgrade";
-      operation = lib.mkOption {
-        type = lib.types.enum ["switch" "boot"];
-        default = "switch";
-      };
-      dates = lib.mkOption {
-        type = lib.types.str;
-        default = "hourly";
-        example = "daily";
-      };
-      instance = lib.mkOption {
-        type = lib.types.str;
-        default = "https://hydra.joka00.dev";
-      };
-      flake = lib.mkOption {
-        type = lib.types.str;
-        default = "github:JosefKatic/nix-config";
-        description = "Link to flake";
-      };
-      project = lib.mkOption {
-        type = lib.types.str;
-        default = "nix-config";
-      };
-      jobset = lib.mkOption {
-        type = lib.types.str;
-        default = "main";
-      };
       job = lib.mkOption {
         type = lib.types.str;
         default = "hosts.${config.networking.hostName}";
-      };
-      oldFlakeRef = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = "self";
-        description = ''
-          Current system's flake reference
-
-          If non-null, the service will only upgrade if the new config is newer
-          than this one's.
-        '';
       };
     };
   };
@@ -67,21 +31,8 @@ in {
       }
     ];
 
-    systemd.user.services.home-manager-setup = {
-      wantedBy = ["graphical-session.target"];
-      wants = ["nix-daemon.socket" "network-online.target"];
-      path = ["/run/current-system/sw" pkgs.nix pkgs.git pkgs.coreutils pkgs.home-manager];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = false;
-      };
-      script = ''
-        ${pkgs.home-manager}/bin/home-manager switch -b backup --flake ${config.company.autoUpgrade.flake}
-      '';
-    };
-
-    systemd.services.nixos-upgrade = {
-      description = "NixOS Upgrade";
+    systemd.user.services.home-manager-upgrade = {
+      description = "Home Manager Upgrade";
       restartIfChanged = false;
       unitConfig.X-StopOnRemoval = false;
       serviceConfig.Type = "oneshot";
@@ -120,7 +71,7 @@ in {
           fi
         '')
         + ''
-          profile="/nix/var/nix/profiles/system"
+          profile="$HOME/.local/state/nix/profiles/home-manager"
           path="$(curl -sLH 'accept: application/json' ${buildUrl} | jq -r '.buildoutputs.out.path')"
 
           if [ "$(readlink -f "$profile")" = "$path" ]; then
@@ -134,14 +85,11 @@ in {
           echo "Comparing changes" >&2
           nvd --color=always diff "$profile" "$path"
 
-          echo "Activating configuration" >&2
-          "$path/bin/switch-to-configuration" test
-
-          echo "Setting profile" >&2
+          echo "Setting home-manager profile profile" >&2
           nix build --no-link --profile "$profile" "$path"
 
-          echo "Adding to bootloader" >&2
-          "$path/bin/switch-to-configuration" boot
+          echo "Activating home-manager" >&2
+          "$path/activate"
         '';
 
       startAt = cfg.dates;

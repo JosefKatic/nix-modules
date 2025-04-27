@@ -131,14 +131,13 @@ in {
           pre = ''
             set -o pipefail
             lastModified=$(nix flake metadata self --json | ${jq} -r '.lastModified')
-            date=$(date -d @$lastModified +%d/%M/%Y)
+            date=$(date -d @$(nix flake metadata self --json | ${jq} -r '.lastModified') +%d/%m/%Y)
             version=$(nix flake metadata self --json | ${jq} -r '.revision' | ${cut} -c1-7)
           '';
           text = "$version ($date)";
           tooltip = "";
         };
         format = "{}";
-        on-click = "xdg-open https://github.com/JosefKatic/nixos-config/{version}";
         tooltip = false;
       };
 

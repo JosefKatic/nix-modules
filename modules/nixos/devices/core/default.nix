@@ -8,7 +8,7 @@
   documentation.dev.enable = true;
   hardware.graphics.enable = true;
   imports = [
-    ./auto-upgrade.nix
+    ./auto-upgrade
     ./build.nix
     ./storage
     ./locale.nix
