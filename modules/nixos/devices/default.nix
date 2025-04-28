@@ -23,7 +23,6 @@ inputs: {
     ./hardware
     ./utils
     ./users
-    desktop
     server
   ];
 }
