@@ -8,5 +8,6 @@ inputs: {
     ./monitors.nix
     ./gtk.nix
     wayland
+    ./qt.nix
   ];
 }
