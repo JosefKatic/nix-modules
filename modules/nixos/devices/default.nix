@@ -7,7 +7,6 @@ inputs: {
   ...
 }: {
   imports = let
-    desktop = import ./desktop inputs;
     server = import ./server inputs;
   in [
     inputs.hm.nixosModules.home-manager
@@ -19,6 +18,7 @@ inputs: {
     inputs.nix-configurator-api.nixosModules.default
     ./boot
     ./core
+    ./desktop
     ./home
     ./hardware
     ./utils
