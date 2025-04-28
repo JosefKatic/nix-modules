@@ -29,6 +29,54 @@ in {
       }
     ];
 
+    systemd.user.services.home-manager-first-setup = {
+      wantedBy = ["graphical-session.target"];
+      wants = ["nix-daemon.socket" "network-online.target"];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = false;
+      };
+      path = with pkgs; [
+        config.nix.package.out
+        config.programs.ssh.package
+        coreutils
+        curl
+        gitMinimal
+        gnutar
+        gzip
+        jq
+        nvd
+      ];
+      script = let
+        buildUrl = "${cfg.instance}/job/${cfg.project}/${cfg.jobset}/${cfg.user.job}/latest";
+      in ''
+         profile="$HOME/.local/state/nix/profiles/home-manager"
+         if [ -e $profile ]; then
+           echo "Home manager profile exists."
+           exit 0;
+         fi
+
+         eval="$(curl -sLH 'accept: application/json' "${buildUrl}" | jq -r '.jobsetevals[0]')"
+         echo "Evaluating $eval" >&2
+         flake="$(curl -sLH 'accept: application/json' "${cfg.instance}/eval/$eval" | jq -r '.flake')"
+         echo "New flake: $flake" >&2
+         new="$(nix flake metadata "$flake" --json | jq -r '.lastModified')"
+         echo $new >&2
+         echo "Found latest at: $(date -d @$new) will init it!" >&2
+
+         path="$(curl -sLH 'accept: application/json' ${buildUrl} | jq -r '.buildoutputs.out.path')"
+
+         echo "Building $path" >&2
+         nix build --no-link "$path"
+
+        echo "Activating home-manager" >&2
+        "$path/activate"
+
+         echo "Setting home-manager profile" >&2
+         nix build --no-link --profile "$profile" "$path"
+      '';
+    };
+
     systemd.user.services.home-manager-upgrade = {
       description = "Home Manager Upgrade";
       restartIfChanged = false;
@@ -83,11 +131,11 @@ in {
           echo "Comparing changes" >&2
           nvd --color=always diff "$profile" "$path"
 
-          echo "Setting home-manager profile profile" >&2
-          nix build --no-link --profile "$profile" "$path"
-
           echo "Activating home-manager" >&2
           "$path/activate"
+
+          echo "Setting home-manager profile" >&2
+          nix build --no-link --profile "$profile" "$path"
         '';
 
       startAt = cfg.dates;
