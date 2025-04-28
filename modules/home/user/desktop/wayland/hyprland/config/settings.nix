@@ -136,13 +136,17 @@ in {
 
       debug.disable_logs = false;
 
-      monitor = map (
-        m: "${m.name},${
-          if m.enabled
-          then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
-          else "disable"
-        }"
-      ) (config.user.desktop.monitors);
+      monitor =
+        map (
+          m: "${m.name},${
+            if m.enabled
+            then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},1"
+            else "disable"
+          }"
+        ) (config.user.desktop.monitors)
+        ++ [
+          "FALLBACK,1920x1080@60,auto,1"
+        ];
     };
   };
 }
