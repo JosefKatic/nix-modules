@@ -277,7 +277,6 @@ in {
           height = 32;
           margin = "6";
           position = "bottom";
-          output = builtins.map (m: m.name) (builtins.filter (m: m.primary) config.user.desktop.monitors);
           modules-left = [
             "group/clock"
           ];
