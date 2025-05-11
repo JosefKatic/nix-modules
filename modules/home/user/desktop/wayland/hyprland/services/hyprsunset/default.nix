@@ -14,7 +14,7 @@ in {
         sunrise = {
           calendar = "*-*-* 07:00:00";
           requests = [
-            ["idenity"]
+            ["identity"]
           ];
         };
         sunset = {
