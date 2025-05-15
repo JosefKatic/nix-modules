@@ -48,20 +48,15 @@ in {
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
-        # start spotify in ws9
-        "workspace 9 silent, title:^(Spotify( Premium)?)$"
-
         # idle inhibit while watching videos
         "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
-        "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
-        "idleinhibit fullscreen, class:^(firefox)$"
+        "idleinhibit focus, class:^(firefox|zen|brave|chromium)$, title:^(.*YouTube.*)$"
+        "idleinhibit fullscreen, class:^(firefox|zen|brave|chromium)$"
 
         "dimaround, class:^(gcr-prompter)$"
 
         # fix xwayland apps
         "rounding 0, xwayland:1"
-        "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
-        "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
     };
   };
