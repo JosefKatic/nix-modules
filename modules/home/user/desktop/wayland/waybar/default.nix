@@ -265,6 +265,10 @@ in {
           "custom/tailscale-ping"
         ];
       };
+      tray = {
+        icon-size = 21;
+        spacing = 10;
+      };
     in {
       enable = true;
       package = pkgs.waybar.overrideAttrs (oa: {
@@ -284,6 +288,7 @@ in {
             "hyprland/workspaces"
           ];
           modules-right = [
+            "tray"
             "group/logo"
           ];
           clock = clockTime;
@@ -293,6 +298,7 @@ in {
           "custom/logo" = customLogo;
           "custom/version" = customVersion;
           "group/logo" = groupLogo;
+          "tray" = tray;
         };
         primary = {
           layer = "top";
