@@ -14,5 +14,15 @@ in {
     home.packages = [
       pkgs.proton-pass
     ];
+
+    wayland.windowManager.hyprland.settings = lib.mkIf cfgHyprland.enable {
+      bind = [
+        # Proton Mail
+        "ALT, P, togglespecialworkspace pass"
+      ];
+      exec-once = [
+        "[workspace special:pass silent] proton-pass"
+      ];
+    };
   };
 }

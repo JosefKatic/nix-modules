@@ -15,5 +15,15 @@ in {
       pkgs.protonmail-desktop
       pkgs.protonmail-bridge
     ];
+
+    wayland.windowManager.hyprland.settings = lib.mkIf cfgHyprland.enable {
+      bind = [
+        # Proton Mail
+        "ALT, E, togglespecialworkspace mail"
+      ];
+      exec-once = [
+        "[workspace special:mail silent] proton-mail"
+      ];
+    };
   };
 }
