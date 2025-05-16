@@ -92,10 +92,6 @@ in {
           "ALT, Print, exec, ${grimblast} --notify --cursor copysave screen"
           "$mod SHIFT ALT, R, exec, ${grimblast} --notify --cursor copysave screen"
 
-          # special workspace
-          "$mod SHIFT, grave, movetoworkspace, special"
-          "$mod, grave, togglespecialworkspace, eDP-1"
-
           # cycle workspaces
           "$mod, bracketleft, workspace, m-1"
           "$mod, bracketright, workspace, m+1"

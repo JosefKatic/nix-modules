@@ -19,7 +19,7 @@ in {
     wayland.windowManager.hyprland.settings = lib.mkIf cfgHyprland.enable {
       bind = [
         # YouTube Music
-        "ALT, M, togglespecialworkspace ytm"
+        "ALT, M, togglespecialworkspace, ytm"
       ];
       exec-once = [
         "[workspace special:ytm silent] youtube-music"
