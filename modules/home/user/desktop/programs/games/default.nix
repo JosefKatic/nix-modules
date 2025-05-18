@@ -1,3 +1,3 @@
 {
-  imports = [./persistence.nix ./lutris ./minecraft];
+  imports = [./communication ./persistence.nix ./lutris ./minecraft];
 }
