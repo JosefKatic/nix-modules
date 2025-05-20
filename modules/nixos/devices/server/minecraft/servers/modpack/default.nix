@@ -36,17 +36,20 @@ in {
     '';
     files = {
       config = "${modpack}/config";
+      "config/pcf-common.toml".value = {
+        forwardingSecret = "@VELOCITY_FORWARDING_SECRET@";
+      };
       defaultconfigs = "${modpack}/defaultconfigs";
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
         "server-icon.png" = "${modpack}/server-icon.png";
-        "mods/bungeeforge-1.20.1.jar" = pkgs.fetchurl rec {
-          pname = "bungeeforge";
-          version = "1.0.6";
-          url = "https://github.com/caunt/BungeeForge/releases/download/v${version}/bungeeforge-1.20.1.jar";
-          hash = "sha256-lXZ9m+YgKt59bFzugpTzrbq7EDixDQDpMzxZIgiZ/Ck=";
+        "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
+          pname = "proxy-compatible-forge";
+          version = "1.1.6";
+          url = "https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.6/${pname}-${version}.jar";
+          hash = "sha256-wimwdYrRTm9anbpu9IPkssQyuBvoTgaSiBY/IZlYNrk=";
         };
       };
   };

@@ -10,12 +10,6 @@
         echo 'huskchat reload' > /run/minecraft-server/proxy.stdin
       '';
       symlinks = {
-        "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
-          pname = "proxy-compatible-forge";
-          version = "1.1.6";
-          url = "https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.6/${pname}-${version}.jar";
-          hash = "sha256-wimwdYrRTm9anbpu9IPkssQyuBvoTgaSiBY/IZlYNrk=";
-        };
         "plugins/Ambassador" = pkgs.fetchurl rec {
           pname = "Ambassador";
           version = "1.4.5";
