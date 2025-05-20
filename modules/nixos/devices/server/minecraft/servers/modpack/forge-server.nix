@@ -1,10 +1,10 @@
 {pkgs, ...}: let
-  version = "1.20.1-47.4.0";
+  version = "1.20.1-47.3.25";
   installer = pkgs.fetchurl {
     pname = "forge-installer";
     inherit version;
     url = "https://maven.minecraftforge.net/net/minecraftforge/forge/${version}/forge-${version}-installer.jar";
-    hash = "sha256-8/V0ZeLL3DKBk/d7p/DJTLZEBfMe1VZ1PZJ16L3Abiw=";
+    hash = "sha256-gM+Ma/JtBLae4gq49dVGwNmvxIxwK92JDuJrWFU71QE=";
   };
   java = "${pkgs.jre8}/bin/java";
 in
