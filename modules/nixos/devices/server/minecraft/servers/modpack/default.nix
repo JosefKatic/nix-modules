@@ -3,7 +3,6 @@ inputs: {pkgs, ...}: let
   modpack = pkgs.fetchzip {
     url = "https://www.dropbox.com/scl/fi/gl27yxvdh7n18x4x72isd/majnr.zip?dl=1";
     hash = "sha256-JYoEZS7hknMZgt76qxB2UcVnahnxhd6IEFxRpnYlyGs=";
-    extension = "zip";
     stripRoot = false;
   };
 in {
