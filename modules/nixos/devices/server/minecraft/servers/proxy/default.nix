@@ -41,7 +41,7 @@ in {
           servers = {
             survival = "localhost:${toString servers.survival.serverProperties.server-port}";
             modpack = "localhost:${toString servers.modpack.serverProperties.server-port}";
-            try = ["survival"];
+            try = ["modpack" "survival"];
           };
           forced-hosts = {
             "survival.joka00.dev" = [

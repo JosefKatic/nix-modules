@@ -16,10 +16,11 @@ in {
     whitelist = import ../../whitelist.nix;
     serverProperties = {
       server-port = 25572;
-      online-mode = true;
+      online-mode = false;
       enable-rcon = true;
       white-list = true;
       gamemode = 0;
+      level-type = "skyblockbuilder:skyblock";
       difficulty = 2;
       max-players = 5;
       view-distance = 16;
