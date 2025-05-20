@@ -37,6 +37,12 @@
         };
       };
       files = {
+        "plugins/ambassador/Ambassador.toml".value = {
+          config-version = "1.1";
+          disconnect-reset-message = "&ePor favor, reconecte.";
+          silence-warnings = true;
+          server-switch-cancellation-time = 1200;
+        };
         "plugins/huskchat/config.yml".value = {
           config-version = 2;
           check_for_updates = false;
