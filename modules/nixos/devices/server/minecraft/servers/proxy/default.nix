@@ -36,17 +36,13 @@ in {
           player-info-forwarding-mode = "modern";
           forwarding-secret-file = "";
           forwarding-secret = "@VELOCITY_FORWARDING_SECRET@";
-          online-mode = true;
+          online-mode = false;
           show-max-players = 5;
           servers = {
-            survival = "localhost:${toString servers.survival.serverProperties.server-port}";
             modpack = "localhost:${toString servers.modpack.serverProperties.server-port}";
-            try = ["modpack" "survival"];
+            try = ["modpack"];
           };
           forced-hosts = {
-            "survival.joka00.dev" = [
-              "survival"
-            ];
             "modpack.joka00.dev" = [
               "modpack"
             ];
