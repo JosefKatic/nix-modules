@@ -4,7 +4,7 @@ inputs: {pkgs, ...}: let
     url = "https://www.dropbox.com/scl/fi/px5hckqfe4oigbxlklxmj/modpack.zip?rlkey=jrqfznnb18vnwripngn6sb3tf&st=88zf9cda&dl=1";
     name = "modpack.zip";
     extension = "zip";
-    hash = "sha256-fH3MoFXXICz2/62EsD7Ps0p7jAf7cl9hruxLBpIa80A=";
+    hash = "sha256-9SYlowLzV8F0YlahU1TjU0r5gb10QjSjlzOphBJEDk8=";
     stripRoot = false;
   };
 in {
