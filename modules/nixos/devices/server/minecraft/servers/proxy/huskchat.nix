@@ -10,6 +10,18 @@
         echo 'huskchat reload' > /run/minecraft-server/proxy.stdin
       '';
       symlinks = {
+        "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
+          pname = "proxy-compatible-forge";
+          version = "1.1.6";
+          url = "https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.6/${pname}-${version}.jar";
+          hash = "sha256-wimwdYrRTm9anbpu9IPkssQyuBvoTgaSiBY/IZlYNrk=";
+        };
+        "plugins/Ambassador" = pkgs.fetchurl rec {
+          pname = "Ambassador";
+          version = "1.4.5";
+          url = "https://github.com/adde0109/${pname}/releases/download/v${version}/${pname}-Velocity-${version}-all.jar";
+          hash = "sha256-fFemScOUhnLL7zWjuqj3OwRqxQnqj/pu4wCIkNNvLBc=";
+        };
         "plugins/HuskChat.jar" = pkgs.fetchurl rec {
           pname = "HuskChat";
           version = "3.0.4";
@@ -31,6 +43,9 @@
         };
       };
       files = {
+        "config/pcf-common.toml" = {
+          forwarding-secret = "@VELOCITY_FORWARDING_SECRET@";
+        };
         "plugins/huskchat/config.yml".value = {
           config-version = 2;
           check_for_updates = false;
