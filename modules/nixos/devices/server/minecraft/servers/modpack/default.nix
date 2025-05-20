@@ -49,7 +49,7 @@ in {
       };
   };
 
-  services.nginx.virtualHosts."skyblock.joka00.dev" = {
+  services.nginx.virtualHosts."modpack.joka00.dev" = {
     forceSSL = true;
     enableACME = true;
     locations."/" = {

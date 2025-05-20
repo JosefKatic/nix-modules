@@ -39,13 +39,16 @@ in {
           online-mode = true;
           show-max-players = 5;
           servers = {
-            # lobby = "localhost:${toString servers.lobby.serverProperties.server-port}";
             survival = "localhost:${toString servers.survival.serverProperties.server-port}";
+            modpack = "localhost:${toString servers.modpack.serverProperties.server-port}";
             try = ["survival"];
           };
           forced-hosts = {
             "survival.joka00.dev" = [
               "survival"
+            ];
+            "modpack.joka00.dev" = [
+              "modpack"
             ];
           };
           query = {
