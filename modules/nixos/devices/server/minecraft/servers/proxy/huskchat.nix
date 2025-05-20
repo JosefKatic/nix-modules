@@ -43,9 +43,6 @@
         };
       };
       files = {
-        "config/pcf-common.toml" = {
-          forwarding-secret = "@VELOCITY_FORWARDING_SECRET@";
-        };
         "plugins/huskchat/config.yml".value = {
           config-version = 2;
           check_for_updates = false;
