@@ -2,7 +2,7 @@ inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
     url = "https://www.curseforge.com/api/v1/mods/1228710/files/6348117/download";
-    hash = "sha256-vOnqZGdjw1JUK5IA6IX8FiyZQ3sZaHG8HsOzmoB4cH8=";
+    hash = "sha256-xCus2ND7Q1dt2v7GdX3Y/B1SdjtTQXx/vjkHKZE1rNk=";
     extension = "zip";
     stripRoot = false;
   };
