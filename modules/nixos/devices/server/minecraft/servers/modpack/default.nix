@@ -1,10 +1,10 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
-    url = "https://www.dropbox.com/scl/fi/px5hckqfe4oigbxlklxmj/modpack.zip?rlkey=jrqfznnb18vnwripngn6sb3tf&st=88zf9cda&dl=1";
+    url = "https://www.dropbox.com/scl/fi/a4muxvmzpf20kbo5ha5oh/modpack.zip?rlkey=73icq8etyhb5ccv76lapvv91j&st=y2k3r1de&dl=1";
     name = "modpack.zip";
     extension = "zip";
-    hash = "sha256-9SYlowLzV8F0YlahU1TjU0r5gb10QjSjlzOphBJEDk8=";
+    hash = "sha256-JnXNCUa0pSipkH4X6ztFmvOGxamEM3mAoFtflhQOmMQ=";
     stripRoot = false;
   };
 in {
@@ -35,12 +35,12 @@ in {
     '';
     files = {
       config = "${modpack}/config";
-      resourcepacks = "${modpack}/resourcepacks";
-      shaderpacks = "${modpack}/shaderpacks";
+      defaultconfigs = "${modpack}/defaultconfigs";
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
+        "server-icon.png" = "${modpack}/server-icon.png";
         "mods/bungeeforge-1.20.1.jar" = pkgs.fetchurl rec {
           pname = "bungeeforge";
           version = "1.0.6";
