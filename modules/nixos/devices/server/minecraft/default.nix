@@ -5,12 +5,13 @@ inputs: {
 }: {
   imports = let
     proxy = import ./servers/proxy inputs;
-    survival = import ./servers/survival inputs;
+    # survival = import ./servers/survival inputs;
     modpack = import ./servers/modpack inputs;
   in [
     proxy
-    survival
+    # survival
     modpack
+    limbo
     ./server.nix
   ];
 }
