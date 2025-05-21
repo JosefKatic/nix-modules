@@ -8,12 +8,6 @@ inputs: {pkgs, ...}: let
     stripRoot = false;
   };
   forgeServer = pkgs.callPackage ./forge-server.nix {};
-  forge = pkgs.fetchurl rec {
-    pname = "forge-installer";
-    version = "1.20.1-47.3.25";
-    url = "https://maven.minecraftforge.net/net/minecraftforge/forge/${version}/forge-${version}-installer.jar";
-    hash = "sha256-gM+Ma/JtBLae4gq49dVGwNmvxIxwK92JDuJrWFU71QE=";
-  };
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
@@ -51,7 +45,6 @@ in {
     symlinks =
       collectFilesAt modpack "mods"
       // {
-        "forge-1.20.1-47.3.25.jar" = forge;
         "server-icon.png" = "${modpack}/server-icon.png";
         "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
           pname = "proxy-compatible-forge";
