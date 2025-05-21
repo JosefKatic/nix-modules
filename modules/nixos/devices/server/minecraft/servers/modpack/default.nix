@@ -7,11 +7,12 @@ inputs: {pkgs, ...}: let
     hash = "sha256-JnXNCUa0pSipkH4X6ztFmvOGxamEM3mAoFtflhQOmMQ=";
     stripRoot = false;
   };
+  forgeServer = pkgs.callPackage ./forge-server.nix {};
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
     enableReload = true;
-    package = pkgs.callPackage ./forge-server.nix {};
+    package = forgeServer;
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
     serverProperties = {
@@ -44,6 +45,7 @@ in {
     symlinks =
       collectFilesAt modpack "mods"
       // {
+        "forge-1.20.1-47.3.25.jar" = forgeServer;
         "server-icon.png" = "${modpack}/server-icon.png";
         "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
           pname = "proxy-compatible-forge";

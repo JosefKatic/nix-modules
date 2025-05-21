@@ -21,6 +21,7 @@
       joinMessage.enable = false;
       bossBar.enable = false;
       title.enable = false;
+      secret = "@VELOCITY_FORWARDING_SECRET@";
       infoForwarding = {
         type = "MODERN";
       };
