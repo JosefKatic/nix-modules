@@ -1,6 +1,7 @@
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.device.server.minecraft.enable {

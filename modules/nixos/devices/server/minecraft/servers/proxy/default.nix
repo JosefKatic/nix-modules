@@ -1,7 +1,7 @@
 inputs: {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   servers = config.services.minecraft-servers.servers;
