@@ -7,12 +7,35 @@ inputs: {pkgs, ...}: let
     hash = "sha256-kNv/QO/VOm4/pMyFMA9yFgVIcoG8AkHBtTS7bBaJtdA=";
     stripRoot = false;
   };
-  forgeServer = pkgs.callPackage ./forge-server.nix {};
+
+  forge =
+    pkgs.runCommand "forge-1.20.1-47.3.25"
+    {
+      nativeBuildInputs = with pkgs; [
+        cacert
+        curl
+        jdk17_headless
+        strip-nondeterminism
+      ];
+
+      outputHashMode = "recursive";
+      outputHash = "sha256-jccxyIEU6KZGOQpLi6zf5rBXzFQ76mXdb9+cLTNLkVo=";
+    }
+    ''
+      mkdir -p "$out"
+      curl https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.25/forge-1.20.1-47.3.25-installer.jar -o ./installer.jar
+      java -jar ./installer.jar --installServer "$out"
+      strip-nondeterminism --type jar "$out/libraries/net/minecraft/server/1.20.1-20230612.114412/server-1.20.1-20230612.114412-srg.jar"
+    '';
+
+  minecraft-server = pkgs.writeShellScriptBin "minecraft-server" ''
+    exec ${pkgs.jre8}/bin/java $@ -jar ${forge}/forge-1.20.1-47.3.25.jar nogui
+  '';
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
     enableReload = true;
-    package = forgeServer;
+    package = minecraft-server;
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
     serverProperties = {
