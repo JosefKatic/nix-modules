@@ -1,10 +1,10 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
-    url = "https://www.dropbox.com/scl/fi/8xahcmw5mkhudef3n7xq2/modpack.zip?rlkey=ftqbhty2ur0t8y9yeohpsnxao&st=5lu1i0jk&dl=1";
+    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=w8z3lv8o&dl=1";
     name = "modpack.zip";
     extension = "zip";
-    hash = "sha256-qt98m/uIZpBhPbR1J7b7foDPud8aCa+my9Sozt5AEGQ=";
+    hash = "sha256-kNv/QO/VOm4/pMyFMA9yFgVIcoG8AkHBtTS7bBaJtdA=";
     stripRoot = false;
   };
   forgeServer = pkgs.callPackage ./forge-server.nix {};
