@@ -11,7 +11,7 @@ inputs: {
     proxy
     # survival
     modpack
-    limbo
+    ./limbo
     ./server.nix
   ];
 }
