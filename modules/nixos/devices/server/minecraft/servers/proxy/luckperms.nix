@@ -3,7 +3,28 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  gzipJson = {}: {
+    generate = name: value:
+      pkgs.callPackage (
+        {
+          runCommand,
+          gzip,
+        }:
+          runCommand name
+          {
+            nativeBuildInputs = [gzip];
+            value = builtins.toJSON value;
+            passAsFile = ["value"];
+          }
+          ''
+            gzip "$valuePath" -c > "$out"
+          ''
+      ) {};
+
+    type = (pkgs.formats.json {}).type;
+  };
+in {
   config = lib.mkIf config.device.server.minecraft.enable {
     services.minecraft-servers.servers.proxy = rec {
       extraStartPost = ''
@@ -21,7 +42,7 @@
             url = "https://download.luckperms.net/${build}/velocity/${pname}-Velocity-${version}.jar";
             hash = "sha256-vOT1XvFhUFTwTWajItvKyAmvcgMK0M/bneMaL+stlX4=";
           };
-        "plugins/luckperms/initial.json.gz".format = pkgs.formats.gzipJson {};
+        "plugins/luckperms/initial.json.gz".format = gzipJson {};
         "plugins/luckperms/initial.json.gz".value = let
           mkPermissions = lib.mapAttrsToList (key: value: {inherit key value;});
         in {
