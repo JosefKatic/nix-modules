@@ -41,11 +41,11 @@ in {
         forwardingSecret = "@VELOCITY_FORWARDING_SECRET@";
       };
       defaultconfigs = "${modpack}/defaultconfigs";
+      "forge-1.20.1-47.3.25.jar" = forgeServer;
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
-        "forge-1.20.1-47.3.25.jar" = forgeServer;
         "server-icon.png" = "${modpack}/server-icon.png";
         "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
           pname = "proxy-compatible-forge";
