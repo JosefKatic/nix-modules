@@ -45,7 +45,7 @@ in {
     symlinks =
       collectFilesAt modpack "mods"
       // {
-        "forge-1.20.1-47.3.25.jar" = pkgs.fetchurl {
+        "forge-1.20.1-47.3.25.jar" = pkgs.fetchurl rec {
           pname = "forge-installer";
           version = "1.20.1-47.3.25";
           url = "https://maven.minecraftforge.net/net/minecraftforge/forge/${version}/forge-${version}-installer.jar";
