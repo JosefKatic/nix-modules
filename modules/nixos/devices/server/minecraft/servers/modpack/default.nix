@@ -41,11 +41,16 @@ in {
         forwardingSecret = "@VELOCITY_FORWARDING_SECRET@";
       };
       defaultconfigs = "${modpack}/defaultconfigs";
-      "forge-1.20.1-47.3.25.jar" = forgeServer;
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
+        "forge-1.20.1-47.3.25.jar" = pkgs.fetchurl {
+          pname = "forge-installer";
+          version = "1.20.1-47.3.25";
+          url = "https://maven.minecraftforge.net/net/minecraftforge/forge/${version}/forge-${version}-installer.jar";
+          hash = "sha256-gM+Ma/JtBLae4gq49dVGwNmvxIxwK92JDuJrWFU71QE=";
+        };
         "server-icon.png" = "${modpack}/server-icon.png";
         "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
           pname = "proxy-compatible-forge";
