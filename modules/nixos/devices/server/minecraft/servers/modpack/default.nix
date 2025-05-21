@@ -19,7 +19,7 @@ inputs: {pkgs, ...}: let
       ];
 
       outputHashMode = "recursive";
-      outputHash = "sha256-jccxyIEU6KZGOQpLi6zf5rBXzFQ76mXdb9+cLTNLkVo=";
+      outputHash = "sha256-SMm/+ayRq0THavYWqwt9+Tod2ADJvdMB8QC3tQ/jR5c=";
     }
     ''
       mkdir -p "$out"
