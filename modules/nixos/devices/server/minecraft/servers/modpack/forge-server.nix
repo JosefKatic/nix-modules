@@ -6,7 +6,7 @@
     url = "https://maven.minecraftforge.net/net/minecraftforge/forge/${version}/forge-${version}-installer.jar";
     hash = "sha256-gM+Ma/JtBLae4gq49dVGwNmvxIxwK92JDuJrWFU71QE=";
   };
-  java = "${pkgs.temurin-jre-bin-17}/bin/java";
+  java = "${pkgs.jdk17_headless}/bin/java";
 in
   pkgs.writeShellScriptBin "server" ''
     if ! [ -e "forge-${version}.jar" ]; then
