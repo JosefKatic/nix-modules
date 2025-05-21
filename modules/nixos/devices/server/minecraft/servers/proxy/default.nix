@@ -7,14 +7,14 @@ inputs: {
   servers = config.services.minecraft-servers.servers;
   proxyFlags = memory: "-Xms${memory} -Xmx${memory} -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15";
 in {
+  imports = [
+    ./huskchat.nix
+    ./fallbackserver.nix
+    ./librelogin.nix
+    ./luckperms.nix
+    ./velocitab.nix
+  ];
   config = lib.mkIf config.device.server.minecraft.enable {
-    imports = [
-      ./huskchat.nix
-      ./fallbackserver.nix
-      ./librelogin.nix
-      ./luckperms.nix
-      ./velocitab.nix
-    ];
     networking.firewall = {
       allowedTCPPorts = [25565];
       allowedUDPPorts = [25565 24454];
