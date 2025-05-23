@@ -6,7 +6,7 @@ inputs: {pkgs, ...}: let
     extension = "mrpack";
     sha256 = "sha256-1XxZ15LWWILICGE+s9kDedkMijzilLo/LWtu3E+nAHo=";
   };
-  modpack = pkgs.runCommand "install-modpack" ''
+  modpack = pkgs.runCommand "install-modpack" {} ''
     mkdir -p $out
     ${pkgs.mrpack-install}/bin/mrpack-install ${mrpackSource} --server-dir "$out"
   '';
