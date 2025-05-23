@@ -46,10 +46,10 @@ in {
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
-        "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
+        "mods/bungeeforge" = pkgs.fetchurl rec {
           pname = "bungeeforge";
           version = "1.0.6";
-          url = "https://github.com/caunt/${name}/releases/download/v${version}/${name}-1.20.1.jar";
+          url = "https://github.com/caunt/${pname}/releases/download/v${version}/${pname}-1.20.1.jar";
           hash = "sha256-lXZ9m+YgKt59bFzugpTzrbq7EDixDQDpMzxZIgiZ/Ck=";
         };
       };
