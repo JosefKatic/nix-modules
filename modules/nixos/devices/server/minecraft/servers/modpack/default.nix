@@ -32,10 +32,10 @@ in {
       "rcon.port" = 24472;
     };
 
-    # files = {
-    #   config = "${modpack}/config";
-    #   defaultconfigs = "${modpack}/defaultconfigs";
-    # };
+    files = {
+      config = "${modpack}/config";
+      defaultconfigs = "${modpack}/defaultconfigs";
+    };
     # symlinks =
     #   collectFilesAt modpack "mods"
     #   // {
