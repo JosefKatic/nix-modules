@@ -44,6 +44,17 @@ in {
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
+        "mods/BlueMap.jar" = pkgs.fetchurl rec {
+          url = "https://cdn.modrinth.com/data/swbUV1cr/versions/gPUpIIVC/bluemap-5.7-forge.jar";
+          hash = "sha256-15aYx+N2a5eJtuc/CtUg8yFvpQRnWkNBxC+Rg3z1xD4=";
+        };
       };
+    services.nginx.virtualHosts."modpack.joka00.dev" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8100";
+      };
+    };
   };
 }
