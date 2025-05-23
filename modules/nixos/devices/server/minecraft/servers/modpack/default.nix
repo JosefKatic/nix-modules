@@ -9,18 +9,19 @@ inputs: {pkgs, ...}: let
   forge = pkgs.callPackage ./forge.nix {inherit pkgs;};
   forgeServer = pkgs.callPackage ./forge-server.nix {inherit pkgs forge;};
 in {
+  networking.firewall = {
+    allowedTCPPorts = [25572 24454];
+    allowedUDPPorts = [25572 24454];
+  };
   services.minecraft-servers.servers.modpack = {
     enable = true;
     enableReload = true;
     package = forgeServer;
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
-    extraStartPre = ''
-      rm mods/connectivity*.jar
-    '';
     serverProperties = {
       server-port = 25572;
-      online-mode = false;
+      online-mode = true;
       enable-rcon = true;
       white-list = true;
       gamemode = 0;
@@ -38,20 +39,11 @@ in {
       defaultconfigs = "${modpack}/defaultconfigs";
       kubejs = "${modpack}/kubejs";
       modernfix = "${modpack}/modernfix";
-      "config/pcf-common.toml".value = {
-        forwardingSecret = "@VELOCITY_FORWARDING_SECRET@";
-      };
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
-        "mods/bungeeforge" = pkgs.fetchurl rec {
-          pname = "bungeeforge";
-          version = "1.0.6";
-          url = "https://github.com/caunt/${pname}/releases/download/v${version}/${pname}-1.20.1.jar";
-          hash = "sha256-lXZ9m+YgKt59bFzugpTzrbq7EDixDQDpMzxZIgiZ/Ck=";
-        };
       };
   };
 }
