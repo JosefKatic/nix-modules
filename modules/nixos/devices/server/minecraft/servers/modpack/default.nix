@@ -1,18 +1,18 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
-    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=tlrbli9z&dl=1";
-    hash = "sha256-nxU7SLWrIxZBvZaLNFesjPZFU9fHWnoWPob7oqULLMQ=";
-    name = "modpack";
+    url = "https://curseforge.com/api/v1/mods/1178965/files/6556641/download";
+    hash = "sha256-c8EBKJJKGLgNqgdj39Roqdn3uzooAx81MUqMULawAIE=";
     extension = "zip";
     stripRoot = false;
   };
-  fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
+  forge = pkgs.callPackage ./forge.nix {inherit pkgs;};
+  forgeServer = pkgs.callPackage ./forge-server.nix {inherit pkgs forge;};
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
     enableReload = true;
-    package = fabricServer;
+    package = forgeServer;
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
     serverProperties = {
@@ -32,18 +32,14 @@ in {
 
     files = {
       config = "${modpack}/config";
+      defaultconfigs = "${modpack}/defaultconfigs";
+      kubejs = "${modpack}/kubejs";
+      modernfix = "${modpack}/modernfix";
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
-        resourcepacks = "${modpack}/resourcepacks";
-        shaderpacks = "${modpack}/shaderpacks";
-        "mods/towns-and-towers.jar" = pkgs.fetchurl {
-          url = "https://cdn.modrinth.com/data/DjLobEOy/versions/7ZwnSrVW/Towns-and-Towers-1.12-Fabric%2BForge.jar";
-          name = "towns-and-towers";
-          hash = "sha256-nIEVr3EJV52pkCSf3WezgyOkW+cPijqWK2HaaccCGYQ='";
-        };
       };
   };
 }
