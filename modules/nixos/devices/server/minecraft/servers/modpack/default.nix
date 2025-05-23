@@ -1,17 +1,11 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
-  modpack = pkgs.fetchzip {
-    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=w8z3lv8o&dl=1";
-    name = "modpack.zip";
-    extension = "zip";
-    hash = "sha256-kNv/QO/VOm4/pMyFMA9yFgVIcoG8AkHBtTS7bBaJtdA=";
-    stripRoot = false;
-  };
+  modpack = pkgs.callPackage ./mrpack.nix {};
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
     enableReload = true;
-    package = pkgs.callPackage ./forge-server.nix {};
+    package = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
     serverProperties = {
@@ -20,7 +14,7 @@ in {
       enable-rcon = true;
       white-list = true;
       gamemode = 0;
-      level-type = "skyblockbuilder:skyblock";
+      level-type = "biomesoplenty";
       difficulty = 2;
       max-players = 5;
       view-distance = 16;
@@ -30,26 +24,30 @@ in {
       "rcon.port" = 24472;
     };
 
-    # Conflicts with bungeeforge
-    extraStartPre = ''
-      rm mods/connectivity*.jar
-    '';
     files = {
       config = "${modpack}/config";
-      "config/pcf-common.toml".value = {
-        forwardingSecret = "@VELOCITY_FORWARDING_SECRET@";
-      };
       defaultconfigs = "${modpack}/defaultconfigs";
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
-        "server-icon.png" = "${modpack}/server-icon.png";
-        "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
-          pname = "proxy-compatible-forge";
-          version = "1.1.6";
-          url = "https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.6/${pname}-${version}.jar";
-          hash = "sha256-wimwdYrRTm9anbpu9IPkssQyuBvoTgaSiBY/IZlYNrk=";
+        "mods/towns-and-towers.jar" = pkgs.fetchurl {
+          url = "https://cdn.modrinth.com/data/DjLobEOy/versions/7ZwnSrVW/Towns-and-Towers-1.12-Fabric%2BForge.jar";
+          name = "towns-and-towers";
+          extension = "jar";
+          hash = "sha256-nIEVr3EJV52pkCSf3WezgyOkW+cPijqWK2HaaccCGYQ='";
+        };
+        "mods/tectonic.jar" = pkgs.fetchurl {
+          url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/SWDOp7uu/tectonic-3.0.0%2Bbeta4.jar";
+          name = "tectonic-3.0.0.beta4";
+          extension = "jar";
+          hash = "sha256-4IOczEPzaviDGZTlnA29ohRDsNI3j/bDRnEIx5C3cG4=";
+        };
+        "mods/terralith.jar" = pkgs.fetchurl {
+          url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar";
+          name = "terralith_v2.5.4";
+          extension = "jar";
+          hash = "ha256-j2XzCdjycjdUv0tgx7V2PTq27QSwHBchCbplZOmBuV8=";
         };
       };
   };
