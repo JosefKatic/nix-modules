@@ -5,15 +5,16 @@ inputs: {pkgs, ...}: let
     name = "create-and-explore";
     sha256 = "sha256-1XxZ15LWWILICGE+s9kDedkMijzilLo/LWtu3E+nAHo=";
   };
+  fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
   modpack = pkgs.runCommand "install-modpack" {} ''
     mkdir -p $out
-    ${pkgs.mrpack-install}/bin/mrpack-install ${mrpackSource} --server-dir "$out"
+    ${pkgs.mrpack-install}/bin/mrpack-install ${mrpackSource} --server-dir "$out" --server-file ${fabricServer}
   '';
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
     enableReload = true;
-    package = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
+    package = fabricServer;
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
     serverProperties = {
