@@ -1,4 +1,5 @@
 {
+  lib,
   stdenv,
   fetchurl,
   mrpack-install,
@@ -20,10 +21,9 @@ stdenv.mkDerivation rec {
 
   '';
 
-  meta = with stdenv.lib; {
+  meta = {
     description = "Minecraft server/modpack installed using mrpack-install";
-    license = licenses.mit;
-    maintainers = with maintainers; [];
-    platforms = platforms.linux;
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [];
   };
 }
