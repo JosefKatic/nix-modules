@@ -53,7 +53,7 @@ in {
         "mods/terralith.jar" = pkgs.fetchurl {
           url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar";
           name = "terralith_v2.5.4";
-          hash = "ha256-j2XzCdjycjdUv0tgx7V2PTq27QSwHBchCbplZOmBuV8=";
+          hash = "sha256-j2XzCdjycjdUv0tgx7V2PTq27QSwHBchCbplZOmBuV8=";
         };
       };
   };
