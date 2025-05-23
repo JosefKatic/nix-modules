@@ -49,12 +49,12 @@ in {
           hash = "sha256-15aYx+N2a5eJtuc/CtUg8yFvpQRnWkNBxC+Rg3z1xD4=";
         };
       };
-    services.nginx.virtualHosts."modpack.joka00.dev" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/" = {
-        proxyPass = "http://localhost:8100";
-      };
+  };
+  services.nginx.virtualHosts."modpack.joka00.dev" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/" = {
+      proxyPass = "http://localhost:8100";
     };
   };
 }
