@@ -60,6 +60,14 @@ in {
           };
         };
       };
+      symlinks = {
+        "plugins/Ambassador-Velocity.jar" = pkgs.fetchurl rec {
+          pname = "Ambassador";
+          version = "1.4.5";
+          url = "https://github.com/adde0109/Ambassador/releases/download/v${version}/Ambassador-Velocity-${version}-all.jar";
+          hash = "sha256-fFemScOUhnLL7zWjuqj3OwRqxQnqj/pu4wCIkNNvLBc=";
+        };
+      };
     };
   };
 }
