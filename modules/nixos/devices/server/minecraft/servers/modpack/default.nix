@@ -11,7 +11,7 @@ inputs: {pkgs, ...}: let
       };
     } ''
       mkdir -p $out
-      mrpack-install ${src} --server-dir "$out"
+      mrpack-install $src --server-dir "$out"
     '';
 in {
   services.minecraft-servers.servers.modpack = {
