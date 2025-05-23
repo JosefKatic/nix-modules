@@ -5,6 +5,7 @@ inputs: {pkgs, ...}: let
     name = "create-and-explore";
     extension = "zip";
     hash = "sha256-9PBKETqcE3iMbZEPCgMS2ZFWusxrW3ppO5MH10Ld7Kk=";
+    stripRoot = false;
   };
   fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
 in {
@@ -31,11 +32,14 @@ in {
 
     files = {
       config = "${modpack}/config";
+      global_packs = "${modpack}/global_packs";
       defaultconfigs = "${modpack}/defaultconfigs";
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
+        resourcepacks = "${modpack}/resourcepacks";
+        shaderpacks = "${modpack}/shaderpacks";
         "mods/towns-and-towers.jar" = pkgs.fetchurl {
           url = "https://cdn.modrinth.com/data/DjLobEOy/versions/7ZwnSrVW/Towns-and-Towers-1.12-Fabric%2BForge.jar";
           name = "towns-and-towers";
