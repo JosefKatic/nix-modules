@@ -15,6 +15,9 @@ in {
     package = forgeServer;
     jvmOpts = (import ../../flags.nix) "8G";
     whitelist = import ../../whitelist.nix;
+    extraStartPre = ''
+      rm mods/connectivity*.jar
+    '';
     serverProperties = {
       server-port = 25572;
       online-mode = false;

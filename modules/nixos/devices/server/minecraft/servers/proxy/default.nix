@@ -16,7 +16,7 @@ in {
   ];
   config = lib.mkIf config.device.server.minecraft.enable {
     networking.firewall = {
-      allowedTCPPorts = [25565];
+      allowedTCPPorts = [25565 24454];
       allowedUDPPorts = [25565 24454];
     };
 
@@ -30,7 +30,6 @@ in {
 
       package = inputs.nix-minecraft.packages.${pkgs.system}.velocity-server; # Latest build
       jvmOpts = proxyFlags "1G";
-
       files = {
         "velocity.toml".value = {
           config-version = "2.5";
