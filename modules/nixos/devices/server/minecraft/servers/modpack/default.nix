@@ -45,8 +45,8 @@ in {
       // {
         global_packs = "${modpack}/global_packs";
         "mods/BlueMap.jar" = pkgs.fetchurl rec {
-          url = "https://cdn.modrinth.com/data/swbUV1cr/versions/gPUpIIVC/bluemap-5.7-forge.jar";
-          hash = "sha256-15aYx+N2a5eJtuc/CtUg8yFvpQRnWkNBxC+Rg3z1xD4=";
+          url = "https://cdn.modrinth.com/data/swbUV1cr/versions/aHbq9KFB/BlueMap-5.3-forge-1.20.jar";
+          hash = "sha256-p4+Q4Auy8zMrwEXKJ3BTquay6mdtnTInE8u9wFjwBMU=";
         };
       };
   };
