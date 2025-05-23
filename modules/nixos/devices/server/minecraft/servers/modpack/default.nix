@@ -1,8 +1,8 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
-    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=iz256o9y&dl=1";
-    hash = "sha256-9PBKETqcE3iMbZEPCgMS2ZFWusxrW3ppO5MH10Ld7Kk=";
+    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=nwdyj7ym&dl=1";
+    hash = "sha256-BX7m3OWiWIAjTR7zYuygae/L0nURZj8KF2XHFO4qSh0=";
     name = "modpack";
     extension = "zip";
     stripRoot = false;
