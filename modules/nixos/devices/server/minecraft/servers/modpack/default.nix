@@ -1,13 +1,13 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
-    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=nwdyj7ym&dl=1";
-    hash = "sha256-BX7m3OWiWIAjTR7zYuygae/L0nURZj8KF2XHFO4qSh0=";
+    url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=tlrbli9z&dl=1";
+    hash = "sha256-nxU7SLWrIxZBvZaLNFesjPZFU9fHWnoWPob7oqULLMQ=";
     name = "modpack";
     extension = "zip";
     stripRoot = false;
   };
-  fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.16.10";};
+  fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
@@ -43,16 +43,6 @@ in {
           url = "https://cdn.modrinth.com/data/DjLobEOy/versions/7ZwnSrVW/Towns-and-Towers-1.12-Fabric%2BForge.jar";
           name = "towns-and-towers";
           hash = "sha256-nIEVr3EJV52pkCSf3WezgyOkW+cPijqWK2HaaccCGYQ='";
-        };
-        "mods/tectonic.jar" = pkgs.fetchurl {
-          url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/SWDOp7uu/tectonic-3.0.0%2Bbeta4.jar";
-          name = "tectonic-3.0.0.beta4";
-          hash = "sha256-4IOczEPzaviDGZTlnA29ohRDsNI3j/bDRnEIx5C3cG4=";
-        };
-        "mods/terralith.jar" = pkgs.fetchurl {
-          url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar";
-          name = "terralith_v2.5.4";
-          hash = "sha256-j2XzCdjycjdUv0tgx7V2PTq27QSwHBchCbplZOmBuV8=";
         };
       };
   };
