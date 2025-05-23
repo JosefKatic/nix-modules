@@ -47,10 +47,10 @@ in {
       // {
         global_packs = "${modpack}/global_packs";
         "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
-          pname = "proxy-compatible-forge";
-          version = "1.1.6";
-          url = "https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.6/${pname}-${version}.jar";
-          hash = "sha256-wimwdYrRTm9anbpu9IPkssQyuBvoTgaSiBY/IZlYNrk=";
+          pname = "bungeeforge";
+          version = "1.0.6";
+          url = "https://github.com/caunt/${name}/releases/download/v${version}/${name}-1.20.1.jar";
+          hash = "sha256-lXZ9m+YgKt59bFzugpTzrbq7EDixDQDpMzxZIgiZ/Ck=";
         };
       };
   };

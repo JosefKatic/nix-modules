@@ -22,7 +22,6 @@ in {
 
     services.minecraft-servers.servers.proxy = {
       enable = true;
-
       enableReload = true;
       extraReload = ''
         echo 'velocity reload' > /run/minecraft-server/proxy.stdin
@@ -35,11 +34,11 @@ in {
           config-version = "2.5";
           bind = "0.0.0.0:25565";
           motd = "JZSM";
-          player-info-forwarding-mode = "modern";
-          forwarding-secret-file = "";
-          forwarding-secret = "@VELOCITY_FORWARDING_SECRET@";
-          online-mode = false;
+          # player-info-forwarding-mode = "modern";
+          # forwarding-secret = "@VELOCITY_FORWARDING_SECRET@";
+          online-mode = true;
           show-max-players = 5;
+          player-info-forwarding-mode = "legacy";
           servers = {
             limbo = "localhost:${toString servers.limbo.files."settings.yml".value.bind.port}";
             auth = "localhost:${toString servers.limbo.files."settings.yml".value.bind.port}";
@@ -59,14 +58,6 @@ in {
           advanced = {
             login-ratelimite = 500;
           };
-        };
-      };
-      symlinks = {
-        "plugins/Ambassador-Velocity.jar" = pkgs.fetchurl rec {
-          pname = "Ambassador";
-          version = "1.4.5";
-          url = "https://github.com/adde0109/Ambassador/releases/download/v${version}/Ambassador-Velocity-${version}-all.jar";
-          hash = "sha256-fFemScOUhnLL7zWjuqj3OwRqxQnqj/pu4wCIkNNvLBc=";
         };
       };
     };

@@ -22,8 +22,7 @@
       bossBar.enable = false;
       title.enable = false;
       infoForwarding = {
-        type = "MODERN";
-        secret = "@VELOCITY_FORWARDING_SECRET@";
+        type = "LEGACY";
       };
       readTimeout = 30000;
       debugLevel = 2;
