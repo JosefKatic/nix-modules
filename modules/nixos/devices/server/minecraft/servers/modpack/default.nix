@@ -32,12 +32,11 @@ in {
 
     files = {
       config = "${modpack}/config";
-      global_packs = "${modpack}/global_packs";
-      defaultconfigs = "${modpack}/defaultconfigs";
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
+        global_packs = "${modpack}/global_packs";
         resourcepacks = "${modpack}/resourcepacks";
         shaderpacks = "${modpack}/shaderpacks";
         "mods/towns-and-towers.jar" = pkgs.fetchurl {
