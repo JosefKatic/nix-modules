@@ -35,11 +35,20 @@ in {
       defaultconfigs = "${modpack}/defaultconfigs";
       kubejs = "${modpack}/kubejs";
       modernfix = "${modpack}/modernfix";
+      "config/pcf-common.toml".value = {
+        forwardingSecret = "@VELOCITY_FORWARDING_SECRET@";
+      };
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
+        "mods/proxy-compatible-forge" = pkgs.fetchurl rec {
+          pname = "proxy-compatible-forge";
+          version = "1.1.6";
+          url = "https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.6/${pname}-${version}.jar";
+          hash = "sha256-wimwdYrRTm9anbpu9IPkssQyuBvoTgaSiBY/IZlYNrk=";
+        };
       };
   };
 }
