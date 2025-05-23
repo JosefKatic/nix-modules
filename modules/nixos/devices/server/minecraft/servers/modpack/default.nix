@@ -7,7 +7,7 @@ inputs: {pkgs, ...}: let
     extension = "zip";
     stripRoot = false;
   };
-  fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
+  fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.16.10";};
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
