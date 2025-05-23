@@ -2,9 +2,9 @@ inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchzip {
     url = "https://www.dropbox.com/scl/fi/lj7j77yt851h5vkq9ezln/modpack.zip?rlkey=xxoqjorlxuv04an7mznqavv8i&st=iz256o9y&dl=1";
-    name = "create-and-explore";
-    extension = "zip";
     hash = "sha256-9PBKETqcE3iMbZEPCgMS2ZFWusxrW3ppO5MH10Ld7Kk=";
+    name = "modpack";
+    extension = "zip";
     stripRoot = false;
   };
   fabricServer = inputs.nix-minecraft.legacyPackages.${pkgs.system}.fabricServers.fabric-1_20_1.override {loaderVersion = "0.15.6";};
