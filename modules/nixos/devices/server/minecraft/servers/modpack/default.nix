@@ -43,19 +43,16 @@ in {
         "mods/towns-and-towers.jar" = pkgs.fetchurl {
           url = "https://cdn.modrinth.com/data/DjLobEOy/versions/7ZwnSrVW/Towns-and-Towers-1.12-Fabric%2BForge.jar";
           name = "towns-and-towers";
-          extension = "jar";
           hash = "sha256-nIEVr3EJV52pkCSf3WezgyOkW+cPijqWK2HaaccCGYQ='";
         };
         "mods/tectonic.jar" = pkgs.fetchurl {
           url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/SWDOp7uu/tectonic-3.0.0%2Bbeta4.jar";
           name = "tectonic-3.0.0.beta4";
-          extension = "jar";
           hash = "sha256-4IOczEPzaviDGZTlnA29ohRDsNI3j/bDRnEIx5C3cG4=";
         };
         "mods/terralith.jar" = pkgs.fetchurl {
           url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar";
           name = "terralith_v2.5.4";
-          extension = "jar";
           hash = "ha256-j2XzCdjycjdUv0tgx7V2PTq27QSwHBchCbplZOmBuV8=";
         };
       };
