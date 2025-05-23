@@ -1,18 +1,15 @@
 inputs: {pkgs, ...}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
-  modpack =
-    pkgs.runCommand "install-modpack" {
-      buildInputs = [pkgs.mrpack-install];
-      src = pkgs.fetchurl {
-        url = "https://cdn.modrinth.com/data/TK1lQFH6/versions/PXU2pZT5/Create%20%26%20Explore%20-%20pre2.1.0.mrpack";
-        name = "create-and-explore";
-        extension = "mrpack";
-        sha256 = "sha256-1XxZ15LWWILICGE+s9kDedkMijzilLo/LWtu3E+nAHo=";
-      };
-    } ''
-      mkdir -p $out
-      mrpack-install $src --server-dir "$out"
-    '';
+  mrpackSource = pkgs.fetchurl {
+    url = "https://cdn.modrinth.com/data/TK1lQFH6/versions/PXU2pZT5/Create%20%26%20Explore%20-%20pre2.1.0.mrpack";
+    name = "create-and-explore";
+    extension = "mrpack";
+    sha256 = "sha256-1XxZ15LWWILICGE+s9kDedkMijzilLo/LWtu3E+nAHo=";
+  };
+  modpack = pkgs.runCommand "install-modpack" ''
+    mkdir -p $out
+    ${pkgs.mrpack-install}/bin/mrpack-install ${mrpackSource} --server-dir "$out"
+  '';
 in {
   services.minecraft-servers.servers.modpack = {
     enable = true;
