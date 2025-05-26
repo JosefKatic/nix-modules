@@ -39,16 +39,16 @@ in {
       defaultconfigs = "${modpack}/defaultconfigs";
       kubejs = "${modpack}/kubejs";
       modernfix = "${modpack}/modernfix";
+      "world/datapacks/sleep.zip" = pkgs.fetchurl rec {
+        name = "sleep";
+        url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/pw8ctTLy/Sleep-%5B1.20.1%5D-v.2.1.2.zip";
+        hash = "sha256-x7W6lc6Z6WgROlI7Zuu6vyv8N0F+sjQaGFsMGfK0rjI=";
+      };
     };
     symlinks =
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
-        "world/datapacks/sleep.zip" = pkgs.fetchurl rec {
-          name = "sleep";
-          url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/pw8ctTLy/Sleep-%5B1.20.1%5D-v.2.1.2.zip";
-          hash = "sha256-x7W6lc6Z6WgROlI7Zuu6vyv8N0F+sjQaGFsMGfK0rjI=";
-        };
         "mods/BlueMap.jar" = pkgs.fetchurl rec {
           url = "https://cdn.modrinth.com/data/swbUV1cr/versions/aHbq9KFB/BlueMap-5.3-forge-1.20.jar";
           hash = "sha256-p4+Q4Auy8zMrwEXKJ3BTquay6mdtnTInE8u9wFjwBMU=";
