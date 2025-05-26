@@ -49,10 +49,6 @@ in {
           url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/R5tblQON/sleep-v.2.1.2.jar";
           hash = "sha256-9ykEnw0qtvhfkHpD299KHEKCjvLRJaJ95Y9rShRQl1c=";
         };
-        "mods/BlueMap.jar" = pkgs.fetchurl rec {
-          url = "https://cdn.modrinth.com/data/swbUV1cr/versions/aHbq9KFB/BlueMap-5.3-forge-1.20.jar";
-          hash = "sha256-p4+Q4Auy8zMrwEXKJ3BTquay6mdtnTInE8u9wFjwBMU=";
-        };
       };
   };
   services.nginx.virtualHosts."modpack.joka00.dev" = {
