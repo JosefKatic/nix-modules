@@ -17,7 +17,7 @@ in {
     enable = true;
     enableReload = true;
     package = forgeServer;
-    jvmOpts = (import ../../flags.nix) "8G";
+    jvmOpts = (import ../../flags.nix) "16G";
     whitelist = import ../../whitelist.nix;
     serverProperties = {
       server-port = 25572;
