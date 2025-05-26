@@ -44,10 +44,10 @@ in {
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
-        "world/datapacks/sleep.zip" = pkgs.fetchurl rec {
+        "modpacks/sleep.jar" = pkgs.fetchurl rec {
           name = "sleep";
-          url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/pw8ctTLy/Sleep-%5B1.20.1%5D-v.2.1.2.zip";
-          hash = "sha256-x7W6lc6Z6WgROlI7Zuu6vyv8N0F+sjQaGFsMGfK0rjI=";
+          url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/R5tblQON/sleep-v.2.1.2.jar";
+          hash = "sha256-9ykEnw0qtvhfkHpD299KHEKCjvLRJaJ95Y9rShRQl1c=";
         };
         "mods/BlueMap.jar" = pkgs.fetchurl rec {
           url = "https://cdn.modrinth.com/data/swbUV1cr/versions/aHbq9KFB/BlueMap-5.3-forge-1.20.jar";
