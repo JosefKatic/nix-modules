@@ -44,7 +44,7 @@ in {
       collectFilesAt modpack "mods"
       // {
         global_packs = "${modpack}/global_packs";
-        "datapacks/sleep.zip" = pkgs.fetchurl rec {
+        "world/datapacks/sleep.zip" = pkgs.fetchurl rec {
           name = "sleep";
           url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/pw8ctTLy/Sleep-%5B1.20.1%5D-v.2.1.2.zip";
           hash = "sha256-x7W6lc6Z6WgROlI7Zuu6vyv8N0F+sjQaGFsMGfK0rjI=";
