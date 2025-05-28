@@ -8,4 +8,5 @@ pkgs.lib.listToAttrs (
       url = "https://i.imgur.com/${wallpaper.id}.${wallpaper.ext}";
     };
   }) (pkgs.lib.importJSON ./list.json)
+  // pkgs.nixos-artwork.wallpapers
 )
