@@ -8,5 +8,11 @@ pkgs.lib.listToAttrs (
       url = "https://i.imgur.com/${wallpaper.id}.${wallpaper.ext}";
     };
   }) (pkgs.lib.importJSON ./list.json)
-  // pkgs.nixos-artwork.wallpapers
 )
+// {
+  binary-black = fetchurl {
+    name = "binary-black.png";
+    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/8957e93c95867faafec7f9988cedddd6837859fa/wallpapers/nix-wallpaper-binary-black.png";
+    hash = "sha256-mhSh0wz2ntH/kri3PF5ZrFykjjdQLhmlIlDDGFQIYWw=";
+  };
+}
