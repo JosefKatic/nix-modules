@@ -22,7 +22,7 @@ in {
         default =
           if config.theme.wallpaper != null
           then config.theme.wallpaper
-          else "#2B3975";
+          else "#FFFFFF";
       };
       mode = mkOption {
         type = types.enum ["dark" "light"];
