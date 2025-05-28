@@ -58,7 +58,7 @@ in {
         color14 = "${colors.cyan_source}";
         color15 = "${colors.surface_dim}";
         color16 = "${colors.orange_source}";
-        color17 = "${colors.error_source}";
+        color17 = "${colors.error}";
         color18 = "${colors.surface_bright}";
         color19 = "${colors.surface_container}";
         color20 = "${colors.on_surface_variant}";
