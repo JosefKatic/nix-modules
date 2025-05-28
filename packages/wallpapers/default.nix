@@ -10,7 +10,7 @@ pkgs.lib.listToAttrs (
   }) (pkgs.lib.importJSON ./list.json)
 )
 // {
-  binary-black = fetchurl {
+  binary-black = pkgs.fetchurl {
     name = "binary-black.png";
     url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/8957e93c95867faafec7f9988cedddd6837859fa/wallpapers/nix-wallpaper-binary-black.png";
     hash = "sha256-mhSh0wz2ntH/kri3PF5ZrFykjjdQLhmlIlDDGFQIYWw=";
