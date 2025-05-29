@@ -1,26 +1,38 @@
 [
   {
-    "ext": "png",
-    "id": "6ybrgdj",
+    "url": "https://i.imgur.com/6ybrgdj.png",
     "name": "astronaut-minimalism",
-    "sha256": "0i5qjbz5ln1n9488yi81p4xr87w5ivmj8kmw7da69gw4l34z5zna"
+    "ext": "png",
+    "hash": "sha256-yv7yyaCEv2RUO7xOJOuOhR+UO7kBRY8QSTZYWv6SuEQ="
   },
   {
-    "ext": "jpeg",
-    "id": "u2T7X4I",
+    "url": "https://i.imgur.com/u2T7X4I.jpeg",
     "name": "watercolor-beach",
-    "sha256": "00kcswwv9p14vs7ym0fmanzv8729i1gagk6gpl42icd93mmhlmd4"
+    "ext": "jpeg",
+    "hash": "sha256-pFUKax2psSgIvc/Mp16ISRy0v1XVgeqP3iTctDnXbAI="
   },
   {
-    "ext": "jpeg",
-    "id": "1ES3hPX",
+    "url": "https://i.imgur.com/1ES3hPX.jpeg",
     "name": "stone-on-beach",
-    "sha256": "1gkldr9c7758mdjqv8c6whvv7gws38g05c8421b8lkmxb2mhxqgl"
+    "ext": "jpeg",
+    "hash": "sha256-9OEOq1i9TopWEASxAh4amr+zN+SGoY1lq6icw1JudL4="
   },
   {
-    "ext": "jpeg",
-    "id": "SpBfUZi",
+    "url": "https://i.imgur.com/SpBfUZi.jpeg",
     "name": "deer",
-    "sha256": "08b4mjsr81nzxk1k7j8mg94k1hfyzkjfx9xdrw1sgmdhpazhm3zy"
+    "ext": "jpeg",
+    "hash": "sha256-/o8Kv7qw1acDz62n7uT83sEwSXoVyTPD7N8GlLWsZCE="
+  },
+  {
+    "url": "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-binary-black.png",
+    "name": "binary-black",
+    "ext": "png",
+    "hash": "sha256-mhSh0wz2ntH/kri3PF5ZrFykjjdQLhmlIlDDGFQIYWw="
+  },
+  {
+    "url": "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-binary-black_8k.png",
+    "name": "binary-black-8k",
+    "ext": "png",
+    "hash": "sha256-MxEgvzWmdqMeI5GeI6Hzci6yd5iL44NDXyKQOuw+fLY="
   }
 ]

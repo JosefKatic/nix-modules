@@ -3,16 +3,9 @@ pkgs.lib.listToAttrs (
   map (wallpaper: {
     inherit (wallpaper) name;
     value = pkgs.fetchurl {
-      inherit (wallpaper) sha256;
+      inherit (wallpaper) hash;
       name = "${wallpaper.name}.${wallpaper.ext}";
-      url = "https://i.imgur.com/${wallpaper.id}.${wallpaper.ext}";
+      url = wallpaper.url;
     };
   }) (pkgs.lib.importJSON ./list.json)
 )
-// {
-  binary-black = pkgs.fetchurl {
-    name = "binary-black.png";
-    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/8957e93c95867faafec7f9988cedddd6837859fa/wallpapers/nix-wallpaper-binary-black.png";
-    hash = "sha256-mhSh0wz2ntH/kri3PF5ZrFykjjdQLhmlIlDDGFQIYWw=";
-  };
-}
