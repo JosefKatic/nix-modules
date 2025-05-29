@@ -20,7 +20,7 @@ in {
     enable = true;
     enableSshSupport = true;
     sshKeys = ["DE6A74BB14BE619219D51E2F583F538192ADF68C"];
-    pinentryPackage = pinentry.package;
+    pinentry.package = pinentry.package;
     enableExtraSocket = true;
   };
 
