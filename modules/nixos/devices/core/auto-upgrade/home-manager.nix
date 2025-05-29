@@ -110,6 +110,11 @@ in {
           echo "Current flake: ${cfg.oldFlakeRef}" >&2
           current="$(nix flake metadata "${cfg.oldFlakeRef}" --json | jq -r '.lastModified')"
           echo "Modified at: $(date -d @$current)" >&2
+
+          if [ "$new" -le "$current" ]; then
+            echo "Skipping upgrade, not newer" >&2
+            exit 0
+          fi
         '')
         + ''
           profile="$HOME/.local/state/nix/profiles/home-manager"
