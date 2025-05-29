@@ -74,6 +74,7 @@
       sessionPath = ["$HOME/.local/bin"];
       sessionVariables = {
         FLAKE = "$HOME/.nix-config";
+        NH_FLAKE = "$HOME/.nix-config";
       };
       packages = with pkgs; [
         # icon fonts
