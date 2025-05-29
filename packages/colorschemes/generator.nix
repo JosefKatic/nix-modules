@@ -8,13 +8,13 @@
       templates = {};
       config = {
         custom_colors = {
-          red = "#dd0000";
-          orange = "#dd5522";
-          yellow = "#dddd00";
-          green = "#22dd22";
-          cyan = "#22dddd";
-          blue = "#2222dd";
-          magenta = "#dd22dd";
+          red = "#ffb2b9";
+          orange = "#ffb3ae";
+          yellow = "#dcff8e";
+          green = "#45f89c";
+          cyan = "#a1f0ff";
+          blue = "#b0c6ff";
+          magenta = "#eab2ff";
         };
       };
     };
