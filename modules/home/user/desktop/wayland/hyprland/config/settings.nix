@@ -63,7 +63,7 @@ in {
           "windowsIn,1,3,easeout,slide"
           "windowsOut,1,3,easein,slide"
           "windowsMove,1,3,easeout"
-          "workspaces,1,2,easeout,slide"
+          "workspaces,1,2,easeout,slidevert"
           "fadeIn,1,3,easeout"
           "fadeOut,1,3,easein"
           "fadeSwitch,1,3,easeout"

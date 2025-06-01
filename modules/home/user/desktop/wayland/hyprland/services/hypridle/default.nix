@@ -1,89 +1,66 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: let
-  suspendScript = pkgs.writeShellScript "suspend-script" ''
-    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
-    # only suspend if audio isn't running
-    if [ $? == 1 ]; then
-      ${pkgs.systemd}/bin/systemctl suspend
-    fi
-  '';
-  cfg = config.user.desktop.wayland.hyprland.services.hypridle;
-in {
-  options.user.desktop.wayland.hyprland.services.hypridle.enable = lib.mkEnableOption "Enable Hypridle";
-
-  config = lib.mkIf cfg.enable {
-    systemd.user.services.hypridle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
-
-    services.hypridle = let
-      hyprlock = "${config.programs.hyprlock.package}/bin/hyprlock";
-      pgrep = "${pkgs.procps}/bin/pgrep";
-      pactl = "${pkgs.pulseaudio}/bin/pactl";
-      hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
-      swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
-      suspendScript = pkgs.writeShellScript "suspend-script" ''
-        ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
-        # only suspend if audio isn't running
-        if [ $? == 1 ]; then
-          ${pkgs.systemd}/bin/systemctl suspend
-        fi
-      '';
-      isLocked = "${pgrep} -x ${hyprlock}";
-      lockTime = 600;
-      afterLockTimeout = {
-        timeout,
-        on-timeout,
-        on-resume ? null,
-      }: [
+}: {
+  services.hypridle = {
+    enable = true;
+    settings = let
+      isLocked = "pgrep hyprlock";
+      isDischarging = "grep Discharging /sys/class/power_supply/BAT{0,1}/status -q";
+    in {
+      general = {
+        lock_cmd = "if ! ${isLocked}; then ${lib.getExe config.programs.hyprlock.package}; fi";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        inhibit_sleep = 3; # Wait for lock before suspend
+      };
+      listener = [
         {
-          timeout = lockTime + timeout;
-          inherit on-timeout on-resume;
+          timeout = 10;
+          on-timeout = "brightnessctl --save";
+          on-resume = "brightnessctl --restore";
         }
         {
-          on-timeout = "${isLocked} && ${on-timeout}";
-          inherit on-resume timeout;
+          timeout = 30;
+          on-timeout = "brightnessctl --device *:kbd_backlight --save set 0";
+          on-resume = "brightnessctl --device *:kbd_backlight --restore";
+        }
+        {
+          timeout = 50;
+          on-timeout = "brightnessctl set 50%-";
+        }
+        {
+          timeout = 110;
+          on-timeout = "brightnessctl set 50%-";
+        }
+        {
+          timeout = 120;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 140;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+
+        # If already locked
+        {
+          timeout = 15;
+          on-timeout = "if ${isLocked}; then brightnessctl set 75%-; fi";
+        }
+        {
+          timeout = 20;
+          on-timeout = "if ${isLocked}; then hyprctl dispatch dpms off; fi";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+
+        # If discharging
+        {
+          timeout = 900;
+          on-timeout = "if ${isDischarging}; then systemctl suspend; fi";
         }
       ];
-    in {
-      enable = true;
-      settings = {
-        general = {
-          lock_cmd = lib.getExe config.programs.hyprlock.package;
-          before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-        };
-        listener =
-          [
-            {
-              timeout = lockTime;
-              on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
-              on-resume = "";
-            }
-          ]
-          ++
-          # Mute mic
-          (afterLockTimeout {
-            timeout = 10;
-            on-timeout = "${pactl} set-source-mute @DEFAULT_SOURCE@ yes";
-            on-resume = "${pactl} set-source-mute @DEFAULT_SOURCE@ no";
-          })
-          ++
-          # Suspend
-          (afterLockTimeout {
-            timeout = 600;
-            on-timeout = suspendScript.outPath;
-            on-resume = "";
-          })
-          ++
-          # Turn off displays (hyprland)
-          (lib.optionals config.wayland.windowManager.hyprland.enable (afterLockTimeout {
-            timeout = 300;
-            on-timeout = "${hyprctl} dispatch dpms off";
-            on-resume = "${hyprctl} dispatch dpms on";
-          }));
-      };
     };
   };
 }

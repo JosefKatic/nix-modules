@@ -16,6 +16,7 @@ in {
   config = {
     boot = {
       kernelPackages = pkgs.linuxKernel.packages.${config.device.core.kernel};
+      extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
       # initrd = {
       #   availableKernelModules =
       #     lib.optionals config.device.virtualized ["ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk"]
