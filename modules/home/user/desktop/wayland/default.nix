@@ -1,6 +1,7 @@
 inputs: {
   imports = let
-    waybar = import ./waybar inputs;
     hyprland = import ./hyprland inputs;
-  in [hyprland waybar];
+    quickshell = import ./quickshell inputs;
+    waybar = import ./waybar inputs;
+  in [hyprland quickshell waybar];
 }
