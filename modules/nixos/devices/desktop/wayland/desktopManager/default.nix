@@ -12,7 +12,7 @@ in {
   };
 
   config = {
-    services.xserver.desktopManager.gnome.enable = cfg.gnome.enable;
+    services.desktopManager.gnome.enable = cfg.gnome.enable;
 
     # Taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
     # Most of the excluded packages are replaced by alternatives in home config

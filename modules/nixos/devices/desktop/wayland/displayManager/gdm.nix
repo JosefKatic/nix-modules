@@ -24,7 +24,7 @@ in {
       };
     };
     services.xserver.enable = true;
-    services.xserver.displayManager.gdm = {
+    services.displayManager.gdm = {
       enable = true;
       settings = {
         greeter.IncludeAll = false;
