@@ -12,6 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     qt.enable = true;
+    environment.systemPackages = with pkgs; [kdePackages.qtdeclarative];
     programs.hyprland = {
       enable = true;
       package = pkgs.hyprland;
