@@ -11,6 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    qt.enable = true;
     programs.hyprland = {
       enable = true;
       package = pkgs.hyprland;
