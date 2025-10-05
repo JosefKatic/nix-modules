@@ -235,12 +235,12 @@
   }
   /* tab selected border */
   #tabbrowser-tabs{ --lwt-tab-line-color: var(--auto-accent-color) !important; }
-  
+
   @media (prefers-color-scheme: dark){ :root{
-      --auto-accent-color: rgb(80, 80, 80); 
+      --auto-accent-color: rgb(80, 80, 80);
   }}
   @media (prefers-color-scheme: light){ :root{
-      --auto-accent-color: rgb(80, 80, 80); 
+      --auto-accent-color: rgb(80, 80, 80);
   }}
 
   /* ############# Personal Settings ############## */

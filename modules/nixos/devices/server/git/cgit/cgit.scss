@@ -1,7 +1,7 @@
 td.linenos {
-    width: 2em;
-    font-size: 0.9em;
-    padding-top: 1.28em;
+  width: 2em;
+  font-size: 0.9em;
+  padding-top: 1.28em;
 }
 
 /* Highlight diff */
@@ -26,7 +26,7 @@ code span {
 /* Light up targeted line (for linking, etc) */
 pre > code {
   position: relative;
-  a[id^='line-'] {
+  a[id^="line-"] {
     height: 1.18rem;
     width: 101.96%;
     position: absolute;
