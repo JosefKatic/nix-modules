@@ -10,18 +10,20 @@ in {
   config = lib.mkIf cfg.enable {
     services.hyprsunset = {
       enable = true;
-      transitions = {
-        sunrise = {
-          calendar = "*-*-* 07:00:00";
-          requests = [
-            ["identity"]
-          ];
-        };
-        sunset = {
-          calendar = "*-*-* 22:00:00";
-          requests = [
-            ["temperature" "3000"]
-          ];
+      settings = {
+        transitions = {
+          sunrise = {
+            calendar = "*-*-* 07:00:00";
+            requests = [
+              ["identity"]
+            ];
+          };
+          sunset = {
+            calendar = "*-*-* 22:00:00";
+            requests = [
+              ["temperature" "3000"]
+            ];
+          };
         };
       };
     };

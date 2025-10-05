@@ -10,7 +10,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      teamspeak_client
+      teamspeak3
+      teamspeak6_client
     ];
   };
 }
