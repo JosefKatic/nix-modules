@@ -1,6 +1,6 @@
 {
   services = {
-    logind.extraConfig = ''
+    logind.settings.Login = ''
       HandlePowerKey=suspend
     '';
 
