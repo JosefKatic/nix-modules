@@ -8,7 +8,7 @@
     domain = "internal.joka00.dev";
     basedn = "dc=internal,dc=joka00,dc=dev";
     certificate = pkgs.fetchurl {
-      url = http://ipa.internal.joka00.dev/ipa/config/ca.crt;
+      url = "http://ipa.internal.joka00.dev/ipa/config/ca.crt";
       sha256 = "sha256-rCbcfsQilbXNpBOXq8alvu2XK2SoVcC96kYk5GDEndw=";
     };
   };
