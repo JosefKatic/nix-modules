@@ -91,7 +91,10 @@ in {
           Config(
             desktop_actions: true,
             max_entries: 5,
-            terminal: Some("kitty"),
+            terminal: Some(Terminal(
+              command: "kitty",
+              args: "{}",
+            )),
           )
         '';
         "websearch.ron".text = ''
