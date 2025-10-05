@@ -126,12 +126,6 @@ in {
         disable_splash_rendering = true;
       };
 
-      # touchpad gestures
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 4;
-        workspace_swipe_forever = true;
-      };
       xwayland.force_zero_scaling = true;
 
       debug.disable_logs = false;
