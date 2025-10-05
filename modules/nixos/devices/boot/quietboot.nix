@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.device.boot.quietboot.enable = lib.mkEnableOption "Enable quiet boot";
@@ -12,8 +13,21 @@
     };
 
     boot = {
-      plymouth = {
+      plymouth = let
+        logoFile = pkgs.fetchurl {
+          url = "https://joka00.dev/assets/logo__dark.svg";
+          sha256 = "1xd5hfxlh0m5687mfxndyv18a2k6aq7njna4n5smn7f7ynal1i28";
+        };
+      in {
         enable = true;
+        theme = "blockchain";
+        themePackages = with pkgs; [
+          # By default we would install all themes
+          (adi1090x-plymouth-themes.override {
+            selected_themes = ["blockchain"];
+          })
+        ];
+        logo = logoFile;
       };
       loader.timeout = 0;
       kernelParams = [
