@@ -11,7 +11,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       teamspeak3
-      teamspeak6_client
+      teamspeak6-client
     ];
   };
 }
