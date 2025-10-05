@@ -1,4 +1,4 @@
-inputs: {
+{
   pkgs,
   lib,
   config,
@@ -14,11 +14,10 @@ in {
     programs.anyrun = {
       enable = true;
       config = {
-        plugins = with inputs.anyrun.packages.${pkgs.system}; [
-          applications
-          websearch
+        plugins = [
+          "${pkgs.anyrun}/lib/libapplications.so"
+          "${pkgs.anyrun}/lib/libapplications.so"
         ];
-
         width.fraction = 0.3;
         y.absolute = 15;
         hidePluginInfo = true;
