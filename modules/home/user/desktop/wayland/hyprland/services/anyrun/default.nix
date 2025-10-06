@@ -27,62 +27,79 @@ in {
       extraCss = ''
         * {
           all: unset;
-          font-size: 1.3rem;
+          font-size: 1rem;
         }
 
-        #window,
-        #match,
-        #entry,
-        #plugin,
-        #main {
+        window {
           background: transparent;
         }
 
-        #match.activatable {
+        box.main {
+          background: #131313;
+          border: 2px solid #ffffff;
+          border-radius: 4px;
+          margin: 8px;
+          padding: 16px 16px;
+        }
+
+        .matches {
+          background-color: rgba(0, 0, 0, 0);
+          border-radius: 10px;
+        }
+
+        .matches > row.match:first {
+          margin-top: 0;
+        }
+
+        box.plugin:first-child {
+          margin-top: 5px;
+        }
+
+        box.plugin.info {
+          min-width: 200px;
+        }
+
+        list.plugin {
+          background-color: rgba(0, 0, 0, 0);
+        }
+
+        label.match.description {
+          font-size: 10px;
+        }
+
+        label.plugin.info {
+          font-size: 14px;
+        }
+
+        row.match {
           border-radius: 8px;
-          padding: 0.3rem 0.9rem;
           margin-top: 0.25rem;
         }
-        #match.activatable:first-child {
-          margin-top: 0.7rem;
-        }
-        #match.activatable:last-child {
-          margin-bottom: 0.6rem;
-        }
 
-        #match:selected,
-        #match:hover
-        {
-          background: ${colors.primary};
-          color: ${colors.on_primary};
-        }
-
-        #entry {
-          background: ${colors.surface};
+        box.match {
+          background: transparent;
           border-radius: 8px;
-          margin: 0.5rem;
-          padding: 0.3rem 1rem;
+          padding: 0.1rem 0.25rem;
         }
 
-        list > #plugin {
+        .match:selected,
+        .match:hover {
+          background: #ffffff;
+          color: #1b1b1b;
+        }
+
+        list > .plugin {
           border-radius: 8px;
           margin: 0 0.3rem;
         }
-        list > #plugin:first-child {
+        list > .plugin:first-child {
           margin-top: 0.3rem;
         }
-        list > #plugin:last-child {
+        list > .plugin:last-child {
           margin-bottom: 0.3rem;
         }
-        list > #plugin {
-          padding: 0.6rem;
-        }
-
-        box#main {
-          background: ${colors.surface};
-          border: 2px solid ${colors.primary};
-          border-radius: 4px;
-          padding: 0.3rem;
+        list > .plugin {
+          padding: 0.2rem;
         }
       '';
       extraConfigFiles = {
