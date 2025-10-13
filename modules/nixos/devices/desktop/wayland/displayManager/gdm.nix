@@ -36,6 +36,7 @@ in {
         settings = {
           "org/gnome/login-screen" = {
             logo = "${logoFile}";
+            disable-user-list = true;
           };
           "org/gnome/desktop/background" = {
             picture-uri = "";
