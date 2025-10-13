@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.user.desktop.programs.editors.obs-studio;
+  cfg = config.user.desktop.programs.media.video.obs;
 in {
   options = {
-    user.desktop.programs.video = {
-      obs-studio = {
+    user.desktop.programs.media.video = {
+      obs = {
         enable = lib.mkEnableOption "Enable obs-studio";
         package = lib.mkOption {
           type = lib.types.package;
