@@ -11,6 +11,9 @@ in {
   config = lib.mkIf cfg.opendrop.enable {
     environment.systemPackages = [
       pkgs.opendrop
+      pkgs.owl
+      pkgs.python313Full
+      pkgs.python313Packages.fleep
     ];
   };
 }
