@@ -1,3 +1,3 @@
 {
-  imports = [./mpv ./music];
+  imports = [./mpv ./music ./video];
 }

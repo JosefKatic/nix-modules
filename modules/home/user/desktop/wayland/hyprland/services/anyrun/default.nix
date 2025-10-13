@@ -16,7 +16,8 @@ in {
       config = {
         plugins = [
           "${pkgs.anyrun}/lib/libapplications.so"
-          "${pkgs.anyrun}/lib/libapplications.so"
+          "${pkgs.anyrun}/lib/libwebsearch.so"
+          "${pkgs.anyrun}/lib/libnix_run.so"
         ];
         width.fraction = 0.3;
         y.absolute = 15;
@@ -117,6 +118,14 @@ in {
           Config(
             prefix: "?",
             engines: [Google]
+          )
+        '';
+        "nix-run.ron".text = ''
+          Config(
+            prefix: ":nr ",
+            allow_unfree: true,
+            channel: "nixpkgs-unstable",
+            max_entries: 3,
           )
         '';
       };
