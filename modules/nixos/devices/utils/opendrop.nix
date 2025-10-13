@@ -12,7 +12,7 @@ in {
     environment.systemPackages = [
       pkgs.opendrop
       pkgs.owl
-      pkgs.python313Full
+      pkgs.python313
       pkgs.python313Packages.fleep
     ];
   };
