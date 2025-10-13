@@ -5,5 +5,5 @@
   pkgs,
   ...
 }: {
-  imports = [./kdeconnect.nix ./opendrop ./virtualisation];
+  imports = [./kdeconnect.nix ./opendrop.nix ./virtualisation];
 }
