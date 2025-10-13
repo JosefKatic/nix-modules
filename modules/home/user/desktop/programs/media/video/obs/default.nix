@@ -15,7 +15,6 @@ in {
           default = pkgs.obs-studio;
           description = "OBS package";
         };
-        enableVirtualCamera = lib.mkEnableOption "Enable enableVirtualCamera";
       };
     };
   };
@@ -24,7 +23,6 @@ in {
     programs.obs-studio = {
       enable = cfg.enable;
       package = pkgs.obs-studio;
-      enableVirtualCamera = cfg.enableVirtualCamera;
     };
   };
 }
