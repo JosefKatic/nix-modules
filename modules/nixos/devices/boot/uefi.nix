@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.device;
@@ -12,6 +13,9 @@ in {
   };
 
   config = lib.mkIf cfg.boot.uefi.enable {
+    environment.systemPackages = with pkgs; [
+      sbctl
+    ];
     boot = {
       bootspec.enable = true;
       initrd = {
@@ -29,7 +33,7 @@ in {
       };
       lanzaboote = {
         enable = cfg.boot.uefi.secureboot;
-        pkiBundle = "${lib.optionalString hasOptinPersistence "/persist"}/etc/secureboot";
+        pkiBundle = "${lib.optionalString hasOptinPersistence "/persist"}/var/lib/sbctl";
       };
     };
     fileSystems."/efi" = {
@@ -40,7 +44,7 @@ in {
 
     environment.persistence = lib.mkIf (cfg.core.storage.enablePersistence && cfg.boot.uefi.secureboot) {
       "/persist" = {
-        directories = ["/etc/secureboot"];
+        directories = ["/var/lib/sbctl"];
       };
     };
   };
