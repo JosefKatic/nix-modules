@@ -15,8 +15,8 @@
     boot = {
       plymouth = let
         logoFile = pkgs.fetchurl {
-          url = "https://joka00.dev/assets/logo__dark.svg";
-          sha256 = "1xd5hfxlh0m5687mfxndyv18a2k6aq7njna4n5smn7f7ynal1i28";
+          url = "https://joka00.dev/assets/logo_black.png";
+          hash = "sha256-DRlA59xQy2kaanKtDGMdE98272vglKThfPNAPnE1o0M=";
         };
       in {
         enable = true;
