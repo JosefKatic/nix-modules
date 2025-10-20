@@ -28,17 +28,17 @@ in {
       #     proxyWebsockets = true;
       #   };
       # };
-      virtualisation.oci-containers = {
-        backend = "podman";
-        containers.homeassistant = {
-          volumes = ["home-assistant:/config"];
-          environment.TZ = "Europe/Berlin";
-          image = "ghcr.io/home-assistant/home-assistant:stable";
-          extraOptions = [
-            "--network=host"
-            "--device=/dev/ttyACM0:/dev/ttyACM0"
-          ];
-        };
+    };
+    virtualisation.oci-containers = {
+      backend = "podman";
+      containers.homeassistant = {
+        volumes = ["home-assistant:/config"];
+        environment.TZ = "Europe/Berlin";
+        image = "ghcr.io/home-assistant/home-assistant:stable";
+        extraOptions = [
+          "--network=host"
+          "--device=/dev/ttyACM0:/dev/ttyACM0"
+        ];
       };
     };
     networking.firewall.allowedTCPPorts = [8123 21063 21064];
