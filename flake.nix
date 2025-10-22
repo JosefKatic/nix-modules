@@ -103,7 +103,6 @@
         ./packages
         ./overlays
         ./modules
-        ./definitions/nixos
         ./pre-commit-hooks.nix
       ];
     };
