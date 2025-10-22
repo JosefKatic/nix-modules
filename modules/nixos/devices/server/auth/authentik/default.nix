@@ -5,9 +5,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.devices.server.auth;
+  cfg = config.device.server.auth;
 in {
-  options.devices.server.auth.authentik = {
+  options.device.server.auth.authentik = {
     enable = lib.mkEnableOption "Enable authentik";
   };
   config = lib.mkIf cfg.authentik.enable {
