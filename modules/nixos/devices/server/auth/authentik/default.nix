@@ -1,4 +1,9 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.devices.server.auth;
 in {
   options.devices.server.auth.authentik = {
