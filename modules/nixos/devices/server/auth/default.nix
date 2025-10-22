@@ -3,5 +3,5 @@
   config,
   ...
 }: {
-  imports = [./freeipa ./keycloak];
+  imports = [./authentik ./freeipa ./keycloak];
 }

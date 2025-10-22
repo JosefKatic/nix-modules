@@ -29,7 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Tools
+    authentik-nix.url = "github:nix-community/authentik-nix";
+
     lanzaboote.url = "github:nix-community/lanzaboote";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -102,6 +103,7 @@
         ./packages
         ./overlays
         ./modules
+        ./definitions/nixos
         ./pre-commit-hooks.nix
       ];
     };
