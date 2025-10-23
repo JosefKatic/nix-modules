@@ -18,7 +18,7 @@ in {
     services.zigbee2mqtt = {
       enable = cfg.zigbee2mqtt.enable;
       settings = {
-        homeassistant.enabled = config.services.home-assistant.enable;
+        homeassistant.enabled = config.device.server.homelab.homeassistant.enable;
         permit_join = false;
         mqtt = {
           base_topic = "zigbee2mqtt";
