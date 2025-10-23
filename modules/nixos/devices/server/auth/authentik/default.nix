@@ -21,16 +21,6 @@ in {
         # Best use something like sops-nix or agenix to manage it
         environmentFile = config.sops.secrets.authentik-env.path;
         settings = {
-          listen = {
-            listen_debug = "127.0.0.1:9900";
-            listen_debug_py = "127.0.0.1:9901";
-            listen_http = "127.0.0.1:9000";
-            listen_https = "127.0.0.1:9443";
-            listen_ldap = "127.0.0.1:3389";
-            listen_ldaps = "127.0.0.1:6636";
-            listen_radius = "127.0.0.1:1812";
-            listen_metrics = "127.0.0.1:9300";
-          };
           email = {
             host = "smtp.protonmail.ch";
             port = 587;
