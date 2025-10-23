@@ -14,8 +14,15 @@ in {
     sops.secrets.authentik-env = {
       sopsFile = "${self}/secrets/services/auth/secrets.yaml";
     };
-    networking.firewall.allowedTCPPorts = [1812 3389 6636 9000 9900 9901 9300 9443];
+    sops.secrets.authentik-ldap-env = {
+      sopsFile = "${self}/secrets/services/auth/secrets.yaml";
+    };
+    networking.firewall.allowedTCPPorts = [1812 359 636 3389 6636 9000 9900 9901 9300 9443];
     services = {
+      authentik-ldap = {
+        enable = true;
+        environmentFile = config.sops.secrets.authentik-ldap-env.path;
+      };
       authentik = {
         enable = true;
         # The environmentFile needs to be on the target host!
