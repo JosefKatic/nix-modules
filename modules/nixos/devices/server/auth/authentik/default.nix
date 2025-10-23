@@ -14,6 +14,7 @@ in {
     sops.secrets.authentik-env = {
       sopsFile = "${self}/secrets/services/auth/secrets.yaml";
     };
+    networking.firewall.allowedTCPPorts = [1812 3389 6636 9000 9900 9901 9300 9443];
     services = {
       authentik = {
         enable = true;
