@@ -11,6 +11,11 @@ in {
     enable = lib.mkEnableOption "Enable authentik";
   };
   config = lib.mkIf cfg.authentik.enable {
+    environment.persistence = lib.mkIf config.device.core.storage.enablePersistence {
+      "/persist".directories = [
+        "/var/lib/authentik"
+      ];
+    };
     sops.secrets.authentik-env = {
       sopsFile = "${self}/secrets/services/auth/secrets.yaml";
     };
