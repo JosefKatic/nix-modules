@@ -14,6 +14,13 @@ in {
   };
 
   config = mkIf cfg.homeassistant.enable {
+    environment.persistence = lib.mkIf config.device.core.storage.enablePersistence {
+      "/persist" = {
+        directories = [
+          "/var/lib/containers"
+        ];
+      };
+    };
     services = {
       # nginx.virtualHosts."hass.joka00.dev" = {
       #   extraConfig = ''
