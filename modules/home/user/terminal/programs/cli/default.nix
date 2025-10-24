@@ -1,6 +1,7 @@
 {
-  pkgs,
+  lib,
   outputs,
+  pkgs,
   ...
 }: let
   nixosConfigs = builtins.attrNames outputs.nixosConfigurations;
